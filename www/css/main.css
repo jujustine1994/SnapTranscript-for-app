@@ -1,0 +1,31 @@
+/**
+ * SnapTranscript — Main Stylesheet
+ */
+
+/* 1. Base */
+@import 'base/variables.css';
+@import 'base/reset.css';
+
+/* 2. Layout */
+@import 'layout/header.css';
+@import 'layout/content.css';
+@import 'layout/footer.css';
+
+/* 3. Components */
+@import 'components/buttons.css';
+@import 'components/forms.css';
+@import 'components/modals.css';
+@import 'components/cards.css';
+
+/* 4. Utilities */
+@import 'utilities/animations.css';
+@import 'utilities/helpers.css';
+
+/* 5. App screens & modals */
+@import 'app/api-key-modal.css';
+@import 'app/debug-panel.css';
+@import 'app/home.css';
+@import 'app/processing.css';
+@import 'app/result-view.css';
+@import 'app/history-modal.css';
+@import 'app/settings-modal.css';

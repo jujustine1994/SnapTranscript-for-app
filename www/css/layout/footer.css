@@ -1,0 +1,5 @@
+/* Footer Layout — reserved for future tab bar */
+
+.app-footer {
+  padding-bottom: env(safe-area-inset-bottom);
+}

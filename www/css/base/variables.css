@@ -1,0 +1,22 @@
+/**
+ * CSS Variables
+ * All color and theme tokens
+ */
+
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.3);
+  --border-color: #334155;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  
+  /* Responsive Breakpoints (for reference in media queries) */
+  /* --breakpoint-xs: 320px;  小型手機 (iPhone SE) */
+  /* --breakpoint-sm: 375px;  標準手機 (iPhone 13/14) */
+  /* --breakpoint-md: 414px;  大型手機 (iPhone 14 Pro Max) */
+  /* --breakpoint-lg: 600px;  平板/桌面 */
+}

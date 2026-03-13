@@ -1,0 +1,107 @@
+/* API Key Modal — specific styles */
+
+.apikey-privacy-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.apikey-privacy-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.apikey-privacy-notice p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Status area */
+.apikey-set-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.danger-btn {
+  background: transparent;
+  border: 1px solid var(--danger-color);
+  color: var(--danger-color);
+  padding: 0.4rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.danger-btn:active {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.apikey-not-set-hint {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Input row */
+.apikey-input-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.apikey-input-row input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: 'Menlo', 'Monaco', monospace;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.apikey-input-row input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.apikey-toggle-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Hint and error text */
+.field-hint {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: var(--danger-color);
+  margin-top: 0.375rem;
+}

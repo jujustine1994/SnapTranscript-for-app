@@ -1,0 +1,26 @@
+# 依賴套件
+node_modules/
+
+# 環境變數
+.env
+.env.local
+.env.*.local
+
+# 重要 ID / 金鑰（本機保留，不上傳）
+docs/CREDENTIALS.md
+
+# iOS 原生設定
+ios/App/App/GoogleService-Info.plist
+
+# Build 產出（只排除 bundle，其餘 www/ 是原始碼需要 commit）
+www/js/bundle.js
+www/js/bundle.js.map
+dist/
+
+# 系統檔
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

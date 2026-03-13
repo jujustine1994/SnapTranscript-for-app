@@ -1,0 +1,258 @@
+﻿/* ==========================================
+   Modals Component
+   ========================================== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Fallback for simple toggle if 'visible' class isn't used */
+.modal:not(.hidden):not(.visible) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--card-bg, #1e293b);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.visible .modal-content {
+  transform: translateY(0);
+}
+
+/* Header */
+.modal-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary, #f8fafc);
+}
+
+/* Body */
+.modal-body {
+  padding: 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+  color: var(--text-secondary, #94a3b8);
+}
+
+/* Footer */
+.modal-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* --- Buttons (Restored & Enhanced) --- */
+.primary-btn {
+  background: var(--accent-color, #38bdf8);
+  color: #0f172a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.primary-btn:active {
+  opacity: 0.9;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid var(--border-color, #334155);
+  color: var(--text-secondary, #94a3b8);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-modal-btn {
+  color: var(--text-secondary, #94a3b8);
+}
+
+.close-modal-btn:hover {
+  color: var(--text-primary, #f8fafc);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Simulation Button Active State (Dev Mode Isolation) */
+.sim-btn.active {
+  background-color: #0ea5e9 !important; /* Sky 500 */
+  color: #ffffff !important;
+  border-color: #0ea5e9 !important;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+}
+
+/* --- Paywall Specific Items --- */
+.paywall-package-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.paywall-pkg-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #334155;
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.paywall-pkg-btn:active {
+  transform: scale(0.98);
+  background: #475569;
+}
+
+.paywall-pkg-btn .pkg-name {
+  font-weight: 600;
+}
+
+.paywall-pkg-btn .pkg-price {
+  background: #38bdf8;
+  color: #0f172a;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* --- Toast Notification --- */
+/* Added for step 264 to fix alignment */
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px 24px;
+  position: fixed;
+  z-index: 3000;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  bottom: 30px;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    bottom 0.3s;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
+
+.toast.success {
+  background-color: rgba(16, 185, 129, 0.95);
+}
+.toast.error {
+  background-color: rgba(239, 68, 68, 0.95);
+}
+.toast.info {
+  background-color: rgba(59, 130, 246, 0.95);
+}
+
+/* --- CSV Export Preview --- */
+.csv-preview-textarea {
+  width: 100%;
+  min-height: 250px; /* Increased height */
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  padding: 1rem;
+  font-family:
+    "Menlo", "Monaco", "Courier New", monospace; /* Monospace for data alignment */
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border-radius: 8px;
+  resize: vertical;
+  margin-top: 0.5rem;
+  white-space: pre; /* Preserve formatting */
+  overflow-x: auto; /* Allow scrolling for long rows */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.csv-preview-textarea:focus {
+  outline: none;
+  border-color: var(--accent-color, #38bdf8);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.csv-preview-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #94a3b8);
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,200 @@
+﻿}
+
+.dc-avatar-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  padding: 3px;
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dc-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1e293b;
+  background: #1e293b;
+}
+
+.dc-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 3px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+.dc-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dc-title {
+  font-size: 1rem;
+  color: var(--accent-color);
+  margin-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dc-company {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.dc-info-grid {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dc-row {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #e2e8f0;
+  transition: all 0.2s;
+}
+
+.dc-row.clickable:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+/* FIX: Force white text for links */
+a.dc-row,
+a.dc-row:visited,
+a.dc-row:active,
+a[href^="tel:"] {
+  color: #ffffff !important;
+}
+
+.dc-icon {
+  font-size: 1.2rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+.dc-text {
+  font-size: 0.95rem;
+  word-break: break-all;
+  text-align: left;
+}
+
+/* --- Digital Card Themes --- */
+
+/* Theme A: Minimalist Modern (Swiss Style) */
+.digital-card-wrapper.theme-modern {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  /* Subtle Shadow */
+  border-radius: 16px;
+  /* High-end rounded corners */
+}
+
+.theme-modern .dc-hero {
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 24px;
+}
+
+.theme-modern .dc-avatar-container {
+  background: none;
+  padding: 0;
+  width: 100px;
+  /* Refined size */
+  height: 100px;
+  box-shadow: none;
+  margin-bottom: 12px;
+}
+
+.theme-modern .dc-avatar-img,
+.theme-modern .dc-avatar-placeholder {
+  border: 1px solid #e2e8f0;
+  /* Subtle border */
+  background: #f8fafc;
+}
+
+.theme-modern .dc-name {
+  color: #1e293b;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.025em;
+  /* Tight kerning for headers */
+  font-weight: 700;
+  text-shadow: none;
+  margin-bottom: 4px;
+}
+
+.theme-modern .dc-title {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.theme-modern .dc-row {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #f1f5f9;
+  border-radius: 6px;
+  padding: 16px 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.theme-modern .dc-row:last-child {
+  border-bottom: none;
+}
+
+.theme-modern .dc-icon {
+  font-size: 1.2rem;
+  color: #0f172a;
+  opacity: 0.8;
+}
+
+.theme-modern .dc-text {
+  color: #334155 !important;
+  font-weight: 500;
+}
+
+/* FIX: Ensure Modern Theme Links are Dark */
+.theme-modern a.dc-row,
+.theme-modern a.dc-row:visited,
+.theme-modern a[href^="tel:"] {
+  color: #334155 !important;
+}
+
+.theme-modern .dc-row:hover {
+  background: #f8fafc;
+  transform: translateX(4px);
+  /* Gentle movement */
+  padding-left: 12px;
+}
+
+/* Theme B: Glassmorphism (Cyberpunk/Neon) */
+.digital-card-wrapper.theme-glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(24px) saturate(180%);

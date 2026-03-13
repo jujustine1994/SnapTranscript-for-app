@@ -1,0 +1,21 @@
+{
+  "appId": "com.cthcompany.snaptranscript",
+  "appName": "SnapTranscript",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "backgroundColor": "#000000",
+      "showSpinner": false
+    },
+    "AdMob": {
+      "appId": "ca-app-pub-6861772624103964~3932946774"
+    }
+  },
+  "server": {
+    "allowNavigation": [
+      "https://generativelanguage.googleapis.com",
+      "https://unpkg.com"
+    ]
+  }
+}

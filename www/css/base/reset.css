@@ -1,0 +1,38 @@
+/**
+ * CSS Reset & Global Styles
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  /* Native App Behavior */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- Layout Structure --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 60%);
+}

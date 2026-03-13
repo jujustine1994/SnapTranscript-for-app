@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>SnapTranscript</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="app-title" id="app-title">SnapTranscript</h1>
+      <div class="app-header-actions">
+        <button class="icon-btn" id="history-btn"  aria-label="History">📋</button>
+        <button class="icon-btn" id="settings-btn" aria-label="Settings">⚙️</button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="app-main" id="app-main">
+
+      <!-- State A: audio picker -->
+      <div class="audio-picker-zone" id="audio-picker-section">
+
+        <label class="audio-upload-label" for="audio-file-input">
+          <span class="audio-upload-icon">📁</span>
+          <span class="audio-upload-text">Select Audio File</span>
+          <span class="audio-upload-hint">mp3 · m4a · wav · mp4 · mov · ogg…</span>
+        </label>
+        <input type="file" id="audio-file-input" accept="audio/*,video/*" hidden />
+
+        <div class="picker-divider">or</div>
+
+        <button class="audio-record-btn" id="record-btn" disabled>
+          🎙️&nbsp;<span>Start Recording</span>
+          <span class="coming-soon-tag">coming soon</span>
+        </button>
+
+      </div>
+
+      <!-- State B: file selected -->
+      <div class="file-info-section hidden" id="file-info-section">
+
+        <div class="file-info-card">
+          <span class="file-info-icon">🎵</span>
+          <div class="file-info-meta">
+            <span class="file-info-name" id="file-name">—</span>
+            <span class="file-info-duration" id="file-duration">—</span>
+          </div>
+          <button class="change-file-btn" id="change-file-btn">Change</button>
+        </div>
+
+        <div class="transcribe-settings">
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Also Translate</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="translate-toggle" />
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+
+          <div class="setting-row hidden" id="translate-lang-row">
+            <div class="setting-label">Target Language</div>
+            <select class="setting-select" id="translate-lang-select">
+              <!-- populated by app.js -->
+            </select>
+          </div>
+
+        </div>
+
+        <button class="primary-btn start-btn" id="main-cta" disabled>
+          Start Transcription
+        </button>
+
+      </div>
+
+    </main>
+
+    <!-- Footer (tab bar — reserved) -->
+    <footer class="app-footer"></footer>
+
+  </div>
+
+  <!-- Processing overlay (shown during FFmpeg + Gemini) -->
+  <div class="processing-overlay hidden" id="processing-overlay">
+    <div class="processing-card">
+      <div class="spinner"></div>
+      <p class="processing-stage" id="processing-stage">Processing…</p>
+      <div class="processing-bar-track">
+        <div class="processing-bar-fill" id="processing-fill"></div>
+      </div>
+      <p class="processing-detail" id="processing-detail"></p>
+      <button class="secondary-btn processing-cancel" id="processing-cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Capacitor runtime (injected by native; 404 in browser is harmless) -->
+  <script src="capacitor.js"></script>
+  <!-- App bundle -->
+  <script src="js/bundle.js"></script>
+
+</body>
+</html>
