@@ -93,6 +93,37 @@
 
 ---
 
+### 2026-03-13 — UX 改善、Prompt 優化、程式碼品質
+
+**Bug 修復：**
+- API key 替換 UX 修復：有 key 時輸入欄被隱藏，使用者無法直接替換；現在改為始終顯示輸入欄
+- API key modal 每次開啟自動刷新狀態（override `show()` 加入 `_refreshStatus()`）
+- 歷史記錄重新命名按鈕失效：根因為 `innerHTML +=` 操作摧毀 event listener，改用 `createElement + appendChild`
+
+**Gemini 模型更新：**
+- `gemini-2.0-flash` 已被 Google 標為淘汰（quota = 0）
+- 改為 `gemini-flash-latest`（永遠指向最新 Flash，目前 = Gemini 3 Flash）
+
+**歷史記錄增強：**
+- 轉錄完成後自動存入歷史（原為手動按 Save），ResultView 顯示「✓ Saved」
+- 每筆記錄顯示儲存空間大小（KB/MB），含 original + translated + polished + summary + Q&A
+- Q&A 問答存檔（`qa.txt`），從歷史開啟時自動還原問答紀錄
+- 容量計算：新增 / 重新生成內容時自動更新，覆寫型（Q&A）使用 delta 計算避免重複累加
+
+**ResultView 功能增強：**
+- 重新生成按鈕（🔄）：重點整理 / 潤飾版生成後顯示，可再次呼叫 AI
+- 可編輯 Prompt：點生成按鈕先展開 textarea（預填預設 prompt），使用者可修改後送出
+
+**Prompt 優化：**
+- 重點整理：改為詳細分主題標題 + 巢狀 bullet points，涵蓋決策、待辦事項、數據指標
+- 潤飾版：保留說話者語氣，依主題自然分段
+- 重點整理 / 潤飾版輸出語言自動跟隨 UI 語言設定
+
+**程式碼品質：**
+- 補充關鍵模組的內聯註解：ResultView 狀態 lifecycle、_generate() 三種類型差異、Q&A delta 計算、transcribe_service 的 polling 機制與 temperature 選擇理由、app.js auto-save 邏輯
+
+---
+
 ### 2026-03-12 — 專案建立
 
 - 完成需求訪談
