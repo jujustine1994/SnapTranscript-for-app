@@ -12,8 +12,8 @@ docs/CREDENTIALS.md
 # iOS 原生設定
 ios/App/App/GoogleService-Info.plist
 
-# Build 產出（只排除 bundle，其餘 www/ 是原始碼需要 commit）
-www/js/bundle.js
+# Build 產出（bundle.js 改為 commit 進 git，確保 Vercel 服務正確版本）
+# www/js/bundle.js   ← 已改為 tracked
 www/js/bundle.js.map
 dist/
 
