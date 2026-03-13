@@ -12,9 +12,11 @@ docs/CREDENTIALS.md
 # iOS 原生設定
 ios/App/App/GoogleService-Info.plist
 
-# Build 產出（bundle.js 改為 commit 進 git，確保 Vercel 服務正確版本）
+# Build 產出（bundle.js + worker.js 改為 commit 進 git，確保 Vercel 服務正確版本）
 # www/js/bundle.js   ← 已改為 tracked
+# www/js/worker.js   ← 已改為 tracked
 www/js/bundle.js.map
+www/js/worker.js.map
 dist/
 
 # FFmpeg WASM 檔案（31MB，太大不進 git；由 scripts/download-ffmpeg.js 下載）
