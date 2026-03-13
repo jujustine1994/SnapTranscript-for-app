@@ -112,6 +112,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ 生成重點整理',
     'result.gen_polished': '✨ 生成潤飾版',
+    'result.regen': '🔄 重新生成',
+    'result.prompt_edit_hint': '可編輯 Prompt 後再送出',
+    'result.prompt_send': '送出',
     'result.gen_translation': '✨ 生成翻譯',
     'result.qa_placeholder': '針對這份逐字稿提問…',
     'result.qa_send': '送出',
@@ -262,6 +265,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ 生成要点整理',
     'result.gen_polished': '✨ 生成润色版',
+    'result.regen': '🔄 重新生成',
+    'result.prompt_edit_hint': '可编辑 Prompt 后再发送',
+    'result.prompt_send': '发送',
     'result.gen_translation': '✨ 生成翻译',
     'result.qa_placeholder': '针对这份记录提问…',
     'result.qa_send': '发送',
@@ -412,6 +418,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ Generate Summary',
     'result.gen_polished': '✨ Generate Polished Version',
+    'result.regen': '🔄 Regenerate',
+    'result.prompt_edit_hint': 'Edit the prompt before sending',
+    'result.prompt_send': 'Send',
     'result.gen_translation': '✨ Generate Translation',
     'result.qa_placeholder': 'Ask a question about this transcript…',
     'result.qa_send': 'Send',
@@ -562,6 +571,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ 要約を生成',
     'result.gen_polished': '✨ 整文版を生成',
+    'result.regen': '🔄 再生成',
+    'result.prompt_edit_hint': 'プロンプトを編集して送信',
+    'result.prompt_send': '送信',
     'result.gen_translation': '✨ 翻訳を生成',
     'result.qa_placeholder': 'この文字起こしについて質問する…',
     'result.qa_send': '送信',
@@ -693,6 +705,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ 요약 생성',
     'result.gen_polished': '✨ 다듬은 버전 생성',
+    'result.regen': '🔄 다시 생성',
+    'result.prompt_edit_hint': '프롬프트를 편집하고 전송',
+    'result.prompt_send': '전송',
     'result.gen_translation': '✨ 번역 생성',
     'result.qa_placeholder': '이 전사본에 대해 질문하기…',
     'result.qa_send': '전송',
@@ -824,6 +839,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ Tạo tóm tắt',
     'result.gen_polished': '✨ Tạo bản chỉnh sửa',
+    'result.regen': '🔄 Tạo lại',
+    'result.prompt_edit_hint': 'Chỉnh sửa prompt trước khi gửi',
+    'result.prompt_send': 'Gửi',
     'result.gen_translation': '✨ Tạo bản dịch',
     'result.qa_placeholder': 'Đặt câu hỏi về bản phiên âm này…',
     'result.qa_send': 'Gửi',
@@ -955,6 +973,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ Generar resumen',
     'result.gen_polished': '✨ Generar versión pulida',
+    'result.regen': '🔄 Regenerar',
+    'result.prompt_edit_hint': 'Edita el prompt antes de enviar',
+    'result.prompt_send': 'Enviar',
     'result.gen_translation': '✨ Generar traducción',
     'result.qa_placeholder': 'Pregunta sobre esta transcripción…',
     'result.qa_send': 'Enviar',
@@ -1086,6 +1107,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ Générer un résumé',
     'result.gen_polished': '✨ Générer une version retravaillée',
+    'result.regen': '🔄 Régénérer',
+    'result.prompt_edit_hint': 'Modifiez le prompt avant d\'envoyer',
+    'result.prompt_send': 'Envoyer',
     'result.gen_translation': '✨ Générer une traduction',
     'result.qa_placeholder': 'Posez une question sur cette transcription…',
     'result.qa_send': 'Envoyer',
@@ -1217,6 +1241,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ Gumawa ng buod',
     'result.gen_polished': '✨ Gumawa ng pinagandang bersyon',
+    'result.regen': '🔄 Buuin muli',
+    'result.prompt_edit_hint': 'I-edit ang prompt bago ipadala',
+    'result.prompt_send': 'Ipadala',
     'result.gen_translation': '✨ Gumawa ng salin',
     'result.qa_placeholder': 'Magtanong tungkol sa transcript na ito…',
     'result.qa_send': 'Ipadala',
@@ -1348,6 +1375,9 @@ export const TRANSLATIONS = {
 
     'result.gen_summary': '✨ Buat ringkasan',
     'result.gen_polished': '✨ Buat versi disempurnakan',
+    'result.regen': '🔄 Buat ulang',
+    'result.prompt_edit_hint': 'Edit prompt sebelum mengirim',
+    'result.prompt_send': 'Kirim',
     'result.gen_translation': '✨ Buat terjemahan',
     'result.qa_placeholder': 'Ajukan pertanyaan tentang transkrip ini…',
     'result.qa_send': 'Kirim',

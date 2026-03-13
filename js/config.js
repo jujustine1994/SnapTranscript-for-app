@@ -9,7 +9,7 @@ export const AppConfig = {
   DEBUG_MODE: true,
 
   // ---- Gemini API ----
-  GEMINI_MODEL: 'gemini-2.0-flash',
+  GEMINI_MODEL: 'gemini-flash-latest',
   GEMINI_API_BASE: 'https://generativelanguage.googleapis.com/v1beta',
   GEMINI_UPLOAD_BASE: 'https://generativelanguage.googleapis.com/upload/v1beta',
 

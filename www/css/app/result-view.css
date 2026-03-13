@@ -145,6 +145,57 @@
 
 .ai-gen-btn:active { background: rgba(56, 189, 248, 0.15); }
 
+/* Regen button */
+.ai-regen-btn {
+  display: block;
+  width: 100%;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 10px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+.ai-regen-btn:active { background: var(--card-bg); }
+
+/* Prompt editor */
+.prompt-editor {
+  margin-bottom: 1rem;
+}
+.prompt-editor-hint {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.prompt-editor-textarea {
+  width: 100%;
+  min-height: 140px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.75rem;
+  resize: vertical;
+  box-sizing: border-box;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.prompt-editor-textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+.prompt-editor-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
 /* Q&A */
 .result-qa {
   border-top: 1px solid var(--border-color);

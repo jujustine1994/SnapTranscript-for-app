@@ -1,19 +1,32 @@
 // ResultView — full-screen overlay showing transcription results.
 // Tabs: Original · Translation · Summary · Polish
 // Footer: Q&A input
+//
+// State lifecycle:
+//   show(data)       → populate from fresh transcription OR HistoryService.load()
+//   _generate(type)  → call Gemini, update _data[type], persist to disk if already saved
+//   _sendQuestion()  → call Gemini Q&A, append to _qaMessages, overwrite qa.txt
+//   hide()           → slide out, data stays in memory until next show()
+//
+// Storage note: summary/polished are auto-persisted via HistoryService.saveExtra().
+// Q&A uses an overwrite strategy (full array each time), so _qaSavedBytes tracks
+// the previous size to calculate the correct delta for storageSizeBytes.
 
 import { BaseComponent } from '../components/BaseComponent.js';
 import { DebugLogger } from '../utils/debug_logger.js';
 import { TranscribeService } from '../transcribe_service.js';
 import { HistoryService } from '../history_service.js';
+import { AppConfig } from '../config.js';
 
 const MODULE = 'ResultView';
 
 export class ResultView extends BaseComponent {
   constructor() {
     super('result-view');
-    this._data  = null;   // { original, translated, polished, summary, id, meta }
-    this._saved = false;
+    this._data       = null;   // { original, translated, polished, summary, qa, id, meta }
+    this._saved      = false;
+    this._qaMessages = [];     // [{ role: 'user'|'ai', text }]
+    this._qaSavedBytes = 0;    // bytes of last saved qa.txt (for delta calculation)
   }
 
   render() {
@@ -50,12 +63,30 @@ export class ResultView extends BaseComponent {
 
           <div class="result-pane" id="pane-summary">
             <button class="ai-gen-btn" id="btn-gen-summary" data-i18n="result.gen_summary">✨ Generate Summary</button>
+            <div class="prompt-editor hidden" id="prompt-editor-summary">
+              <p class="prompt-editor-hint" data-i18n="result.prompt_edit_hint">Edit the prompt before sending</p>
+              <textarea class="prompt-editor-textarea" id="prompt-textarea-summary"></textarea>
+              <div class="prompt-editor-actions">
+                <button class="secondary-btn prompt-cancel-btn" data-type="summary" data-i18n="app.cancel">Cancel</button>
+                <button class="primary-btn prompt-send-btn" data-type="summary" data-i18n="result.prompt_send">Send</button>
+              </div>
+            </div>
             <p class="result-text selectable" id="text-summary"></p>
+            <button class="ai-regen-btn hidden" id="btn-regen-summary" data-i18n="result.regen">🔄 Regenerate</button>
           </div>
 
           <div class="result-pane" id="pane-polished">
             <button class="ai-gen-btn" id="btn-gen-polished" data-i18n="result.gen_polished">✨ Generate Polished Version</button>
+            <div class="prompt-editor hidden" id="prompt-editor-polished">
+              <p class="prompt-editor-hint" data-i18n="result.prompt_edit_hint">Edit the prompt before sending</p>
+              <textarea class="prompt-editor-textarea" id="prompt-textarea-polished"></textarea>
+              <div class="prompt-editor-actions">
+                <button class="secondary-btn prompt-cancel-btn" data-type="polished" data-i18n="app.cancel">Cancel</button>
+                <button class="primary-btn prompt-send-btn" data-type="polished" data-i18n="result.prompt_send">Send</button>
+              </div>
+            </div>
             <p class="result-text selectable" id="text-polished"></p>
+            <button class="ai-regen-btn hidden" id="btn-regen-polished" data-i18n="result.regen">🔄 Regenerate</button>
           </div>
         </div>
 
@@ -89,6 +120,9 @@ export class ResultView extends BaseComponent {
    * Display transcription results.
    * @param {object} data - { original, translated, meta: { audioFileName, durationSec, language, targetLanguage } }
    */
+  // show() supports two entry points:
+  //   1. Fresh transcription from app.js → data.id already set (auto-saved), _saved = true
+  //   2. Reopening from history → HistoryService.load() fills all fields including qa array
   show(data) {
     DebugLogger.log(MODULE, 'show', `${data.original?.length} chars, translated=${!!data.translated}`);
 
@@ -97,10 +131,14 @@ export class ResultView extends BaseComponent {
       translated: data.translated || null,
       polished:   data.polished   || null,
       summary:    data.summary    || null,
+      qa:         data.qa         || null,
       id:         data.id         || null,
       meta:       data.meta       || {},
     };
     this._saved = !!data.id;
+    this._qaMessages   = Array.isArray(data.qa) ? [...data.qa] : [];
+    this._qaSavedBytes = this._qaMessages.length
+      ? new Blob([JSON.stringify(this._qaMessages)]).size : 0;
 
     // Populate text fields
     this.$('#text-original').textContent   = this._data.original;
@@ -112,16 +150,20 @@ export class ResultView extends BaseComponent {
     const hasTranslation = !!this._data.translated;
     this.$('#btn-gen-translated').classList.toggle('hidden', hasTranslation);
 
-    // Summary / Polish: show generate buttons (reset state)
+    // Summary / Polish: show generate or regen button depending on state
     this.$('#btn-gen-summary').classList.toggle('hidden', !!this._data.summary);
+    this.$('#btn-regen-summary').classList.toggle('hidden', !this._data.summary);
     this.$('#btn-gen-polished').classList.toggle('hidden', !!this._data.polished);
+    this.$('#btn-regen-polished').classList.toggle('hidden', !this._data.polished);
 
-    // Translation tab visibility
+    // Translation tab: hide entirely if neither translated content nor a target language is set
+    // (prevents showing an empty tab with just a generate button when user didn't request translation)
     this.$('#tab-translated').classList.toggle('tab-hidden', !hasTranslation && !this._data.meta?.targetLanguage);
 
-    // Reset Q&A
+    // Restore Q&A history (if opened from saved record)
     this.$('#qa-messages').innerHTML = '';
     this.$('#qa-input').value = '';
+    this._qaMessages.forEach(msg => this._appendQa(msg.role, msg.text));
 
     this._updateSaveBtn();
     this._switchTab('original');
@@ -155,9 +197,24 @@ export class ResultView extends BaseComponent {
       if (tab) this._switchTab(tab.dataset.tab);
     });
 
-    this.$('#btn-gen-summary')?.addEventListener('click',    () => this._generate('summary'));
-    this.$('#btn-gen-polished')?.addEventListener('click',   () => this._generate('polished'));
+    this.$('#btn-gen-summary')?.addEventListener('click',    () => this._showPromptEditor('summary'));
+    this.$('#btn-gen-polished')?.addEventListener('click',   () => this._showPromptEditor('polished'));
     this.$('#btn-gen-translated')?.addEventListener('click', () => this._generate('translated'));
+    this.$('#btn-regen-summary')?.addEventListener('click',  () => this._showPromptEditor('summary'));
+    this.$('#btn-regen-polished')?.addEventListener('click', () => this._showPromptEditor('polished'));
+
+    // Prompt editor: send / cancel
+    this.element.querySelectorAll('.prompt-send-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.dataset.type;
+        const customPrompt = this.$(`#prompt-textarea-${type}`)?.value?.trim() || null;
+        this._hidePromptEditor(type);
+        this._generate(type, customPrompt);
+      });
+    });
+    this.element.querySelectorAll('.prompt-cancel-btn').forEach(btn => {
+      btn.addEventListener('click', () => this._hidePromptEditor(btn.dataset.type));
+    });
 
     this.$('#qa-send-btn')?.addEventListener('click', () => this._sendQuestion());
     this.$('#qa-input')?.addEventListener('keydown', (e) => {
@@ -171,30 +228,71 @@ export class ResultView extends BaseComponent {
     this.element.querySelectorAll('.result-pane').forEach(p => p.classList.toggle('active', p.id === `pane-${name}`));
   }
 
+  // ---- Prompt Editor ----
+
+  // Pre-fills the textarea with the default prompt (including current UI language instruction)
+  // so the user can see and optionally modify it before sending.
+  // Uses localStorage directly (same key as LanguageManager) — NOT Capacitor Preferences,
+  // which would use a different _cap_ prefix and always return null in browser.
+  _showPromptEditor(type) {
+    const uiLangCode = localStorage.getItem(AppConfig.STORAGE_KEYS.UI_LANGUAGE) || AppConfig.DEFAULT_UI_LANGUAGE;
+    const outputLang = _uiLangToOutputLang(uiLangCode);
+    const defaults = {
+      summary:  `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones. Write the output in ${outputLang}.`,
+      polished: `Rewrite this transcript into a clean, readable version. Remove filler words, repetitions, and false starts. Fix grammar and punctuation. Preserve the speaker's original tone and intent. Break the content into natural paragraphs based on topic shifts. Write the output in ${outputLang}.`,
+    };
+    const textarea = this.$(`#prompt-textarea-${type}`);
+    if (textarea) textarea.value = defaults[type] || '';
+    this.$(`#btn-gen-${type}`)?.classList.add('hidden');
+    this.$(`#btn-regen-${type}`)?.classList.add('hidden');
+    this.$(`#prompt-editor-${type}`)?.classList.remove('hidden');
+    textarea?.focus();
+  }
+
+  _hidePromptEditor(type) {
+    this.$(`#prompt-editor-${type}`)?.classList.add('hidden');
+    const hasContent = !!this._data[type];
+    this.$(`#btn-gen-${type}`)?.classList.toggle('hidden', hasContent);
+    this.$(`#btn-regen-${type}`)?.classList.toggle('hidden', !hasContent);
+  }
+
   // ---- AI Generation ----
 
-  async _generate(type) {
-    DebugLogger.log(MODULE, `_generate ${type}`);
+  // _generate handles three content types differently:
+  //   summary / polished → use outputLang from UI settings; support custom prompt override
+  //   translated         → use targetLanguage from meta (set at transcription time); no custom prompt
+  //
+  // Only summary and polished are auto-persisted via saveExtra — translated is already
+  // included in the initial HistoryService.save() call in app.js.
+  // previousBytes is passed to saveExtra so storageSizeBytes stays accurate on regeneration.
+  async _generate(type, customPrompt = null) {
+    DebugLogger.log(MODULE, `_generate ${type}`, customPrompt ? 'custom prompt' : 'default prompt');
     const labels = { summary: 'Generating summary…', polished: 'Polishing transcript…', translated: 'Translating…' };
     this._showAiLoading(labels[type] || 'Generating…');
 
     try {
       let result;
-      if (type === 'summary')    result = await TranscribeService.summarize(this._data.original);
-      else if (type === 'polished') result = await TranscribeService.polish(this._data.original);
-      else if (type === 'translated') {
+      if (type === 'summary' || type === 'polished') {
+        const uiLangCode = localStorage.getItem(AppConfig.STORAGE_KEYS.UI_LANGUAGE) || AppConfig.DEFAULT_UI_LANGUAGE;
+        const outputLang = _uiLangToOutputLang(uiLangCode);
+        result = type === 'summary'
+          ? await TranscribeService.summarize(this._data.original, null, outputLang, customPrompt)
+          : await TranscribeService.polish(this._data.original, null, outputLang, customPrompt);
+      } else if (type === 'translated') {
         const lang = this._data.meta?.targetLanguage || 'en';
         result = await TranscribeService.translate(this._data.original, lang);
       }
 
       DebugLogger.log(MODULE, `_generate ${type} OK`, `${result.length} chars`);
+      const previousBytes = this._data[type] ? new Blob([this._data[type]]).size : 0;
       this._data[type] = result;
       this.$(`#text-${type}`).textContent = result;
       this.$(`#btn-gen-${type}`)?.classList.add('hidden');
+      this.$(`#btn-regen-${type}`)?.classList.remove('hidden');
 
       // Persist to disk if already saved
       if (this._saved && this._data.id && (type === 'summary' || type === 'polished')) {
-        await HistoryService.saveExtra(this._data.id, type, result).catch(err => {
+        await HistoryService.saveExtra(this._data.id, type, result, previousBytes).catch(err => {
           DebugLogger.warn(MODULE, 'saveExtra failed', err.message);
         });
       }
@@ -222,6 +320,18 @@ export class ResultView extends BaseComponent {
       const answer = await TranscribeService.askQuestion(this._data.original, q);
       DebugLogger.log(MODULE, '_sendQuestion answered', `${answer.length} chars`);
       pendingEl.textContent = answer;
+
+      // Persist Q&A to disk — full array overwrite each time.
+      // Pass _qaSavedBytes so saveExtra subtracts old size before adding new,
+      // keeping storageSizeBytes accurate without re-reading the file.
+      this._qaMessages.push({ role: 'user', text: q }, { role: 'ai', text: answer });
+      if (this._saved && this._data.id) {
+        const json = JSON.stringify(this._qaMessages);
+        await HistoryService.saveExtra(this._data.id, 'qa', json, this._qaSavedBytes).catch(err => {
+          DebugLogger.warn(MODULE, 'qa saveExtra failed', err.message);
+        });
+        this._qaSavedBytes = new Blob([json]).size; // track for next delta calculation
+      }
     } catch (err) {
       DebugLogger.error(MODULE, '_sendQuestion FAILED', err.message);
       pendingEl.textContent = `Error: ${err.message}`;
@@ -294,4 +404,21 @@ export class ResultView extends BaseComponent {
   _hideAiLoading() {
     this.$('#result-ai-loading').classList.add('hidden');
   }
+}
+
+// Map UI language code → human-readable name for AI prompt
+function _uiLangToOutputLang(code) {
+  const map = {
+    'zh-TW': 'Traditional Chinese (繁體中文)',
+    'zh-CN': 'Simplified Chinese (简体中文)',
+    'en-US': 'English',
+    'ja-JP': 'Japanese',
+    'ko-KR': 'Korean',
+    'vi-VN': 'Vietnamese',
+    'es-ES': 'Spanish',
+    'fr-FR': 'French',
+    'tl-PH': 'Filipino',
+    'id-ID': 'Indonesian',
+  };
+  return map[code] || 'English';
 }

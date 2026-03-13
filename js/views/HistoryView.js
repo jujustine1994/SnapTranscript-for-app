@@ -81,13 +81,23 @@ export class HistoryView {
     nameRow.className = 'history-item-name-row';
     nameRow.appendChild(this._buildNameDisplay(meta));
 
+    const dateEl = document.createElement('span');
+    dateEl.className = 'history-item-date';
+    dateEl.textContent = _fmtDate(meta.createdAt);
+
+    const tagsEl = document.createElement('span');
+    tagsEl.className = 'history-item-tags';
+    tagsEl.textContent = [
+      meta.language || '',
+      meta.hasTranslation ? 'Translated' : '',
+      meta.storageSizeBytes ? _fmtSize(meta.storageSizeBytes) : '',
+    ].filter(Boolean).join(' · ');
+
     const infoEl = document.createElement('div');
     infoEl.className = 'history-item-info';
     infoEl.appendChild(nameRow);
-    infoEl.innerHTML += `
-      <span class="history-item-date">${_fmtDate(meta.createdAt)}</span>
-      <span class="history-item-tags">${_esc(meta.language || '')}${meta.hasTranslation ? ' · Translated' : ''}</span>
-    `;
+    infoEl.appendChild(dateEl);
+    infoEl.appendChild(tagsEl);
 
     const actionsEl = document.createElement('div');
     actionsEl.className = 'history-item-actions';
@@ -215,6 +225,13 @@ function _fmtDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
   return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function _fmtSize(bytes) {
+  if (!bytes) return '';
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 }
 
 function _esc(str) {

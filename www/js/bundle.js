@@ -30,7 +30,7 @@ var init_config = __esm({
       // Set to false before App Store submission
       DEBUG_MODE: true,
       // ---- Gemini API ----
-      GEMINI_MODEL: "gemini-2.0-flash",
+      GEMINI_MODEL: "gemini-flash-latest",
       GEMINI_API_BASE: "https://generativelanguage.googleapis.com/v1beta",
       GEMINI_UPLOAD_BASE: "https://generativelanguage.googleapis.com/upload/v1beta",
       // ---- Storage keys ----
@@ -396,6 +396,9 @@ var init_i18n_data = __esm({
         "home.change": "\u66F4\u63DB",
         "result.gen_summary": "\u2728 \u751F\u6210\u91CD\u9EDE\u6574\u7406",
         "result.gen_polished": "\u2728 \u751F\u6210\u6F64\u98FE\u7248",
+        "result.regen": "\u{1F504} \u91CD\u65B0\u751F\u6210",
+        "result.prompt_edit_hint": "\u53EF\u7DE8\u8F2F Prompt \u5F8C\u518D\u9001\u51FA",
+        "result.prompt_send": "\u9001\u51FA",
         "result.gen_translation": "\u2728 \u751F\u6210\u7FFB\u8B6F",
         "result.qa_placeholder": "\u91DD\u5C0D\u9019\u4EFD\u9010\u5B57\u7A3F\u63D0\u554F\u2026",
         "result.qa_send": "\u9001\u51FA",
@@ -528,6 +531,9 @@ var init_i18n_data = __esm({
         "home.change": "\u66F4\u6362",
         "result.gen_summary": "\u2728 \u751F\u6210\u8981\u70B9\u6574\u7406",
         "result.gen_polished": "\u2728 \u751F\u6210\u6DA6\u8272\u7248",
+        "result.regen": "\u{1F504} \u91CD\u65B0\u751F\u6210",
+        "result.prompt_edit_hint": "\u53EF\u7F16\u8F91 Prompt \u540E\u518D\u53D1\u9001",
+        "result.prompt_send": "\u53D1\u9001",
         "result.gen_translation": "\u2728 \u751F\u6210\u7FFB\u8BD1",
         "result.qa_placeholder": "\u9488\u5BF9\u8FD9\u4EFD\u8BB0\u5F55\u63D0\u95EE\u2026",
         "result.qa_send": "\u53D1\u9001",
@@ -660,6 +666,9 @@ var init_i18n_data = __esm({
         "home.change": "Change",
         "result.gen_summary": "\u2728 Generate Summary",
         "result.gen_polished": "\u2728 Generate Polished Version",
+        "result.regen": "\u{1F504} Regenerate",
+        "result.prompt_edit_hint": "Edit the prompt before sending",
+        "result.prompt_send": "Send",
         "result.gen_translation": "\u2728 Generate Translation",
         "result.qa_placeholder": "Ask a question about this transcript\u2026",
         "result.qa_send": "Send",
@@ -792,6 +801,9 @@ var init_i18n_data = __esm({
         "home.change": "\u5909\u66F4",
         "result.gen_summary": "\u2728 \u8981\u7D04\u3092\u751F\u6210",
         "result.gen_polished": "\u2728 \u6574\u6587\u7248\u3092\u751F\u6210",
+        "result.regen": "\u{1F504} \u518D\u751F\u6210",
+        "result.prompt_edit_hint": "\u30D7\u30ED\u30F3\u30D7\u30C8\u3092\u7DE8\u96C6\u3057\u3066\u9001\u4FE1",
+        "result.prompt_send": "\u9001\u4FE1",
         "result.gen_translation": "\u2728 \u7FFB\u8A33\u3092\u751F\u6210",
         "result.qa_placeholder": "\u3053\u306E\u6587\u5B57\u8D77\u3053\u3057\u306B\u3064\u3044\u3066\u8CEA\u554F\u3059\u308B\u2026",
         "result.qa_send": "\u9001\u4FE1",
@@ -906,6 +918,9 @@ var init_i18n_data = __esm({
         "home.change": "\uBCC0\uACBD",
         "result.gen_summary": "\u2728 \uC694\uC57D \uC0DD\uC131",
         "result.gen_polished": "\u2728 \uB2E4\uB4EC\uC740 \uBC84\uC804 \uC0DD\uC131",
+        "result.regen": "\u{1F504} \uB2E4\uC2DC \uC0DD\uC131",
+        "result.prompt_edit_hint": "\uD504\uB86C\uD504\uD2B8\uB97C \uD3B8\uC9D1\uD558\uACE0 \uC804\uC1A1",
+        "result.prompt_send": "\uC804\uC1A1",
         "result.gen_translation": "\u2728 \uBC88\uC5ED \uC0DD\uC131",
         "result.qa_placeholder": "\uC774 \uC804\uC0AC\uBCF8\uC5D0 \uB300\uD574 \uC9C8\uBB38\uD558\uAE30\u2026",
         "result.qa_send": "\uC804\uC1A1",
@@ -1020,6 +1035,9 @@ var init_i18n_data = __esm({
         "home.change": "Thay \u0111\u1ED5i",
         "result.gen_summary": "\u2728 T\u1EA1o t\xF3m t\u1EAFt",
         "result.gen_polished": "\u2728 T\u1EA1o b\u1EA3n ch\u1EC9nh s\u1EEDa",
+        "result.regen": "\u{1F504} T\u1EA1o l\u1EA1i",
+        "result.prompt_edit_hint": "Ch\u1EC9nh s\u1EEDa prompt tr\u01B0\u1EDBc khi g\u1EEDi",
+        "result.prompt_send": "G\u1EEDi",
         "result.gen_translation": "\u2728 T\u1EA1o b\u1EA3n d\u1ECBch",
         "result.qa_placeholder": "\u0110\u1EB7t c\xE2u h\u1ECFi v\u1EC1 b\u1EA3n phi\xEAn \xE2m n\xE0y\u2026",
         "result.qa_send": "G\u1EEDi",
@@ -1134,6 +1152,9 @@ var init_i18n_data = __esm({
         "home.change": "Cambiar",
         "result.gen_summary": "\u2728 Generar resumen",
         "result.gen_polished": "\u2728 Generar versi\xF3n pulida",
+        "result.regen": "\u{1F504} Regenerar",
+        "result.prompt_edit_hint": "Edita el prompt antes de enviar",
+        "result.prompt_send": "Enviar",
         "result.gen_translation": "\u2728 Generar traducci\xF3n",
         "result.qa_placeholder": "Pregunta sobre esta transcripci\xF3n\u2026",
         "result.qa_send": "Enviar",
@@ -1248,6 +1269,9 @@ var init_i18n_data = __esm({
         "home.change": "Changer",
         "result.gen_summary": "\u2728 G\xE9n\xE9rer un r\xE9sum\xE9",
         "result.gen_polished": "\u2728 G\xE9n\xE9rer une version retravaill\xE9e",
+        "result.regen": "\u{1F504} R\xE9g\xE9n\xE9rer",
+        "result.prompt_edit_hint": "Modifiez le prompt avant d'envoyer",
+        "result.prompt_send": "Envoyer",
         "result.gen_translation": "\u2728 G\xE9n\xE9rer une traduction",
         "result.qa_placeholder": "Posez une question sur cette transcription\u2026",
         "result.qa_send": "Envoyer",
@@ -1362,6 +1386,9 @@ var init_i18n_data = __esm({
         "home.change": "Palitan",
         "result.gen_summary": "\u2728 Gumawa ng buod",
         "result.gen_polished": "\u2728 Gumawa ng pinagandang bersyon",
+        "result.regen": "\u{1F504} Buuin muli",
+        "result.prompt_edit_hint": "I-edit ang prompt bago ipadala",
+        "result.prompt_send": "Ipadala",
         "result.gen_translation": "\u2728 Gumawa ng salin",
         "result.qa_placeholder": "Magtanong tungkol sa transcript na ito\u2026",
         "result.qa_send": "Ipadala",
@@ -1476,6 +1503,9 @@ var init_i18n_data = __esm({
         "home.change": "Ganti",
         "result.gen_summary": "\u2728 Buat ringkasan",
         "result.gen_polished": "\u2728 Buat versi disempurnakan",
+        "result.regen": "\u{1F504} Buat ulang",
+        "result.prompt_edit_hint": "Edit prompt sebelum mengirim",
+        "result.prompt_send": "Kirim",
         "result.gen_translation": "\u2728 Buat terjemahan",
         "result.qa_placeholder": "Ajukan pertanyaan tentang transkrip ini\u2026",
         "result.qa_send": "Kirim",
@@ -2885,18 +2915,22 @@ var init_transcribe_service = __esm({
 ${text}`;
         return this._generateText(prompt, apiKey);
       },
-      async summarize(text, apiKey) {
-        DebugLogger.log(MODULE2, "summarize");
+      async summarize(text, apiKey, outputLang, customPrompt = null) {
+        DebugLogger.log(MODULE2, "summarize", customPrompt ? "custom" : outputLang);
         if (!apiKey) apiKey = await ApiKeyService.get();
-        const prompt = `Summarize the key points from this transcript as concise bullet points. Output only the bullet points.
+        const prompt = customPrompt ? `${customPrompt}
+
+${text}` : `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones.${outputLang ? ` Write the output in ${outputLang}.` : ""}
 
 ${text}`;
         return this._generateText(prompt, apiKey);
       },
-      async polish(text, apiKey) {
-        DebugLogger.log(MODULE2, "polish");
+      async polish(text, apiKey, outputLang, customPrompt = null) {
+        DebugLogger.log(MODULE2, "polish", customPrompt ? "custom" : outputLang);
         if (!apiKey) apiKey = await ApiKeyService.get();
-        const prompt = `Rewrite this transcript to be clean and readable: remove filler words, fix grammar, keep all the meaning intact. Output only the polished text.
+        const prompt = customPrompt ? `${customPrompt}
+
+${text}` : `Rewrite this transcript into a clean, readable version. Remove filler words, repetitions, and false starts. Fix grammar and punctuation. Preserve the speaker's original tone and intent. Break the content into natural paragraphs based on topic shifts.${outputLang ? ` Write the output in ${outputLang}.` : ""}
 
 ${text}`;
         return this._generateText(prompt, apiKey);
@@ -2930,6 +2964,11 @@ Question: ${question}`;
         DebugLogger.log(MODULE2, "_uploadFile resp", JSON.stringify(data).substring(0, 200));
         return { fileName: data.file.name, fileUri: data.file.uri };
       },
+      // Polls the Gemini Files API until the uploaded file is ACTIVE (ready for generateContent).
+      // Gemini needs time to process audio server-side before it can accept generateContent requests.
+      // 2s interval: fast enough to not waste time, slow enough to avoid rate limits.
+      // 90s timeout: covers even large files; typical processing is 5–20s.
+      // Note: this endpoint (GET /files/{name}) does NOT count toward generateContent quota.
       async _waitForFile(fileName, apiKey, timeoutMs = 9e4) {
         DebugLogger.log(MODULE2, "_waitForFile", fileName);
         const deadline = Date.now() + timeoutMs;
@@ -2959,14 +2998,17 @@ Question: ${question}`;
               { fileData: { mimeType: "audio/ogg", fileUri } }
             ]
           }],
+          // temperature: 0 = fully deterministic; critical for transcription accuracy
+          // (any randomness risks hallucinating words that weren't spoken)
           generationConfig: { temperature: 0 }
-          // deterministic for transcription
         };
         return this._generateContent(body, apiKey);
       },
       async _generateText(prompt, apiKey) {
         const body = {
           contents: [{ parts: [{ text: prompt }] }],
+          // temperature: 0.3 = slight creativity for summarize/polish/translate/Q&A
+          // (better than 0 for generative tasks, avoids being too robotic)
           generationConfig: { temperature: 0.3 }
         };
         return this._generateContent(body, apiKey);
@@ -4167,6 +4209,8 @@ var init_history_service = __esm({
         const id = `${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
         const dir = `${BASE_DIR}/${id}`;
         DebugLogger.log(MODULE4, "save", id);
+        const originalBytes = new Blob([data.original || ""]).size;
+        const translatedBytes = new Blob([data.translated || ""]).size;
         const meta = {
           id,
           audioFileName: data.audioFileName || "recording",
@@ -4175,7 +4219,8 @@ var init_history_service = __esm({
           hasTranslation: !!data.translated,
           targetLanguage: data.targetLanguage || null,
           createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-          originalLength: (data.original || "").length
+          originalLength: (data.original || "").length,
+          storageSizeBytes: originalBytes + translatedBytes
         };
         try {
           await _write(`${dir}/meta.json`, JSON.stringify(meta));
@@ -4240,17 +4285,34 @@ var init_history_service = __esm({
           const translated = meta.hasTranslation ? await _readOptional(`${dir}/translated.txt`) : null;
           const polished = await _readOptional(`${dir}/polished.txt`);
           const summary = await _readOptional(`${dir}/summary.txt`);
+          const qaRaw = await _readOptional(`${dir}/qa.txt`);
+          const qa = qaRaw ? JSON.parse(qaRaw) : null;
           DebugLogger.log(MODULE4, "load OK", id);
-          return { ...meta, original, translated, polished, summary };
+          return { ...meta, original, translated, polished, summary, qa };
         } catch (err) {
           DebugLogger.error(MODULE4, "load FAILED", `${id}: ${err.message}`);
           throw err;
         }
       },
-      /** Save an extra generated file (polished / summary) for an existing entry. */
-      async saveExtra(id, type, content) {
+      /**
+       * Save an extra generated file for an existing entry.
+       * @param {string} id
+       * @param {string} type - 'polished' | 'summary' | 'qa'
+       * @param {string} content
+       * @param {number} previousBytes - pass previous saved size for overwrite types (e.g. qa)
+       */
+      async saveExtra(id, type, content, previousBytes = 0) {
         DebugLogger.log(MODULE4, "saveExtra", `${id}/${type}`);
         await _write(`${BASE_DIR}/${id}/${type}.txt`, content);
+        try {
+          const metaRaw = await _read(`${BASE_DIR}/${id}/meta.json`);
+          const meta = JSON.parse(metaRaw);
+          const newBytes = new Blob([content]).size;
+          meta.storageSizeBytes = (meta.storageSizeBytes || 0) - previousBytes + newBytes;
+          await _write(`${BASE_DIR}/${id}/meta.json`, JSON.stringify(meta));
+        } catch (err) {
+          DebugLogger.warn(MODULE4, "saveExtra: failed to update size", err.message);
+        }
         DebugLogger.log(MODULE4, "saveExtra OK");
       },
       /** Update the display name for an existing transcript. */
@@ -4379,6 +4441,10 @@ var init_ApiKeyModal = __esm({
       </div>
     `);
       }
+      show() {
+        super.show();
+        this._refreshStatus();
+      }
       postMount() {
         super.postMount();
         this._bindEvents();
@@ -4389,22 +4455,34 @@ var init_ApiKeyModal = __esm({
         const statusArea = this.$("#apikey-status-area");
         const inputGroup = this.$("#apikey-input-group");
         const saveBtn = this.$("#apikey-save-btn");
+        const inputLabel = inputGroup?.querySelector("label");
         const hasKey = await ApiKeyService.hasKey();
         if (hasKey) {
           statusArea.innerHTML = `
         <div class="apikey-set-badge">
           <span>\u2705 API Key is set</span>
-          <button class="danger-btn" id="apikey-clear-btn">Remove Key</button>
+          <button class="danger-btn" id="apikey-clear-btn" data-i18n="apikey.remove">Remove Key</button>
         </div>
       `;
           statusArea.querySelector("#apikey-clear-btn")?.addEventListener("click", () => this._clearKey());
-          inputGroup.classList.add("hidden");
-          saveBtn.classList.add("hidden");
-        } else {
-          statusArea.innerHTML = `<p class="apikey-not-set-hint">No API key set yet.</p>`;
+          if (inputLabel) inputLabel.setAttribute("data-i18n", "apikey.replace_label");
+          if (inputLabel) inputLabel.textContent = "Replace with a new key (optional)";
           inputGroup.classList.remove("hidden");
           saveBtn.classList.remove("hidden");
+          saveBtn.setAttribute("data-i18n", "apikey.replace");
+          saveBtn.textContent = "Replace Key";
+        } else {
+          statusArea.innerHTML = `<p class="apikey-not-set-hint" data-i18n="apikey.not_set">No API key set yet.</p>`;
+          if (inputLabel) inputLabel.setAttribute("data-i18n", "apikey.input_label");
+          if (inputLabel) inputLabel.textContent = "Paste your Gemini API Key";
+          inputGroup.classList.remove("hidden");
+          saveBtn.classList.remove("hidden");
+          saveBtn.setAttribute("data-i18n", "apikey.save");
+          saveBtn.textContent = "Save Key";
         }
+        const input = this.$("#apikey-input");
+        if (input) input.value = "";
+        this.$("#apikey-error")?.classList.add("hidden");
       }
       // ---- Event binding ----
       _bindEvents() {
@@ -4427,6 +4505,11 @@ var init_ApiKeyModal = __esm({
       async _saveKey() {
         const input = this.$("#apikey-input");
         const apiKey = input.value.trim();
+        const hasKey = await ApiKeyService.hasKey();
+        if (!apiKey && hasKey) {
+          this.hide();
+          return;
+        }
         if (!ApiKeyService.isValidFormat(apiKey)) {
           this.$("#apikey-error").classList.remove("hidden");
           return;
@@ -4715,6 +4798,21 @@ var init_PrivacyInfoModal = __esm({
 });
 
 // js/views/ResultView.js
+function _uiLangToOutputLang(code) {
+  const map = {
+    "zh-TW": "Traditional Chinese (\u7E41\u9AD4\u4E2D\u6587)",
+    "zh-CN": "Simplified Chinese (\u7B80\u4F53\u4E2D\u6587)",
+    "en-US": "English",
+    "ja-JP": "Japanese",
+    "ko-KR": "Korean",
+    "vi-VN": "Vietnamese",
+    "es-ES": "Spanish",
+    "fr-FR": "French",
+    "tl-PH": "Filipino",
+    "id-ID": "Indonesian"
+  };
+  return map[code] || "English";
+}
 var MODULE6, ResultView;
 var init_ResultView = __esm({
   "js/views/ResultView.js"() {
@@ -4722,12 +4820,15 @@ var init_ResultView = __esm({
     init_debug_logger();
     init_transcribe_service();
     init_history_service();
+    init_config();
     MODULE6 = "ResultView";
     ResultView = class extends BaseComponent {
       constructor() {
         super("result-view");
         this._data = null;
         this._saved = false;
+        this._qaMessages = [];
+        this._qaSavedBytes = 0;
       }
       render() {
         return this.createElementFromHTML(`
@@ -4763,12 +4864,30 @@ var init_ResultView = __esm({
 
           <div class="result-pane" id="pane-summary">
             <button class="ai-gen-btn" id="btn-gen-summary" data-i18n="result.gen_summary">\u2728 Generate Summary</button>
+            <div class="prompt-editor hidden" id="prompt-editor-summary">
+              <p class="prompt-editor-hint" data-i18n="result.prompt_edit_hint">Edit the prompt before sending</p>
+              <textarea class="prompt-editor-textarea" id="prompt-textarea-summary"></textarea>
+              <div class="prompt-editor-actions">
+                <button class="secondary-btn prompt-cancel-btn" data-type="summary" data-i18n="app.cancel">Cancel</button>
+                <button class="primary-btn prompt-send-btn" data-type="summary" data-i18n="result.prompt_send">Send</button>
+              </div>
+            </div>
             <p class="result-text selectable" id="text-summary"></p>
+            <button class="ai-regen-btn hidden" id="btn-regen-summary" data-i18n="result.regen">\u{1F504} Regenerate</button>
           </div>
 
           <div class="result-pane" id="pane-polished">
             <button class="ai-gen-btn" id="btn-gen-polished" data-i18n="result.gen_polished">\u2728 Generate Polished Version</button>
+            <div class="prompt-editor hidden" id="prompt-editor-polished">
+              <p class="prompt-editor-hint" data-i18n="result.prompt_edit_hint">Edit the prompt before sending</p>
+              <textarea class="prompt-editor-textarea" id="prompt-textarea-polished"></textarea>
+              <div class="prompt-editor-actions">
+                <button class="secondary-btn prompt-cancel-btn" data-type="polished" data-i18n="app.cancel">Cancel</button>
+                <button class="primary-btn prompt-send-btn" data-type="polished" data-i18n="result.prompt_send">Send</button>
+              </div>
+            </div>
             <p class="result-text selectable" id="text-polished"></p>
+            <button class="ai-regen-btn hidden" id="btn-regen-polished" data-i18n="result.regen">\u{1F504} Regenerate</button>
           </div>
         </div>
 
@@ -4799,6 +4918,9 @@ var init_ResultView = __esm({
        * Display transcription results.
        * @param {object} data - { original, translated, meta: { audioFileName, durationSec, language, targetLanguage } }
        */
+      // show() supports two entry points:
+      //   1. Fresh transcription from app.js → data.id already set (auto-saved), _saved = true
+      //   2. Reopening from history → HistoryService.load() fills all fields including qa array
       show(data) {
         DebugLogger.log(MODULE6, "show", `${data.original?.length} chars, translated=${!!data.translated}`);
         this._data = {
@@ -4806,10 +4928,13 @@ var init_ResultView = __esm({
           translated: data.translated || null,
           polished: data.polished || null,
           summary: data.summary || null,
+          qa: data.qa || null,
           id: data.id || null,
           meta: data.meta || {}
         };
         this._saved = !!data.id;
+        this._qaMessages = Array.isArray(data.qa) ? [...data.qa] : [];
+        this._qaSavedBytes = this._qaMessages.length ? new Blob([JSON.stringify(this._qaMessages)]).size : 0;
         this.$("#text-original").textContent = this._data.original;
         this.$("#text-translated").textContent = this._data.translated || "";
         this.$("#text-summary").textContent = this._data.summary || "";
@@ -4817,10 +4942,13 @@ var init_ResultView = __esm({
         const hasTranslation = !!this._data.translated;
         this.$("#btn-gen-translated").classList.toggle("hidden", hasTranslation);
         this.$("#btn-gen-summary").classList.toggle("hidden", !!this._data.summary);
+        this.$("#btn-regen-summary").classList.toggle("hidden", !this._data.summary);
         this.$("#btn-gen-polished").classList.toggle("hidden", !!this._data.polished);
+        this.$("#btn-regen-polished").classList.toggle("hidden", !this._data.polished);
         this.$("#tab-translated").classList.toggle("tab-hidden", !hasTranslation && !this._data.meta?.targetLanguage);
         this.$("#qa-messages").innerHTML = "";
         this.$("#qa-input").value = "";
+        this._qaMessages.forEach((msg) => this._appendQa(msg.role, msg.text));
         this._updateSaveBtn();
         this._switchTab("original");
         this.element.classList.remove("hidden");
@@ -4845,9 +4973,22 @@ var init_ResultView = __esm({
           const tab = e.target.closest("[data-tab]");
           if (tab) this._switchTab(tab.dataset.tab);
         });
-        this.$("#btn-gen-summary")?.addEventListener("click", () => this._generate("summary"));
-        this.$("#btn-gen-polished")?.addEventListener("click", () => this._generate("polished"));
+        this.$("#btn-gen-summary")?.addEventListener("click", () => this._showPromptEditor("summary"));
+        this.$("#btn-gen-polished")?.addEventListener("click", () => this._showPromptEditor("polished"));
         this.$("#btn-gen-translated")?.addEventListener("click", () => this._generate("translated"));
+        this.$("#btn-regen-summary")?.addEventListener("click", () => this._showPromptEditor("summary"));
+        this.$("#btn-regen-polished")?.addEventListener("click", () => this._showPromptEditor("polished"));
+        this.element.querySelectorAll(".prompt-send-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const type = btn.dataset.type;
+            const customPrompt = this.$(`#prompt-textarea-${type}`)?.value?.trim() || null;
+            this._hidePromptEditor(type);
+            this._generate(type, customPrompt);
+          });
+        });
+        this.element.querySelectorAll(".prompt-cancel-btn").forEach((btn) => {
+          btn.addEventListener("click", () => this._hidePromptEditor(btn.dataset.type));
+        });
         this.$("#qa-send-btn")?.addEventListener("click", () => this._sendQuestion());
         this.$("#qa-input")?.addEventListener("keydown", (e) => {
           if (e.key === "Enter") this._sendQuestion();
@@ -4858,25 +4999,61 @@ var init_ResultView = __esm({
         this.element.querySelectorAll(".result-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === name));
         this.element.querySelectorAll(".result-pane").forEach((p) => p.classList.toggle("active", p.id === `pane-${name}`));
       }
+      // ---- Prompt Editor ----
+      // Pre-fills the textarea with the default prompt (including current UI language instruction)
+      // so the user can see and optionally modify it before sending.
+      // Uses localStorage directly (same key as LanguageManager) — NOT Capacitor Preferences,
+      // which would use a different _cap_ prefix and always return null in browser.
+      _showPromptEditor(type) {
+        const uiLangCode = localStorage.getItem(AppConfig.STORAGE_KEYS.UI_LANGUAGE) || AppConfig.DEFAULT_UI_LANGUAGE;
+        const outputLang = _uiLangToOutputLang(uiLangCode);
+        const defaults = {
+          summary: `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones. Write the output in ${outputLang}.`,
+          polished: `Rewrite this transcript into a clean, readable version. Remove filler words, repetitions, and false starts. Fix grammar and punctuation. Preserve the speaker's original tone and intent. Break the content into natural paragraphs based on topic shifts. Write the output in ${outputLang}.`
+        };
+        const textarea = this.$(`#prompt-textarea-${type}`);
+        if (textarea) textarea.value = defaults[type] || "";
+        this.$(`#btn-gen-${type}`)?.classList.add("hidden");
+        this.$(`#btn-regen-${type}`)?.classList.add("hidden");
+        this.$(`#prompt-editor-${type}`)?.classList.remove("hidden");
+        textarea?.focus();
+      }
+      _hidePromptEditor(type) {
+        this.$(`#prompt-editor-${type}`)?.classList.add("hidden");
+        const hasContent = !!this._data[type];
+        this.$(`#btn-gen-${type}`)?.classList.toggle("hidden", hasContent);
+        this.$(`#btn-regen-${type}`)?.classList.toggle("hidden", !hasContent);
+      }
       // ---- AI Generation ----
-      async _generate(type) {
-        DebugLogger.log(MODULE6, `_generate ${type}`);
+      // _generate handles three content types differently:
+      //   summary / polished → use outputLang from UI settings; support custom prompt override
+      //   translated         → use targetLanguage from meta (set at transcription time); no custom prompt
+      //
+      // Only summary and polished are auto-persisted via saveExtra — translated is already
+      // included in the initial HistoryService.save() call in app.js.
+      // previousBytes is passed to saveExtra so storageSizeBytes stays accurate on regeneration.
+      async _generate(type, customPrompt = null) {
+        DebugLogger.log(MODULE6, `_generate ${type}`, customPrompt ? "custom prompt" : "default prompt");
         const labels = { summary: "Generating summary\u2026", polished: "Polishing transcript\u2026", translated: "Translating\u2026" };
         this._showAiLoading(labels[type] || "Generating\u2026");
         try {
           let result;
-          if (type === "summary") result = await TranscribeService.summarize(this._data.original);
-          else if (type === "polished") result = await TranscribeService.polish(this._data.original);
-          else if (type === "translated") {
+          if (type === "summary" || type === "polished") {
+            const uiLangCode = localStorage.getItem(AppConfig.STORAGE_KEYS.UI_LANGUAGE) || AppConfig.DEFAULT_UI_LANGUAGE;
+            const outputLang = _uiLangToOutputLang(uiLangCode);
+            result = type === "summary" ? await TranscribeService.summarize(this._data.original, null, outputLang, customPrompt) : await TranscribeService.polish(this._data.original, null, outputLang, customPrompt);
+          } else if (type === "translated") {
             const lang = this._data.meta?.targetLanguage || "en";
             result = await TranscribeService.translate(this._data.original, lang);
           }
           DebugLogger.log(MODULE6, `_generate ${type} OK`, `${result.length} chars`);
+          const previousBytes = this._data[type] ? new Blob([this._data[type]]).size : 0;
           this._data[type] = result;
           this.$(`#text-${type}`).textContent = result;
           this.$(`#btn-gen-${type}`)?.classList.add("hidden");
+          this.$(`#btn-regen-${type}`)?.classList.remove("hidden");
           if (this._saved && this._data.id && (type === "summary" || type === "polished")) {
-            await HistoryService.saveExtra(this._data.id, type, result).catch((err) => {
+            await HistoryService.saveExtra(this._data.id, type, result, previousBytes).catch((err) => {
               DebugLogger.warn(MODULE6, "saveExtra failed", err.message);
             });
           }
@@ -4899,6 +5076,14 @@ var init_ResultView = __esm({
           const answer = await TranscribeService.askQuestion(this._data.original, q);
           DebugLogger.log(MODULE6, "_sendQuestion answered", `${answer.length} chars`);
           pendingEl.textContent = answer;
+          this._qaMessages.push({ role: "user", text: q }, { role: "ai", text: answer });
+          if (this._saved && this._data.id) {
+            const json = JSON.stringify(this._qaMessages);
+            await HistoryService.saveExtra(this._data.id, "qa", json, this._qaSavedBytes).catch((err) => {
+              DebugLogger.warn(MODULE6, "qa saveExtra failed", err.message);
+            });
+            this._qaSavedBytes = new Blob([json]).size;
+          }
         } catch (err) {
           DebugLogger.error(MODULE6, "_sendQuestion FAILED", err.message);
           pendingEl.textContent = `Error: ${err.message}`;
@@ -4974,8 +5159,11 @@ function _fmtDate(iso) {
   const d = new Date(iso);
   return d.toLocaleDateString() + " " + d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
-function _esc(str) {
-  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function _fmtSize(bytes) {
+  if (!bytes) return "";
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 }
 var MODULE7, HistoryView;
 var init_HistoryView = __esm({
@@ -5049,13 +5237,21 @@ var init_HistoryView = __esm({
         const nameRow = document.createElement("div");
         nameRow.className = "history-item-name-row";
         nameRow.appendChild(this._buildNameDisplay(meta));
+        const dateEl = document.createElement("span");
+        dateEl.className = "history-item-date";
+        dateEl.textContent = _fmtDate(meta.createdAt);
+        const tagsEl = document.createElement("span");
+        tagsEl.className = "history-item-tags";
+        tagsEl.textContent = [
+          meta.language || "",
+          meta.hasTranslation ? "Translated" : "",
+          meta.storageSizeBytes ? _fmtSize(meta.storageSizeBytes) : ""
+        ].filter(Boolean).join(" \xB7 ");
         const infoEl = document.createElement("div");
         infoEl.className = "history-item-info";
         infoEl.appendChild(nameRow);
-        infoEl.innerHTML += `
-      <span class="history-item-date">${_fmtDate(meta.createdAt)}</span>
-      <span class="history-item-tags">${_esc(meta.language || "")}${meta.hasTranslation ? " \xB7 Translated" : ""}</span>
-    `;
+        infoEl.appendChild(dateEl);
+        infoEl.appendChild(tagsEl);
         const actionsEl = document.createElement("div");
         actionsEl.className = "history-item-actions";
         actionsEl.innerHTML = `
@@ -5366,9 +5562,24 @@ var require_app = __commonJS({
           this._processing = false;
           await AdMobService.showInterstitial();
           AdMobService.prepareInterstitial();
+          let historyId = null;
+          try {
+            historyId = await HistoryService.save({
+              audioFileName: this._selectedFile.name,
+              durationSec: this._fileDuration,
+              language: audioLang,
+              targetLanguage: translateOn ? targetLang : null,
+              original: result.original,
+              translated: result.translated
+            });
+            DebugLogger.log("App", "auto-saved to history", historyId);
+          } catch (err) {
+            DebugLogger.warn("App", "auto-save failed (non-fatal)", err.message);
+          }
           this.resultView.show({
             original: result.original,
             translated: result.translated,
+            id: historyId,
             meta: {
               audioFileName: this._selectedFile.name,
               durationSec: this._fileDuration,

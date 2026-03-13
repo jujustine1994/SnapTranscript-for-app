@@ -82,17 +82,21 @@ export const TranscribeService = {
     return this._generateText(prompt, apiKey);
   },
 
-  async summarize(text, apiKey) {
-    DebugLogger.log(MODULE, 'summarize');
+  async summarize(text, apiKey, outputLang, customPrompt = null) {
+    DebugLogger.log(MODULE, 'summarize', customPrompt ? 'custom' : outputLang);
     if (!apiKey) apiKey = await ApiKeyService.get();
-    const prompt = `Summarize the key points from this transcript as concise bullet points. Output only the bullet points.\n\n${text}`;
+    const prompt = customPrompt
+      ? `${customPrompt}\n\n${text}`
+      : `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones.${outputLang ? ` Write the output in ${outputLang}.` : ''}\n\n${text}`;
     return this._generateText(prompt, apiKey);
   },
 
-  async polish(text, apiKey) {
-    DebugLogger.log(MODULE, 'polish');
+  async polish(text, apiKey, outputLang, customPrompt = null) {
+    DebugLogger.log(MODULE, 'polish', customPrompt ? 'custom' : outputLang);
     if (!apiKey) apiKey = await ApiKeyService.get();
-    const prompt = `Rewrite this transcript to be clean and readable: remove filler words, fix grammar, keep all the meaning intact. Output only the polished text.\n\n${text}`;
+    const prompt = customPrompt
+      ? `${customPrompt}\n\n${text}`
+      : `Rewrite this transcript into a clean, readable version. Remove filler words, repetitions, and false starts. Fix grammar and punctuation. Preserve the speaker's original tone and intent. Break the content into natural paragraphs based on topic shifts.${outputLang ? ` Write the output in ${outputLang}.` : ''}\n\n${text}`;
     return this._generateText(prompt, apiKey);
   },
 
@@ -127,6 +131,11 @@ export const TranscribeService = {
     return { fileName: data.file.name, fileUri: data.file.uri };
   },
 
+  // Polls the Gemini Files API until the uploaded file is ACTIVE (ready for generateContent).
+  // Gemini needs time to process audio server-side before it can accept generateContent requests.
+  // 2s interval: fast enough to not waste time, slow enough to avoid rate limits.
+  // 90s timeout: covers even large files; typical processing is 5–20s.
+  // Note: this endpoint (GET /files/{name}) does NOT count toward generateContent quota.
   async _waitForFile(fileName, apiKey, timeoutMs = 90000) {
     DebugLogger.log(MODULE, '_waitForFile', fileName);
     const deadline = Date.now() + timeoutMs;
@@ -163,7 +172,9 @@ export const TranscribeService = {
           { fileData: { mimeType: 'audio/ogg', fileUri } },
         ],
       }],
-      generationConfig: { temperature: 0 }, // deterministic for transcription
+      // temperature: 0 = fully deterministic; critical for transcription accuracy
+      // (any randomness risks hallucinating words that weren't spoken)
+      generationConfig: { temperature: 0 },
     };
 
     return this._generateContent(body, apiKey);
@@ -172,6 +183,8 @@ export const TranscribeService = {
   async _generateText(prompt, apiKey) {
     const body = {
       contents: [{ parts: [{ text: prompt }] }],
+      // temperature: 0.3 = slight creativity for summarize/polish/translate/Q&A
+      // (better than 0 for generative tasks, avoids being too robotic)
       generationConfig: { temperature: 0.3 },
     };
     return this._generateContent(body, apiKey);
@@ -180,6 +193,7 @@ export const TranscribeService = {
   async _generateContent(body, apiKey) {
     const url = `${BASE}/models/${MODEL}:generateContent?key=${apiKey}`;
     // Log URL with key masked
+    // Mask API key in logs — key appears in URL query string and must never appear in debug output
     DebugLogger.log(MODULE, '_generateContent', url.replace(apiKey, '***KEY***'));
 
     const resp = await fetch(url, {

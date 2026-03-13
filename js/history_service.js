@@ -20,15 +20,19 @@ export const HistoryService = {
 
     DebugLogger.log(MODULE, 'save', id);
 
+    const originalBytes   = new Blob([data.original   || '']).size;
+    const translatedBytes = new Blob([data.translated || '']).size;
+
     const meta = {
       id,
-      audioFileName:  data.audioFileName  || 'recording',
-      durationSec:    data.durationSec    || 0,
-      language:       data.language       || 'auto',
-      hasTranslation: !!data.translated,
-      targetLanguage: data.targetLanguage || null,
-      createdAt:      new Date().toISOString(),
-      originalLength: (data.original || '').length,
+      audioFileName:    data.audioFileName  || 'recording',
+      durationSec:      data.durationSec    || 0,
+      language:         data.language       || 'auto',
+      hasTranslation:   !!data.translated,
+      targetLanguage:   data.targetLanguage || null,
+      createdAt:        new Date().toISOString(),
+      originalLength:   (data.original || '').length,
+      storageSizeBytes: originalBytes + translatedBytes,
     };
 
     try {
@@ -104,9 +108,11 @@ export const HistoryService = {
       const translated = meta.hasTranslation ? await _readOptional(`${dir}/translated.txt`) : null;
       const polished   = await _readOptional(`${dir}/polished.txt`);
       const summary    = await _readOptional(`${dir}/summary.txt`);
+      const qaRaw      = await _readOptional(`${dir}/qa.txt`);
+      const qa         = qaRaw ? JSON.parse(qaRaw) : null;
 
       DebugLogger.log(MODULE, 'load OK', id);
-      return { ...meta, original, translated, polished, summary };
+      return { ...meta, original, translated, polished, summary, qa };
 
     } catch (err) {
       DebugLogger.error(MODULE, 'load FAILED', `${id}: ${err.message}`);
@@ -114,11 +120,28 @@ export const HistoryService = {
     }
   },
 
-  /** Save an extra generated file (polished / summary) for an existing entry. */
-  async saveExtra(id, type, content) {
-    // type: 'polished' | 'summary'
+  /**
+   * Save an extra generated file for an existing entry.
+   * @param {string} id
+   * @param {string} type - 'polished' | 'summary' | 'qa'
+   * @param {string} content
+   * @param {number} previousBytes - pass previous saved size for overwrite types (e.g. qa)
+   */
+  async saveExtra(id, type, content, previousBytes = 0) {
     DebugLogger.log(MODULE, 'saveExtra', `${id}/${type}`);
     await _write(`${BASE_DIR}/${id}/${type}.txt`, content);
+
+    // Update storageSizeBytes in meta (subtract old size, add new size)
+    try {
+      const metaRaw = await _read(`${BASE_DIR}/${id}/meta.json`);
+      const meta = JSON.parse(metaRaw);
+      const newBytes = new Blob([content]).size;
+      meta.storageSizeBytes = (meta.storageSizeBytes || 0) - previousBytes + newBytes;
+      await _write(`${BASE_DIR}/${id}/meta.json`, JSON.stringify(meta));
+    } catch (err) {
+      DebugLogger.warn(MODULE, 'saveExtra: failed to update size', err.message);
+    }
+
     DebugLogger.log(MODULE, 'saveExtra OK');
   },
 

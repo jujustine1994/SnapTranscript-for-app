@@ -60,6 +60,11 @@ export class ApiKeyModal extends ModalComponent {
     `);
   }
 
+  show() {
+    super.show();
+    this._refreshStatus();
+  }
+
   postMount() {
     super.postMount(); // binds .close-btn and outside-click from ModalComponent
     this._bindEvents();
@@ -72,25 +77,39 @@ export class ApiKeyModal extends ModalComponent {
     const statusArea = this.$('#apikey-status-area');
     const inputGroup = this.$('#apikey-input-group');
     const saveBtn = this.$('#apikey-save-btn');
+    const inputLabel = inputGroup?.querySelector('label');
     const hasKey = await ApiKeyService.hasKey();
 
     if (hasKey) {
-      // Show "key is set" badge + remove option
       statusArea.innerHTML = `
         <div class="apikey-set-badge">
           <span>✅ API Key is set</span>
-          <button class="danger-btn" id="apikey-clear-btn">Remove Key</button>
+          <button class="danger-btn" id="apikey-clear-btn" data-i18n="apikey.remove">Remove Key</button>
         </div>
       `;
       statusArea.querySelector('#apikey-clear-btn')
         ?.addEventListener('click', () => this._clearKey());
-      inputGroup.classList.add('hidden');
-      saveBtn.classList.add('hidden');
-    } else {
-      statusArea.innerHTML = `<p class="apikey-not-set-hint">No API key set yet.</p>`;
+      // Show input so user can replace key directly without removing first
+      if (inputLabel) inputLabel.setAttribute('data-i18n', 'apikey.replace_label');
+      if (inputLabel) inputLabel.textContent = 'Replace with a new key (optional)';
       inputGroup.classList.remove('hidden');
       saveBtn.classList.remove('hidden');
+      saveBtn.setAttribute('data-i18n', 'apikey.replace');
+      saveBtn.textContent = 'Replace Key';
+    } else {
+      statusArea.innerHTML = `<p class="apikey-not-set-hint" data-i18n="apikey.not_set">No API key set yet.</p>`;
+      if (inputLabel) inputLabel.setAttribute('data-i18n', 'apikey.input_label');
+      if (inputLabel) inputLabel.textContent = 'Paste your Gemini API Key';
+      inputGroup.classList.remove('hidden');
+      saveBtn.classList.remove('hidden');
+      saveBtn.setAttribute('data-i18n', 'apikey.save');
+      saveBtn.textContent = 'Save Key';
     }
+
+    // Clear input field on refresh
+    const input = this.$('#apikey-input');
+    if (input) input.value = '';
+    this.$('#apikey-error')?.classList.add('hidden');
   }
 
   // ---- Event binding ----
@@ -123,6 +142,13 @@ export class ApiKeyModal extends ModalComponent {
   async _saveKey() {
     const input = this.$('#apikey-input');
     const apiKey = input.value.trim();
+
+    // If input is empty and a key already exists, just close
+    const hasKey = await ApiKeyService.hasKey();
+    if (!apiKey && hasKey) {
+      this.hide();
+      return;
+    }
 
     if (!ApiKeyService.isValidFormat(apiKey)) {
       this.$('#apikey-error').classList.remove('hidden');

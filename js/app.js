@@ -250,6 +250,8 @@ class App {
 
       DebugLogger.log('App', 'SLICE 3 done', `${segments.length} segments`);
 
+      // Check cancel between slices — FFmpeg runs synchronously in WASM so
+    // _cancelFlag is only checked at safe handoff points, not mid-compression.
       if (this._cancelFlag) throw new Error('Cancelled by user');
 
       // ---- Slice 4: Gemini transcription ----
@@ -280,10 +282,30 @@ class App {
       // Pre-load next ad for next session
       AdMobService.prepareInterstitial();
 
+      // Auto-save to history before showing ResultView so that:
+      // 1. User never loses a transcript by accidentally navigating away
+      // 2. ResultView receives an id → _saved = true → "✓ Saved" shown immediately
+      // Failure is non-fatal — user can still see and manually save the result.
+      let historyId = null;
+      try {
+        historyId = await HistoryService.save({
+          audioFileName:  this._selectedFile.name,
+          durationSec:    this._fileDuration,
+          language:       audioLang,
+          targetLanguage: translateOn ? targetLang : null,
+          original:       result.original,
+          translated:     result.translated,
+        });
+        DebugLogger.log('App', 'auto-saved to history', historyId);
+      } catch (err) {
+        DebugLogger.warn('App', 'auto-save failed (non-fatal)', err.message);
+      }
+
       // Show result
       this.resultView.show({
         original:   result.original,
         translated: result.translated,
+        id:         historyId,
         meta: {
           audioFileName:  this._selectedFile.name,
           durationSec:    this._fileDuration,
