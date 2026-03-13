@@ -1,4 +1,4 @@
-// TranscribeService — all Gemini API calls: transcription, translation, summary, polish, Q&A.
+// TranscribeService — all Gemini API calls: transcription, translation, summary, Q&A.
 // Uses the Gemini Files API (upload → wait → generateContent).
 // API Key is fetched from ApiKeyService on demand; never hardcoded.
 
@@ -88,15 +88,6 @@ export const TranscribeService = {
     const prompt = customPrompt
       ? `${customPrompt}\n\n${text}`
       : `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones.${outputLang ? ` Write the output in ${outputLang}.` : ''}\n\n${text}`;
-    return this._generateText(prompt, apiKey);
-  },
-
-  async polish(text, apiKey, outputLang, customPrompt = null) {
-    DebugLogger.log(MODULE, 'polish', customPrompt ? 'custom' : outputLang);
-    if (!apiKey) apiKey = await ApiKeyService.get();
-    const prompt = customPrompt
-      ? `${customPrompt}\n\n${text}`
-      : `Rewrite this transcript into a clean, readable version. Remove filler words, repetitions, and false starts. Fix grammar and punctuation. Preserve the speaker's original tone and intent. Break the content into natural paragraphs based on topic shifts.${outputLang ? ` Write the output in ${outputLang}.` : ''}\n\n${text}`;
     return this._generateText(prompt, apiKey);
   },
 

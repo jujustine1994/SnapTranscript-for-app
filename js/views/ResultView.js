@@ -1,6 +1,5 @@
 // ResultView — full-screen overlay showing transcription results.
-// Tabs: Original · Translation · Summary · Polish
-// Footer: Q&A input
+// Tabs: Original · Translation · Summary · Q&A
 //
 // State lifecycle:
 //   show(data)       → populate from fresh transcription OR HistoryService.load()
@@ -8,7 +7,7 @@
 //   _sendQuestion()  → call Gemini Q&A, append to _qaMessages, overwrite qa.txt
 //   hide()           → slide out, data stays in memory until next show()
 //
-// Storage note: summary/polished are auto-persisted via HistoryService.saveExtra().
+// Storage note: summary is auto-persisted via HistoryService.saveExtra().
 // Q&A uses an overwrite strategy (full array each time), so _qaSavedBytes tracks
 // the previous size to calculate the correct delta for storageSizeBytes.
 
@@ -23,7 +22,7 @@ const MODULE = 'ResultView';
 export class ResultView extends BaseComponent {
   constructor() {
     super('result-view');
-    this._data       = null;   // { original, translated, polished, summary, qa, id, meta }
+    this._data       = null;   // { original, translated, summary, qa, id, meta }
     this._saved      = false;
     this._qaMessages = [];     // [{ role: 'user'|'ai', text }]
     this._qaSavedBytes = 0;    // bytes of last saved qa.txt (for delta calculation)
@@ -47,7 +46,7 @@ export class ResultView extends BaseComponent {
           <button class="result-tab active" data-tab="original" data-i18n="result.original">Original</button>
           <button class="result-tab" data-tab="translated" id="tab-translated" data-i18n="result.translation">Translation</button>
           <button class="result-tab" data-tab="summary" data-i18n="result.summary">Summary</button>
-          <button class="result-tab" data-tab="polished" data-i18n="result.polished">Polish</button>
+          <button class="result-tab" data-tab="qa" data-i18n="result.qa">Q&amp;A</button>
         </div>
 
         <!-- Tab panes -->
@@ -75,28 +74,14 @@ export class ResultView extends BaseComponent {
             <button class="ai-regen-btn hidden" id="btn-regen-summary" data-i18n="result.regen">🔄 Regenerate</button>
           </div>
 
-          <div class="result-pane" id="pane-polished">
-            <button class="ai-gen-btn" id="btn-gen-polished" data-i18n="result.gen_polished">✨ Generate Polished Version</button>
-            <div class="prompt-editor hidden" id="prompt-editor-polished">
-              <p class="prompt-editor-hint" data-i18n="result.prompt_edit_hint">Edit the prompt before sending</p>
-              <textarea class="prompt-editor-textarea" id="prompt-textarea-polished"></textarea>
-              <div class="prompt-editor-actions">
-                <button class="secondary-btn prompt-cancel-btn" data-type="polished" data-i18n="app.cancel">Cancel</button>
-                <button class="primary-btn prompt-send-btn" data-type="polished" data-i18n="result.prompt_send">Send</button>
-              </div>
+          <div class="result-pane result-pane-qa" id="pane-qa">
+            <div class="result-qa-messages" id="qa-messages"></div>
+            <div class="result-qa-row">
+              <input class="result-qa-input selectable" id="qa-input" type="text" placeholder="Ask a question about this transcript…" data-i18n="result.qa_placeholder" />
+              <button class="result-qa-send" id="qa-send-btn" data-i18n="result.qa_send">Ask</button>
             </div>
-            <p class="result-text selectable" id="text-polished"></p>
-            <button class="ai-regen-btn hidden" id="btn-regen-polished" data-i18n="result.regen">🔄 Regenerate</button>
           </div>
-        </div>
 
-        <!-- Q&A -->
-        <div class="result-qa">
-          <div class="result-qa-messages" id="qa-messages"></div>
-          <div class="result-qa-row">
-            <input class="result-qa-input selectable" id="qa-input" type="text" placeholder="Ask a question about this transcript…" data-i18n="result.qa_placeholder" />
-            <button class="result-qa-send" id="qa-send-btn" data-i18n="result.qa_send">Ask</button>
-          </div>
         </div>
 
         <!-- AI loading overlay (inside result view) -->
@@ -129,7 +114,6 @@ export class ResultView extends BaseComponent {
     this._data = {
       original:   data.original   || '',
       translated: data.translated || null,
-      polished:   data.polished   || null,
       summary:    data.summary    || null,
       qa:         data.qa         || null,
       id:         data.id         || null,
@@ -144,17 +128,14 @@ export class ResultView extends BaseComponent {
     this.$('#text-original').textContent   = this._data.original;
     this.$('#text-translated').textContent = this._data.translated || '';
     this.$('#text-summary').textContent    = this._data.summary    || '';
-    this.$('#text-polished').textContent   = this._data.polished   || '';
 
     // Translation tab: hide generate button if already translated
     const hasTranslation = !!this._data.translated;
     this.$('#btn-gen-translated').classList.toggle('hidden', hasTranslation);
 
-    // Summary / Polish: show generate or regen button depending on state
+    // Summary: show generate or regen button depending on state
     this.$('#btn-gen-summary').classList.toggle('hidden', !!this._data.summary);
     this.$('#btn-regen-summary').classList.toggle('hidden', !this._data.summary);
-    this.$('#btn-gen-polished').classList.toggle('hidden', !!this._data.polished);
-    this.$('#btn-regen-polished').classList.toggle('hidden', !this._data.polished);
 
     // Translation tab: hide entirely if neither translated content nor a target language is set
     // (prevents showing an empty tab with just a generate button when user didn't request translation)
@@ -198,10 +179,8 @@ export class ResultView extends BaseComponent {
     });
 
     this.$('#btn-gen-summary')?.addEventListener('click',    () => this._showPromptEditor('summary'));
-    this.$('#btn-gen-polished')?.addEventListener('click',   () => this._showPromptEditor('polished'));
     this.$('#btn-gen-translated')?.addEventListener('click', () => this._generate('translated'));
     this.$('#btn-regen-summary')?.addEventListener('click',  () => this._showPromptEditor('summary'));
-    this.$('#btn-regen-polished')?.addEventListener('click', () => this._showPromptEditor('polished'));
 
     // Prompt editor: send / cancel
     this.element.querySelectorAll('.prompt-send-btn').forEach(btn => {
@@ -238,8 +217,7 @@ export class ResultView extends BaseComponent {
     const uiLangCode = localStorage.getItem(AppConfig.STORAGE_KEYS.UI_LANGUAGE) || AppConfig.DEFAULT_UI_LANGUAGE;
     const outputLang = _uiLangToOutputLang(uiLangCode);
     const defaults = {
-      summary:  `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones. Write the output in ${outputLang}.`,
-      polished: `Rewrite this transcript into a clean, readable version. Remove filler words, repetitions, and false starts. Fix grammar and punctuation. Preserve the speaker's original tone and intent. Break the content into natural paragraphs based on topic shifts. Write the output in ${outputLang}.`,
+      summary: `Extract all significant information from this transcript. Group the content under clear topic headings based on the discussion flow, with detailed nested bullet points under each heading. Capture key decisions, action items (with assignees and deadlines if mentioned), specific data or metrics, and important context. Include all relevant details, even minor ones. Write the output in ${outputLang}.`,
     };
     const textarea = this.$(`#prompt-textarea-${type}`);
     if (textarea) textarea.value = defaults[type] || '';
@@ -258,26 +236,24 @@ export class ResultView extends BaseComponent {
 
   // ---- AI Generation ----
 
-  // _generate handles three content types differently:
-  //   summary / polished → use outputLang from UI settings; support custom prompt override
-  //   translated         → use targetLanguage from meta (set at transcription time); no custom prompt
+  // _generate handles two content types:
+  //   summary    → use outputLang from UI settings; support custom prompt override
+  //   translated → use targetLanguage from meta (set at transcription time); no custom prompt
   //
-  // Only summary and polished are auto-persisted via saveExtra — translated is already
+  // Only summary is auto-persisted via saveExtra — translated is already
   // included in the initial HistoryService.save() call in app.js.
   // previousBytes is passed to saveExtra so storageSizeBytes stays accurate on regeneration.
   async _generate(type, customPrompt = null) {
     DebugLogger.log(MODULE, `_generate ${type}`, customPrompt ? 'custom prompt' : 'default prompt');
-    const labels = { summary: 'Generating summary…', polished: 'Polishing transcript…', translated: 'Translating…' };
+    const labels = { summary: 'Generating summary…', translated: 'Translating…' };
     this._showAiLoading(labels[type] || 'Generating…');
 
     try {
       let result;
-      if (type === 'summary' || type === 'polished') {
+      if (type === 'summary') {
         const uiLangCode = localStorage.getItem(AppConfig.STORAGE_KEYS.UI_LANGUAGE) || AppConfig.DEFAULT_UI_LANGUAGE;
         const outputLang = _uiLangToOutputLang(uiLangCode);
-        result = type === 'summary'
-          ? await TranscribeService.summarize(this._data.original, null, outputLang, customPrompt)
-          : await TranscribeService.polish(this._data.original, null, outputLang, customPrompt);
+        result = await TranscribeService.summarize(this._data.original, null, outputLang, customPrompt);
       } else if (type === 'translated') {
         const lang = this._data.meta?.targetLanguage || 'en';
         result = await TranscribeService.translate(this._data.original, lang);
@@ -291,7 +267,7 @@ export class ResultView extends BaseComponent {
       this.$(`#btn-regen-${type}`)?.classList.remove('hidden');
 
       // Persist to disk if already saved
-      if (this._saved && this._data.id && (type === 'summary' || type === 'polished')) {
+      if (this._saved && this._data.id && type === 'summary') {
         await HistoryService.saveExtra(this._data.id, type, result, previousBytes).catch(err => {
           DebugLogger.warn(MODULE, 'saveExtra failed', err.message);
         });

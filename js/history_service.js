@@ -89,7 +89,7 @@ export const HistoryService = {
 
   /**
    * Load a full transcript record by id.
-   * @returns {object} meta + original + translated? + polished? + summary?
+   * @returns {object} meta + original + translated? + summary?
    */
   async load(id) {
     DebugLogger.log(MODULE, 'load', id);
@@ -106,13 +106,12 @@ export const HistoryService = {
 
       // Optional files — don't throw if missing
       const translated = meta.hasTranslation ? await _readOptional(`${dir}/translated.txt`) : null;
-      const polished   = await _readOptional(`${dir}/polished.txt`);
       const summary    = await _readOptional(`${dir}/summary.txt`);
       const qaRaw      = await _readOptional(`${dir}/qa.txt`);
       const qa         = qaRaw ? JSON.parse(qaRaw) : null;
 
       DebugLogger.log(MODULE, 'load OK', id);
-      return { ...meta, original, translated, polished, summary, qa };
+      return { ...meta, original, translated, summary, qa };
 
     } catch (err) {
       DebugLogger.error(MODULE, 'load FAILED', `${id}: ${err.message}`);
@@ -123,7 +122,7 @@ export const HistoryService = {
   /**
    * Save an extra generated file for an existing entry.
    * @param {string} id
-   * @param {string} type - 'polished' | 'summary' | 'qa'
+   * @param {string} type - 'summary' | 'qa'
    * @param {string} content
    * @param {number} previousBytes - pass previous saved size for overwrite types (e.g. qa)
    */
@@ -160,7 +159,7 @@ export const HistoryService = {
   async delete(id) {
     DebugLogger.log(MODULE, 'delete', id);
     const dir = `${BASE_DIR}/${id}`;
-    const files = ['meta.json', 'original.txt', 'translated.txt', 'polished.txt', 'summary.txt'];
+    const files = ['meta.json', 'original.txt', 'translated.txt', 'summary.txt', 'qa.txt'];
 
     for (const f of files) {
       await Filesystem.deleteFile({ path: `${dir}/${f}`, directory: Directory.Documents }).catch(() => {});

@@ -196,13 +196,15 @@
   margin-top: 0.5rem;
 }
 
-/* Q&A */
-.result-qa {
-  border-top: 1px solid var(--border-color);
-  flex-shrink: 0;
-  display: flex;
+/* Q&A pane — flex column so messages scroll and input pins to bottom */
+.result-pane-qa {
+  display: none;
   flex-direction: column;
-  max-height: 40vh;
+  overflow: hidden;
+}
+
+.result-pane-qa.active {
+  display: flex;
 }
 
 .result-qa-messages {
