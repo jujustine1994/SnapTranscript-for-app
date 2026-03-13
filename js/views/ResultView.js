@@ -137,10 +137,6 @@ export class ResultView extends BaseComponent {
     this.$('#btn-gen-summary').classList.toggle('hidden', !!this._data.summary);
     this.$('#btn-regen-summary').classList.toggle('hidden', !this._data.summary);
 
-    // Translation tab: hide entirely if neither translated content nor a target language is set
-    // (prevents showing an empty tab with just a generate button when user didn't request translation)
-    this.$('#tab-translated').classList.toggle('tab-hidden', !hasTranslation && !this._data.meta?.targetLanguage);
-
     // Restore Q&A history (if opened from saved record)
     this.$('#qa-messages').innerHTML = '';
     this.$('#qa-input').value = '';

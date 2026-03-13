@@ -5014,7 +5014,6 @@ var init_ResultView = __esm({
         this.$("#btn-gen-translated").classList.toggle("hidden", hasTranslation);
         this.$("#btn-gen-summary").classList.toggle("hidden", !!this._data.summary);
         this.$("#btn-regen-summary").classList.toggle("hidden", !this._data.summary);
-        this.$("#tab-translated").classList.toggle("tab-hidden", !hasTranslation && !this._data.meta?.targetLanguage);
         this.$("#qa-messages").innerHTML = "";
         this.$("#qa-input").value = "";
         this._qaMessages.forEach((msg) => this._appendQa(msg.role, msg.text));
