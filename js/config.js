@@ -1,4 +1,5 @@
 // App-wide constants. All magic strings and tunable values live here.
+// v1.0.1
 
 export const AppConfig = {
   APP_NAME: 'SnapTranscript',
