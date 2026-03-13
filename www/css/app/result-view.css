@@ -196,6 +196,22 @@
   margin-top: 0.5rem;
 }
 
+/* Translation language picker */
+.translation-picker {
+  margin-bottom: 1rem;
+}
+.translation-picker-hint {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.translation-picker-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
 /* Q&A pane — flex column so messages scroll and input pins to bottom */
 .result-pane-qa {
   display: none;

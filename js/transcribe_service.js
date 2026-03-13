@@ -69,7 +69,11 @@ export const TranscribeService = {
 
   // ---- On-demand AI features (called from ResultView) ----
 
-  async translate(text, targetLang, apiKey) {
+  // Translate text to targetLang, splitting into 5000-char chunks when needed.
+  // Chunk size rationale: Gemini Flash output limit ≈ 8192 tokens.
+  // At ~2 chars/token (CJK worst case), 5000 chars = 2500 tokens in/out — safe margin.
+  // A 1-hour transcript (~50,000 chars) becomes ~10 chunks, ~1-3 min total.
+  async translate(text, targetLang, apiKey, onProgress = null) {
     DebugLogger.log(MODULE, 'translate', targetLang);
     if (!apiKey) apiKey = await ApiKeyService.get();
     const langMap = {
@@ -78,8 +82,24 @@ export const TranscribeService = {
       'fr': 'French', 'de': 'German', 'es': 'Spanish', 'pt': 'Portuguese', 'th': 'Thai',
     };
     const lang = langMap[targetLang] || targetLang;
-    const prompt = `Translate the following transcript to ${lang}. Output only the translated text, no explanation or commentary.\n\n${text}`;
-    return this._generateText(prompt, apiKey);
+    const buildPrompt = (chunk) =>
+      `Translate the following transcript to ${lang}. Output only the translated text, no explanation or commentary.\n\n${chunk}`;
+
+    const chunks = _splitTextForTranslation(text);
+    DebugLogger.log(MODULE, 'translate chunks', chunks.length);
+
+    if (chunks.length === 1) {
+      return this._generateText(buildPrompt(text), apiKey);
+    }
+
+    const results = [];
+    for (let i = 0; i < chunks.length; i++) {
+      onProgress?.(i + 1, chunks.length);
+      DebugLogger.log(MODULE, `translate chunk ${i + 1}/${chunks.length}`, `${chunks[i].length} chars`);
+      const result = await this._generateText(buildPrompt(chunks[i]), apiKey);
+      results.push(result);
+    }
+    return results.join('\n\n');
   },
 
   async summarize(text, apiKey, outputLang, customPrompt = null) {
@@ -211,3 +231,27 @@ export const TranscribeService = {
     return text.trim();
   },
 };
+
+// Split transcript into chunks ≤ 5000 chars for safe translation.
+// Splits on paragraph boundaries (\n\n) to preserve context within each chunk.
+// If a single paragraph exceeds 5000 chars it becomes its own chunk (Gemini handles
+// occasional overages gracefully, and single-paragraph overages are rare in practice).
+function _splitTextForTranslation(text, maxChars = 5000) {
+  if (text.length <= maxChars) return [text];
+
+  const paragraphs = text.split(/\n\n+/);
+  const chunks = [];
+  let current = '';
+
+  for (const para of paragraphs) {
+    const sep = current ? '\n\n' : '';
+    if ((current + sep + para).length <= maxChars) {
+      current += sep + para;
+    } else {
+      if (current) chunks.push(current);
+      current = para; // start new chunk (even if para alone > maxChars)
+    }
+  }
+  if (current) chunks.push(current);
+  return chunks;
+}

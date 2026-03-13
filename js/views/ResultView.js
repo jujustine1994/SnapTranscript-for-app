@@ -56,8 +56,17 @@ export class ResultView extends BaseComponent {
           </div>
 
           <div class="result-pane" id="pane-translated">
-            <button class="ai-gen-btn hidden" id="btn-gen-translated" data-i18n="result.gen_translation">✨ Generate Translation</button>
+            <button class="ai-gen-btn" id="btn-gen-translated" data-i18n="result.gen_translation">✨ Generate Translation</button>
+            <div class="translation-picker hidden" id="translation-picker">
+              <p class="translation-picker-hint" data-i18n="result.translation_lang_hint">Select target language</p>
+              <select class="setting-select translation-lang-select" id="translation-lang-select-result"></select>
+              <div class="translation-picker-actions">
+                <button class="secondary-btn" id="translation-picker-cancel" data-i18n="app.cancel">Cancel</button>
+                <button class="primary-btn" id="translation-picker-send" data-i18n="result.translate_btn">Translate</button>
+              </div>
+            </div>
             <p class="result-text selectable" id="text-translated"></p>
+            <button class="ai-regen-btn hidden" id="btn-regen-translated" data-i18n="result.regen">🔄 Regenerate</button>
           </div>
 
           <div class="result-pane" id="pane-summary">
@@ -96,7 +105,19 @@ export class ResultView extends BaseComponent {
 
   postMount() {
     this._bindEvents();
+    this._populateTranslationLangs();
     DebugLogger.log(MODULE, 'mounted');
+  }
+
+  _populateTranslationLangs() {
+    const sel = this.$('#translation-lang-select-result');
+    if (!sel) return;
+    AppConfig.TRANSLATION_LANGUAGES.filter(l => l.code !== 'none').forEach(l => {
+      const opt = document.createElement('option');
+      opt.value = l.code;
+      opt.textContent = l.label;
+      sel.appendChild(opt);
+    });
   }
 
   // ---- Public API ----
@@ -129,9 +150,11 @@ export class ResultView extends BaseComponent {
     this.$('#text-translated').textContent = this._data.translated || '';
     this.$('#text-summary').textContent    = this._data.summary    || '';
 
-    // Translation tab: hide generate button if already translated
+    // Translation tab: show generate or regen depending on state; hide picker
     const hasTranslation = !!this._data.translated;
     this.$('#btn-gen-translated').classList.toggle('hidden', hasTranslation);
+    this.$('#btn-regen-translated').classList.toggle('hidden', !hasTranslation);
+    this.$('#translation-picker').classList.add('hidden');
 
     // Summary: show generate or regen button depending on state
     this.$('#btn-gen-summary').classList.toggle('hidden', !!this._data.summary);
@@ -174,9 +197,16 @@ export class ResultView extends BaseComponent {
       if (tab) this._switchTab(tab.dataset.tab);
     });
 
-    this.$('#btn-gen-summary')?.addEventListener('click',    () => this._showPromptEditor('summary'));
-    this.$('#btn-gen-translated')?.addEventListener('click', () => this._generate('translated'));
-    this.$('#btn-regen-summary')?.addEventListener('click',  () => this._showPromptEditor('summary'));
+    this.$('#btn-gen-summary')?.addEventListener('click',     () => this._showPromptEditor('summary'));
+    this.$('#btn-regen-summary')?.addEventListener('click',   () => this._showPromptEditor('summary'));
+    this.$('#btn-gen-translated')?.addEventListener('click',  () => this._showTranslationPicker());
+    this.$('#btn-regen-translated')?.addEventListener('click',() => this._showTranslationPicker());
+    this.$('#translation-picker-cancel')?.addEventListener('click', () => this._hideTranslationPicker());
+    this.$('#translation-picker-send')?.addEventListener('click', () => {
+      const lang = this.$('#translation-lang-select-result')?.value;
+      this._hideTranslationPicker();
+      this._generate('translated', null, lang);
+    });
 
     // Prompt editor: send / cancel
     this.element.querySelectorAll('.prompt-send-btn').forEach(btn => {
@@ -201,6 +231,22 @@ export class ResultView extends BaseComponent {
     DebugLogger.log(MODULE, 'tab', name);
     this.element.querySelectorAll('.result-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
     this.element.querySelectorAll('.result-pane').forEach(p => p.classList.toggle('active', p.id === `pane-${name}`));
+  }
+
+  // ---- Translation Picker ----
+
+  _showTranslationPicker() {
+    this.$('#btn-gen-translated')?.classList.add('hidden');
+    this.$('#btn-regen-translated')?.classList.add('hidden');
+    this.$('#translation-picker')?.classList.remove('hidden');
+    this.$('#translation-lang-select-result')?.focus();
+  }
+
+  _hideTranslationPicker() {
+    this.$('#translation-picker')?.classList.add('hidden');
+    const hasTranslation = !!this._data?.translated;
+    this.$('#btn-gen-translated')?.classList.toggle('hidden', hasTranslation);
+    this.$('#btn-regen-translated')?.classList.toggle('hidden', !hasTranslation);
   }
 
   // ---- Prompt Editor ----
@@ -239,8 +285,8 @@ export class ResultView extends BaseComponent {
   // Only summary is auto-persisted via saveExtra — translated is already
   // included in the initial HistoryService.save() call in app.js.
   // previousBytes is passed to saveExtra so storageSizeBytes stays accurate on regeneration.
-  async _generate(type, customPrompt = null) {
-    DebugLogger.log(MODULE, `_generate ${type}`, customPrompt ? 'custom prompt' : 'default prompt');
+  async _generate(type, customPrompt = null, targetLang = null) {
+    DebugLogger.log(MODULE, `_generate ${type}`, customPrompt ? 'custom' : targetLang || 'default');
     const labels = { summary: 'Generating summary…', translated: 'Translating…' };
     this._showAiLoading(labels[type] || 'Generating…');
 
@@ -251,8 +297,14 @@ export class ResultView extends BaseComponent {
         const outputLang = _uiLangToOutputLang(uiLangCode);
         result = await TranscribeService.summarize(this._data.original, null, outputLang, customPrompt);
       } else if (type === 'translated') {
-        const lang = this._data.meta?.targetLanguage || 'en';
-        result = await TranscribeService.translate(this._data.original, lang);
+        const lang = targetLang || 'zh-TW';
+        // Pass progress callback to update loading text on multi-chunk translation
+        result = await TranscribeService.translate(
+          this._data.original, lang, null,
+          (i, total) => {
+            if (total > 1) this._showAiLoading(`Translating ${i}/${total}…`);
+          }
+        );
       }
 
       DebugLogger.log(MODULE, `_generate ${type} OK`, `${result.length} chars`);

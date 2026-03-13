@@ -400,6 +400,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "\u53EF\u7DE8\u8F2F Prompt \u5F8C\u518D\u9001\u51FA",
         "result.prompt_send": "\u9001\u51FA",
         "result.gen_translation": "\u2728 \u751F\u6210\u7FFB\u8B6F",
+        "result.translation_lang_hint": "\u9078\u64C7\u7FFB\u8B6F\u8A9E\u8A00",
+        "result.translate_btn": "\u7FFB\u8B6F",
         "result.qa": "Q&A",
         "result.qa_placeholder": "\u91DD\u5C0D\u9019\u4EFD\u9010\u5B57\u7A3F\u63D0\u554F\u2026",
         "result.qa_send": "\u9001\u51FA",
@@ -536,6 +538,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "\u53EF\u7F16\u8F91 Prompt \u540E\u518D\u53D1\u9001",
         "result.prompt_send": "\u53D1\u9001",
         "result.gen_translation": "\u2728 \u751F\u6210\u7FFB\u8BD1",
+        "result.translation_lang_hint": "\u9009\u62E9\u7FFB\u8BD1\u8BED\u8A00",
+        "result.translate_btn": "\u7FFB\u8BD1",
         "result.qa": "Q&A",
         "result.qa_placeholder": "\u9488\u5BF9\u8FD9\u4EFD\u8BB0\u5F55\u63D0\u95EE\u2026",
         "result.qa_send": "\u53D1\u9001",
@@ -672,6 +676,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "Edit the prompt before sending",
         "result.prompt_send": "Send",
         "result.gen_translation": "\u2728 Generate Translation",
+        "result.translation_lang_hint": "Select target language",
+        "result.translate_btn": "Translate",
         "result.qa": "Q&A",
         "result.qa_placeholder": "Ask a question about this transcript\u2026",
         "result.qa_send": "Send",
@@ -808,6 +814,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "\u30D7\u30ED\u30F3\u30D7\u30C8\u3092\u7DE8\u96C6\u3057\u3066\u9001\u4FE1",
         "result.prompt_send": "\u9001\u4FE1",
         "result.gen_translation": "\u2728 \u7FFB\u8A33\u3092\u751F\u6210",
+        "result.translation_lang_hint": "\u7FFB\u8A33\u5148\u306E\u8A00\u8A9E\u3092\u9078\u629E",
+        "result.translate_btn": "\u7FFB\u8A33",
         "result.qa": "Q&A",
         "result.qa_placeholder": "\u3053\u306E\u6587\u5B57\u8D77\u3053\u3057\u306B\u3064\u3044\u3066\u8CEA\u554F\u3059\u308B\u2026",
         "result.qa_send": "\u9001\u4FE1",
@@ -926,6 +934,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "\uD504\uB86C\uD504\uD2B8\uB97C \uD3B8\uC9D1\uD558\uACE0 \uC804\uC1A1",
         "result.prompt_send": "\uC804\uC1A1",
         "result.gen_translation": "\u2728 \uBC88\uC5ED \uC0DD\uC131",
+        "result.translation_lang_hint": "\uBC88\uC5ED \uC5B8\uC5B4 \uC120\uD0DD",
+        "result.translate_btn": "\uBC88\uC5ED",
         "result.qa": "Q&A",
         "result.qa_placeholder": "\uC774 \uC804\uC0AC\uBCF8\uC5D0 \uB300\uD574 \uC9C8\uBB38\uD558\uAE30\u2026",
         "result.qa_send": "\uC804\uC1A1",
@@ -1044,6 +1054,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "Ch\u1EC9nh s\u1EEDa prompt tr\u01B0\u1EDBc khi g\u1EEDi",
         "result.prompt_send": "G\u1EEDi",
         "result.gen_translation": "\u2728 T\u1EA1o b\u1EA3n d\u1ECBch",
+        "result.translation_lang_hint": "Ch\u1ECDn ng\xF4n ng\u1EEF d\u1ECBch",
+        "result.translate_btn": "D\u1ECBch",
         "result.qa": "Q&A",
         "result.qa_placeholder": "\u0110\u1EB7t c\xE2u h\u1ECFi v\u1EC1 b\u1EA3n phi\xEAn \xE2m n\xE0y\u2026",
         "result.qa_send": "G\u1EEDi",
@@ -1162,6 +1174,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "Edita el prompt antes de enviar",
         "result.prompt_send": "Enviar",
         "result.gen_translation": "\u2728 Generar traducci\xF3n",
+        "result.translation_lang_hint": "Seleccionar idioma de destino",
+        "result.translate_btn": "Traducir",
         "result.qa": "Q&A",
         "result.qa_placeholder": "Pregunta sobre esta transcripci\xF3n\u2026",
         "result.qa_send": "Enviar",
@@ -1280,6 +1294,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "Modifiez le prompt avant d'envoyer",
         "result.prompt_send": "Envoyer",
         "result.gen_translation": "\u2728 G\xE9n\xE9rer une traduction",
+        "result.translation_lang_hint": "S\xE9lectionner la langue cible",
+        "result.translate_btn": "Traduire",
         "result.qa": "Q&A",
         "result.qa_placeholder": "Posez une question sur cette transcription\u2026",
         "result.qa_send": "Envoyer",
@@ -1398,6 +1414,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "I-edit ang prompt bago ipadala",
         "result.prompt_send": "Ipadala",
         "result.gen_translation": "\u2728 Gumawa ng salin",
+        "result.translation_lang_hint": "Pumili ng target na wika",
+        "result.translate_btn": "Isalin",
         "result.qa": "Q&A",
         "result.qa_placeholder": "Magtanong tungkol sa transcript na ito\u2026",
         "result.qa_send": "Ipadala",
@@ -1516,6 +1534,8 @@ var init_i18n_data = __esm({
         "result.prompt_edit_hint": "Edit prompt sebelum mengirim",
         "result.prompt_send": "Kirim",
         "result.gen_translation": "\u2728 Buat terjemahan",
+        "result.translation_lang_hint": "Pilih bahasa target",
+        "result.translate_btn": "Terjemahkan",
         "result.qa": "Q&A",
         "result.qa_placeholder": "Ajukan pertanyaan tentang transkrip ini\u2026",
         "result.qa_send": "Kirim",
@@ -2853,6 +2873,23 @@ var init_ffmpeg_service = __esm({
 });
 
 // js/transcribe_service.js
+function _splitTextForTranslation(text, maxChars = 5e3) {
+  if (text.length <= maxChars) return [text];
+  const paragraphs = text.split(/\n\n+/);
+  const chunks = [];
+  let current = "";
+  for (const para of paragraphs) {
+    const sep = current ? "\n\n" : "";
+    if ((current + sep + para).length <= maxChars) {
+      current += sep + para;
+    } else {
+      if (current) chunks.push(current);
+      current = para;
+    }
+  }
+  if (current) chunks.push(current);
+  return chunks;
+}
 var MODULE2, BASE, UPLOAD_BASE, MODEL, TranscribeService;
 var init_transcribe_service = __esm({
   "js/transcribe_service.js"() {
@@ -2904,7 +2941,11 @@ var init_transcribe_service = __esm({
         return { original, translated };
       },
       // ---- On-demand AI features (called from ResultView) ----
-      async translate(text, targetLang, apiKey) {
+      // Translate text to targetLang, splitting into 5000-char chunks when needed.
+      // Chunk size rationale: Gemini Flash output limit ≈ 8192 tokens.
+      // At ~2 chars/token (CJK worst case), 5000 chars = 2500 tokens in/out — safe margin.
+      // A 1-hour transcript (~50,000 chars) becomes ~10 chunks, ~1-3 min total.
+      async translate(text, targetLang, apiKey, onProgress = null) {
         DebugLogger.log(MODULE2, "translate", targetLang);
         if (!apiKey) apiKey = await ApiKeyService.get();
         const langMap = {
@@ -2920,10 +2961,22 @@ var init_transcribe_service = __esm({
           "th": "Thai"
         };
         const lang = langMap[targetLang] || targetLang;
-        const prompt = `Translate the following transcript to ${lang}. Output only the translated text, no explanation or commentary.
+        const buildPrompt = (chunk) => `Translate the following transcript to ${lang}. Output only the translated text, no explanation or commentary.
 
-${text}`;
-        return this._generateText(prompt, apiKey);
+${chunk}`;
+        const chunks = _splitTextForTranslation(text);
+        DebugLogger.log(MODULE2, "translate chunks", chunks.length);
+        if (chunks.length === 1) {
+          return this._generateText(buildPrompt(text), apiKey);
+        }
+        const results = [];
+        for (let i = 0; i < chunks.length; i++) {
+          onProgress?.(i + 1, chunks.length);
+          DebugLogger.log(MODULE2, `translate chunk ${i + 1}/${chunks.length}`, `${chunks[i].length} chars`);
+          const result = await this._generateText(buildPrompt(chunks[i]), apiKey);
+          results.push(result);
+        }
+        return results.join("\n\n");
       },
       async summarize(text, apiKey, outputLang, customPrompt = null) {
         DebugLogger.log(MODULE2, "summarize", customPrompt ? "custom" : outputLang);
@@ -4945,8 +4998,17 @@ var init_ResultView = __esm({
           </div>
 
           <div class="result-pane" id="pane-translated">
-            <button class="ai-gen-btn hidden" id="btn-gen-translated" data-i18n="result.gen_translation">\u2728 Generate Translation</button>
+            <button class="ai-gen-btn" id="btn-gen-translated" data-i18n="result.gen_translation">\u2728 Generate Translation</button>
+            <div class="translation-picker hidden" id="translation-picker">
+              <p class="translation-picker-hint" data-i18n="result.translation_lang_hint">Select target language</p>
+              <select class="setting-select translation-lang-select" id="translation-lang-select-result"></select>
+              <div class="translation-picker-actions">
+                <button class="secondary-btn" id="translation-picker-cancel" data-i18n="app.cancel">Cancel</button>
+                <button class="primary-btn" id="translation-picker-send" data-i18n="result.translate_btn">Translate</button>
+              </div>
+            </div>
             <p class="result-text selectable" id="text-translated"></p>
+            <button class="ai-regen-btn hidden" id="btn-regen-translated" data-i18n="result.regen">\u{1F504} Regenerate</button>
           </div>
 
           <div class="result-pane" id="pane-summary">
@@ -4984,7 +5046,18 @@ var init_ResultView = __esm({
       }
       postMount() {
         this._bindEvents();
+        this._populateTranslationLangs();
         DebugLogger.log(MODULE7, "mounted");
+      }
+      _populateTranslationLangs() {
+        const sel = this.$("#translation-lang-select-result");
+        if (!sel) return;
+        AppConfig.TRANSLATION_LANGUAGES.filter((l) => l.code !== "none").forEach((l) => {
+          const opt = document.createElement("option");
+          opt.value = l.code;
+          opt.textContent = l.label;
+          sel.appendChild(opt);
+        });
       }
       // ---- Public API ----
       /**
@@ -5012,6 +5085,8 @@ var init_ResultView = __esm({
         this.$("#text-summary").textContent = this._data.summary || "";
         const hasTranslation = !!this._data.translated;
         this.$("#btn-gen-translated").classList.toggle("hidden", hasTranslation);
+        this.$("#btn-regen-translated").classList.toggle("hidden", !hasTranslation);
+        this.$("#translation-picker").classList.add("hidden");
         this.$("#btn-gen-summary").classList.toggle("hidden", !!this._data.summary);
         this.$("#btn-regen-summary").classList.toggle("hidden", !this._data.summary);
         this.$("#qa-messages").innerHTML = "";
@@ -5042,8 +5117,15 @@ var init_ResultView = __esm({
           if (tab) this._switchTab(tab.dataset.tab);
         });
         this.$("#btn-gen-summary")?.addEventListener("click", () => this._showPromptEditor("summary"));
-        this.$("#btn-gen-translated")?.addEventListener("click", () => this._generate("translated"));
         this.$("#btn-regen-summary")?.addEventListener("click", () => this._showPromptEditor("summary"));
+        this.$("#btn-gen-translated")?.addEventListener("click", () => this._showTranslationPicker());
+        this.$("#btn-regen-translated")?.addEventListener("click", () => this._showTranslationPicker());
+        this.$("#translation-picker-cancel")?.addEventListener("click", () => this._hideTranslationPicker());
+        this.$("#translation-picker-send")?.addEventListener("click", () => {
+          const lang = this.$("#translation-lang-select-result")?.value;
+          this._hideTranslationPicker();
+          this._generate("translated", null, lang);
+        });
         this.element.querySelectorAll(".prompt-send-btn").forEach((btn) => {
           btn.addEventListener("click", () => {
             const type = btn.dataset.type;
@@ -5064,6 +5146,19 @@ var init_ResultView = __esm({
         DebugLogger.log(MODULE7, "tab", name);
         this.element.querySelectorAll(".result-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === name));
         this.element.querySelectorAll(".result-pane").forEach((p) => p.classList.toggle("active", p.id === `pane-${name}`));
+      }
+      // ---- Translation Picker ----
+      _showTranslationPicker() {
+        this.$("#btn-gen-translated")?.classList.add("hidden");
+        this.$("#btn-regen-translated")?.classList.add("hidden");
+        this.$("#translation-picker")?.classList.remove("hidden");
+        this.$("#translation-lang-select-result")?.focus();
+      }
+      _hideTranslationPicker() {
+        this.$("#translation-picker")?.classList.add("hidden");
+        const hasTranslation = !!this._data?.translated;
+        this.$("#btn-gen-translated")?.classList.toggle("hidden", hasTranslation);
+        this.$("#btn-regen-translated")?.classList.toggle("hidden", !hasTranslation);
       }
       // ---- Prompt Editor ----
       // Pre-fills the textarea with the default prompt (including current UI language instruction)
@@ -5097,8 +5192,8 @@ var init_ResultView = __esm({
       // Only summary is auto-persisted via saveExtra — translated is already
       // included in the initial HistoryService.save() call in app.js.
       // previousBytes is passed to saveExtra so storageSizeBytes stays accurate on regeneration.
-      async _generate(type, customPrompt = null) {
-        DebugLogger.log(MODULE7, `_generate ${type}`, customPrompt ? "custom prompt" : "default prompt");
+      async _generate(type, customPrompt = null, targetLang = null) {
+        DebugLogger.log(MODULE7, `_generate ${type}`, customPrompt ? "custom" : targetLang || "default");
         const labels = { summary: "Generating summary\u2026", translated: "Translating\u2026" };
         this._showAiLoading(labels[type] || "Generating\u2026");
         try {
@@ -5108,8 +5203,15 @@ var init_ResultView = __esm({
             const outputLang = _uiLangToOutputLang(uiLangCode);
             result = await TranscribeService.summarize(this._data.original, null, outputLang, customPrompt);
           } else if (type === "translated") {
-            const lang = this._data.meta?.targetLanguage || "en";
-            result = await TranscribeService.translate(this._data.original, lang);
+            const lang = targetLang || "zh-TW";
+            result = await TranscribeService.translate(
+              this._data.original,
+              lang,
+              null,
+              (i, total) => {
+                if (total > 1) this._showAiLoading(`Translating ${i}/${total}\u2026`);
+              }
+            );
           }
           DebugLogger.log(MODULE7, `_generate ${type} OK`, `${result.length} chars`);
           const previousBytes = this._data[type] ? new Blob([this._data[type]]).size : 0;
