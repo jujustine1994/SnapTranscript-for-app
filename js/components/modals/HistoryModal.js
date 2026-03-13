@@ -22,13 +22,13 @@ export class HistoryModal extends ModalComponent {
         <div class="modal-content">
 
           <div class="modal-header">
-            <h3>History</h3>
+            <h3 data-i18n="history.title">History</h3>
             <button class="close-btn">✕</button>
           </div>
 
           <div class="modal-body history-modal-body">
             <div id="history-list" class="history-list"></div>
-            <p class="history-empty hidden" id="history-empty">No saved transcripts yet.</p>
+            <p class="history-empty hidden" id="history-empty" data-i18n="history.empty">No saved transcripts yet.</p>
           </div>
 
         </div>

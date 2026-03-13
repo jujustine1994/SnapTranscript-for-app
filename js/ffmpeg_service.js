@@ -2,7 +2,7 @@
 // Uses single-thread core (no SharedArrayBuffer) for WKWebView / Capacitor iOS compatibility.
 
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile } from '@ffmpeg/util';
+import { fetchFile, toBlobURL } from '@ffmpeg/util';
 import { DebugLogger } from './utils/debug_logger.js';
 import { AppConfig } from './config.js';
 
@@ -38,10 +38,14 @@ export const FFmpegService = {
         onProgress?.({ stage: 'compressing', percent: pct, detail: 'Compressing audio...' });
       });
 
-      await _ffmpeg.load({
-        coreURL: AppConfig.FFMPEG_CORE_URL,
-        wasmURL:  AppConfig.FFMPEG_WASM_URL,
-      });
+      // toBlobURL fetches from CDN and converts to a local blob URL
+      // — @ffmpeg/ffmpeg v0.12 requires this, plain string URLs are rejected
+      DebugLogger.log(MODULE, 'fetching core from CDN...');
+      const coreURL = await toBlobURL(AppConfig.FFMPEG_CORE_URL, 'text/javascript');
+      const wasmURL = await toBlobURL(AppConfig.FFMPEG_WASM_URL, 'application/wasm');
+      DebugLogger.log(MODULE, 'CDN fetch OK, loading ffmpeg...');
+
+      await _ffmpeg.load({ coreURL, wasmURL });
 
       _loaded = true;
       DebugLogger.log(MODULE, 'loaded OK');

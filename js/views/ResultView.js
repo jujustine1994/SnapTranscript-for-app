@@ -22,19 +22,19 @@ export class ResultView extends BaseComponent {
 
         <!-- Header -->
         <div class="result-header">
-          <button class="result-back-btn" id="result-back-btn">← Back</button>
+          <button class="result-back-btn" id="result-back-btn" data-i18n="app.back">← Back</button>
           <div class="result-header-right">
-            <button class="result-share-btn" id="result-share-btn">Share</button>
-            <button class="primary-btn result-save-btn" id="result-save-btn">Save</button>
+            <button class="result-share-btn" id="result-share-btn" data-i18n="result.share">Share</button>
+            <button class="primary-btn result-save-btn" id="result-save-btn" data-i18n="result.save">Save</button>
           </div>
         </div>
 
         <!-- Tabs -->
         <div class="result-tabs" id="result-tabs">
-          <button class="result-tab active" data-tab="original">Original</button>
-          <button class="result-tab" data-tab="translated" id="tab-translated">Translation</button>
-          <button class="result-tab" data-tab="summary">Summary</button>
-          <button class="result-tab" data-tab="polished">Polish</button>
+          <button class="result-tab active" data-tab="original" data-i18n="result.original">Original</button>
+          <button class="result-tab" data-tab="translated" id="tab-translated" data-i18n="result.translation">Translation</button>
+          <button class="result-tab" data-tab="summary" data-i18n="result.summary">Summary</button>
+          <button class="result-tab" data-tab="polished" data-i18n="result.polished">Polish</button>
         </div>
 
         <!-- Tab panes -->
@@ -44,17 +44,17 @@ export class ResultView extends BaseComponent {
           </div>
 
           <div class="result-pane" id="pane-translated">
-            <button class="ai-gen-btn hidden" id="btn-gen-translated">✨ Generate Translation</button>
+            <button class="ai-gen-btn hidden" id="btn-gen-translated" data-i18n="result.gen_translation">✨ Generate Translation</button>
             <p class="result-text selectable" id="text-translated"></p>
           </div>
 
           <div class="result-pane" id="pane-summary">
-            <button class="ai-gen-btn" id="btn-gen-summary">✨ Generate Summary</button>
+            <button class="ai-gen-btn" id="btn-gen-summary" data-i18n="result.gen_summary">✨ Generate Summary</button>
             <p class="result-text selectable" id="text-summary"></p>
           </div>
 
           <div class="result-pane" id="pane-polished">
-            <button class="ai-gen-btn" id="btn-gen-polished">✨ Generate Polished Version</button>
+            <button class="ai-gen-btn" id="btn-gen-polished" data-i18n="result.gen_polished">✨ Generate Polished Version</button>
             <p class="result-text selectable" id="text-polished"></p>
           </div>
         </div>
@@ -63,8 +63,8 @@ export class ResultView extends BaseComponent {
         <div class="result-qa">
           <div class="result-qa-messages" id="qa-messages"></div>
           <div class="result-qa-row">
-            <input class="result-qa-input selectable" id="qa-input" type="text" placeholder="Ask a question about this transcript…" />
-            <button class="result-qa-send" id="qa-send-btn">Ask</button>
+            <input class="result-qa-input selectable" id="qa-input" type="text" placeholder="Ask a question about this transcript…" data-i18n="result.qa_placeholder" />
+            <button class="result-qa-send" id="qa-send-btn" data-i18n="result.qa_send">Ask</button>
           </div>
         </div>
 

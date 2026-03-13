@@ -21,9 +21,10 @@ export const AppConfig = {
   },
 
   // ---- Audio processing (FFmpeg.wasm) ----
-  // Using single-thread core (no SharedArrayBuffer needed — WKWebView compatible)
-  FFMPEG_CORE_URL: 'https://unpkg.com/@ffmpeg/core-st@0.12.9/dist/esm/ffmpeg-core.js',
-  FFMPEG_WASM_URL: 'https://unpkg.com/@ffmpeg/core-st@0.12.9/dist/esm/ffmpeg-core.wasm',
+  // @ffmpeg/core@0.12.9 = single-thread build (no SharedArrayBuffer — WKWebView compatible)
+  // Files served locally from www/ffmpeg/ (downloaded by scripts/download-ffmpeg.js)
+  FFMPEG_CORE_URL: '/ffmpeg/ffmpeg-core.js',
+  FFMPEG_WASM_URL: '/ffmpeg/ffmpeg-core.wasm',
   AUDIO_BITRATE: '32k',
   SEGMENT_DURATION_SEC: 1800,   // 30 minutes
   MAX_SEGMENT_SIZE_MB: 100,     // Refuse if a single compressed segment exceeds this
@@ -63,7 +64,22 @@ export const AppConfig = {
     { code: 'th', label: 'ภาษาไทย' },
   ],
 
+  // UI display languages (must match keys in i18n_data.js)
+  UI_LANGUAGES: [
+    { code: 'zh-TW', label: '繁體中文' },
+    { code: 'zh-CN', label: '简体中文' },
+    { code: 'en-US', label: 'English' },
+    { code: 'ja-JP', label: '日本語' },
+    { code: 'ko-KR', label: '한국어' },
+    { code: 'vi-VN', label: 'Tiếng Việt' },
+    { code: 'es-ES', label: 'Español' },
+    { code: 'fr-FR', label: 'Français' },
+    { code: 'tl-PH', label: 'Filipino' },
+    { code: 'id-ID', label: 'Bahasa Indonesia' },
+  ],
+
   // Default settings
   DEFAULT_TRANSCRIPTION_LANGUAGE: 'auto',
   DEFAULT_TRANSLATION_LANGUAGE: 'none',
+  DEFAULT_UI_LANGUAGE: 'zh-TW',
 };

@@ -15,7 +15,7 @@ export class ApiKeyModal extends ModalComponent {
         <div class="modal-content">
 
           <div class="modal-header">
-            <h3>Gemini API Key</h3>
+            <h3 data-i18n="apikey.title">Gemini API Key</h3>
             <button class="close-btn" aria-label="Close">✕</button>
           </div>
 
@@ -24,7 +24,7 @@ export class ApiKeyModal extends ModalComponent {
             <!-- Privacy notice -->
             <div class="apikey-privacy-notice">
               <span class="apikey-privacy-icon">🔒</span>
-              <p>Your key is stored only on this device. SnapTranscript never sees it — the app calls Gemini directly from your phone.</p>
+              <p data-i18n="apikey.privacy_notice">Your key is stored only on this device. SnapTranscript never sees it — the app calls Gemini directly from your phone.</p>
             </div>
 
             <!-- Status: shows when a key is already stored -->
@@ -32,26 +32,27 @@ export class ApiKeyModal extends ModalComponent {
 
             <!-- Input group: shows when no key is stored -->
             <div class="form-group hidden" id="apikey-input-group">
-              <label for="apikey-input">Paste your Gemini API Key</label>
+              <label for="apikey-input" data-i18n="apikey.input_label">Paste your Gemini API Key</label>
               <div class="apikey-input-row">
                 <input
                   type="password"
                   id="apikey-input"
                   placeholder="AIza..."
+                  data-i18n="apikey.placeholder"
                   autocomplete="off"
                   spellcheck="false"
                 />
                 <button class="apikey-toggle-btn" id="apikey-toggle" aria-label="Show/hide key">👁</button>
               </div>
-              <p class="field-hint">Get your free key at <strong>aistudio.google.com</strong> → Get API key</p>
-              <p class="field-error hidden" id="apikey-error">Invalid format. Gemini keys start with "AIza" (39 characters).</p>
+              <p class="field-hint" data-i18n="apikey.hint">Get your free key at <strong>aistudio.google.com</strong> → Get API key</p>
+              <p class="field-error hidden" id="apikey-error" data-i18n="apikey.error_format">Invalid format. Gemini keys start with "AIza" (39 characters).</p>
             </div>
 
           </div>
 
           <div class="modal-footer">
-            <button class="secondary-btn close-modal-btn">Cancel</button>
-            <button class="primary-btn hidden" id="apikey-save-btn">Save Key</button>
+            <button class="secondary-btn close-modal-btn" data-i18n="app.cancel">Cancel</button>
+            <button class="primary-btn hidden" id="apikey-save-btn" data-i18n="apikey.save">Save Key</button>
           </div>
 
         </div>

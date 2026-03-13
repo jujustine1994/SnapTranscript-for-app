@@ -10,10 +10,11 @@ import { TranscribeService } from './transcribe_service.js';
 import { AdMobService }    from './admob_service.js';
 import { HistoryService }  from './history_service.js';
 
-import { ApiKeyModal }     from './components/modals/ApiKeyModal.js';
-import { SettingsModal }   from './components/modals/SettingsModal.js';
-import { HistoryModal }    from './components/modals/HistoryModal.js';
-import { ResultView }      from './views/ResultView.js';
+import { ApiKeyModal }      from './components/modals/ApiKeyModal.js';
+import { SettingsModal }    from './components/modals/SettingsModal.js';
+import { HistoryModal }     from './components/modals/HistoryModal.js';
+import { PrivacyInfoModal } from './components/modals/PrivacyInfoModal.js';
+import { ResultView }       from './views/ResultView.js';
 
 // ---- App ----
 
@@ -23,9 +24,16 @@ class App {
     this.debugPanel    = new DebugPanel();
     this.lang          = new LanguageManager();
     this.apiKeyModal   = new ApiKeyModal();
-    this.settingsModal = new SettingsModal({ onApiKey: () => this.apiKeyModal.show() });
-    this.historyModal  = new HistoryModal({ onOpen: (data) => this.resultView.show(data) });
-    this.resultView    = new ResultView();
+    this.settingsModal = new SettingsModal({
+      onApiKey:     () => this.apiKeyModal.show(),
+      onLangChange: (code) => {
+        DebugLogger.log('App', 'UI lang change', code);
+        this.lang.setLanguage(code);
+      },
+    });
+    this.historyModal     = new HistoryModal({ onOpen: (data) => this.resultView.show(data) });
+    this.privacyInfoModal = new PrivacyInfoModal();
+    this.resultView       = new ResultView();
 
     // State
     this._selectedFile = null;
@@ -47,8 +55,12 @@ class App {
     this.apiKeyModal.mount(document.body);
     this.settingsModal.mount(document.body);
     this.historyModal.mount(document.body);
+    this.privacyInfoModal.mount(document.body);
     this.resultView.mount(document.body);
     DebugLogger.log('App', 'components mounted');
+
+    // Translate all mounted DOM elements to the current UI language
+    this.lang.translatePage();
 
     // AdMob init (non-fatal)
     AdMobService.initialize();
@@ -81,6 +93,12 @@ class App {
       ?.addEventListener('click', () => {
         DebugLogger.log('App', 'settings-btn click');
         this.settingsModal.show();
+      });
+
+    document.getElementById('privacy-btn')
+      ?.addEventListener('click', () => {
+        DebugLogger.log('App', 'privacy-btn click');
+        this.privacyInfoModal.show();
       });
 
     document.getElementById('history-btn')

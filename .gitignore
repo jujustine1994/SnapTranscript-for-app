@@ -17,6 +17,10 @@ www/js/bundle.js
 www/js/bundle.js.map
 dist/
 
+# FFmpeg WASM 檔案（31MB，太大不進 git；由 scripts/download-ffmpeg.js 下載）
+# ffmpeg-core.js (110KB) 可以 commit，wasm 不行
+www/ffmpeg/ffmpeg-core.wasm
+
 # 系統檔
 .DS_Store
 Thumbs.db
