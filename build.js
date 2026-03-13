@@ -5,7 +5,7 @@ esbuild.build({
   entryPoints: ['js/app.js'],
   bundle: true,
   outfile: 'www/js/bundle.js',
-  format: 'iife',          // single self-contained file, no import/export in output
+  format: 'esm',           // ESM required for import.meta.url (used by @ffmpeg/ffmpeg internally)
   target: ['ios14'],       // iOS 14+ (Capacitor v8 minimum)
   minify: false,           // keep readable during development
   sourcemap: true,
