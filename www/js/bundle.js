@@ -430,7 +430,11 @@
           "privacy_info.warning_title": "\u26A0\uFE0F \u91CD\u8981\u63D0\u9192",
           "privacy_info.warning_body": "\u8ACB\u52FF\u5C07\u4F60\u7684 API Key \u63D0\u4F9B\u7D66\u4EFB\u4F55\u4EBA\uFF0C\u5305\u62EC\u4EFB\u4F55\u8072\u7A31\u662F SnapTranscript \u5BA2\u670D\u7684\u4EBA\u3002\u6211\u5011\u6C38\u9060\u4E0D\u6703\u7D22\u53D6\u4F60\u7684 Key\u3002\u4ED8\u8CBB API Key \u5916\u6D29\u53EF\u80FD\u5C0E\u81F4\u4ED6\u4EBA\u76DC\u7528\u4F60\u7684 Google \u984D\u5EA6\u3002",
           "privacy_info.view_source": "\u67E5\u770B\u539F\u59CB\u78BC",
-          "privacy_info.got_it": "\u4E86\u89E3\u4E86"
+          "privacy_info.got_it": "\u4E86\u89E3\u4E86",
+          "tab.home": "\u9996\u9801",
+          "tab.history": "\u6B77\u53F2",
+          "history.search": "\u641C\u5C0B\u2026",
+          "history.rename": "\u91CD\u65B0\u547D\u540D"
         },
         // ============================================================
         "zh-CN": {
@@ -558,7 +562,11 @@
           "privacy_info.warning_title": "\u26A0\uFE0F \u91CD\u8981\u63D0\u9192",
           "privacy_info.warning_body": "\u8BF7\u52FF\u5C06\u4F60\u7684 API Key \u63D0\u4F9B\u7ED9\u4EFB\u4F55\u4EBA\uFF0C\u5305\u62EC\u4EFB\u4F55\u58F0\u79F0\u662F SnapTranscript \u5BA2\u670D\u7684\u4EBA\u3002\u6211\u4EEC\u6C38\u8FDC\u4E0D\u4F1A\u7D22\u53D6\u4F60\u7684 Key\u3002\u4ED8\u8D39 API Key \u5916\u6CC4\u53EF\u80FD\u5BFC\u81F4\u4ED6\u4EBA\u76D7\u7528\u4F60\u7684 Google \u989D\u5EA6\u3002",
           "privacy_info.view_source": "\u67E5\u770B\u6E90\u4EE3\u7801",
-          "privacy_info.got_it": "\u4E86\u89E3\u4E86"
+          "privacy_info.got_it": "\u4E86\u89E3\u4E86",
+          "tab.home": "\u9996\u9875",
+          "tab.history": "\u5386\u53F2",
+          "history.search": "\u641C\u7D22\u2026",
+          "history.rename": "\u91CD\u547D\u540D"
         },
         // ============================================================
         "en-US": {
@@ -686,7 +694,11 @@
           "privacy_info.warning_title": "\u26A0\uFE0F Important Warning",
           "privacy_info.warning_body": "Never share your API Key with anyone, including anyone claiming to be SnapTranscript support. We will never ask for your Key. A leaked paid API Key could result in others consuming your Google quota.",
           "privacy_info.view_source": "View Source Code",
-          "privacy_info.got_it": "Got it"
+          "privacy_info.got_it": "Got it",
+          "tab.home": "Home",
+          "tab.history": "History",
+          "history.search": "Search\u2026",
+          "history.rename": "Rename"
         },
         // ============================================================
         "ja-JP": {
@@ -796,7 +808,11 @@
           "settings.about": "\u30A2\u30D7\u30EA\u306B\u3064\u3044\u3066",
           "settings.privacy_note": "API Key \u306F\u3053\u306E\u30C7\u30D0\u30A4\u30B9\u306B\u306E\u307F\u4FDD\u5B58\u3055\u308C\u307E\u3059\u3002\u3059\u3079\u3066\u306E\u30C7\u30FC\u30BF\u306F\u5F53\u793E\u30B5\u30FC\u30D0\u30FC\u3092\u7D4C\u7531\u3057\u307E\u305B\u3093\u3002",
           "history.open": "\u958B\u304F",
-          "history.loading": "\u8AAD\u307F\u8FBC\u307F\u4E2D\u2026"
+          "history.loading": "\u8AAD\u307F\u8FBC\u307F\u4E2D\u2026",
+          "tab.home": "\u30DB\u30FC\u30E0",
+          "tab.history": "\u5C65\u6B74",
+          "history.search": "\u691C\u7D22\u2026",
+          "history.rename": "\u540D\u524D\u5909\u66F4"
         },
         // ============================================================
         "ko-KR": {
@@ -906,7 +922,11 @@
           "settings.about": "\uC571 \uC815\uBCF4",
           "settings.privacy_note": "API Key\uB294 \uC774 \uAE30\uAE30\uC5D0\uB9CC \uC800\uC7A5\uB429\uB2C8\uB2E4. \uBAA8\uB4E0 \uB370\uC774\uD130\uB294 \uB2F9\uC0AC \uC11C\uBC84\uB97C \uD1B5\uD574 \uCC98\uB9AC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
           "history.open": "\uC5F4\uAE30",
-          "history.loading": "\uB85C\uB529 \uC911\u2026"
+          "history.loading": "\uB85C\uB529 \uC911\u2026",
+          "tab.home": "\uD648",
+          "tab.history": "\uAE30\uB85D",
+          "history.search": "\uAC80\uC0C9\u2026",
+          "history.rename": "\uC774\uB984 \uBCC0\uACBD"
         },
         // ============================================================
         "vi-VN": {
@@ -1016,7 +1036,11 @@
           "settings.about": "Gi\u1EDBi thi\u1EC7u",
           "settings.privacy_note": "API Key c\u1EE7a b\u1EA1n ch\u1EC9 \u0111\u01B0\u1EE3c l\u01B0u c\u1EE5c b\u1ED9. Kh\xF4ng c\xF3 d\u1EEF li\u1EC7u n\xE0o \u0111i qua m\xE1y ch\u1EE7 c\u1EE7a ch\xFAng t\xF4i.",
           "history.open": "M\u1EDF",
-          "history.loading": "\u0110ang t\u1EA3i\u2026"
+          "history.loading": "\u0110ang t\u1EA3i\u2026",
+          "tab.home": "Trang ch\u1EE7",
+          "tab.history": "L\u1ECBch s\u1EED",
+          "history.search": "T\xECm ki\u1EBFm\u2026",
+          "history.rename": "\u0110\u1ED5i t\xEAn"
         },
         // ============================================================
         "es-ES": {
@@ -1126,7 +1150,11 @@
           "settings.about": "Acerca de",
           "settings.privacy_note": "Tu API Key solo se almacena localmente. Ning\xFAn dato pasa por nuestros servidores.",
           "history.open": "Abrir",
-          "history.loading": "Cargando\u2026"
+          "history.loading": "Cargando\u2026",
+          "tab.home": "Inicio",
+          "tab.history": "Historial",
+          "history.search": "Buscar\u2026",
+          "history.rename": "Renombrar"
         },
         // ============================================================
         "fr-FR": {
@@ -1236,7 +1264,11 @@
           "settings.about": "\xC0 propos",
           "settings.privacy_note": "Votre API Key est stock\xE9e uniquement en local. Aucune donn\xE9e ne transite par nos serveurs.",
           "history.open": "Ouvrir",
-          "history.loading": "Chargement\u2026"
+          "history.loading": "Chargement\u2026",
+          "tab.home": "Accueil",
+          "tab.history": "Historique",
+          "history.search": "Rechercher\u2026",
+          "history.rename": "Renommer"
         },
         // ============================================================
         "tl-PH": {
@@ -1346,7 +1378,11 @@
           "settings.about": "Tungkol sa",
           "settings.privacy_note": "Ang iyong API Key ay naka-store lamang sa lokal. Walang data na dumadaan sa aming mga server.",
           "history.open": "Buksan",
-          "history.loading": "Naglo-load\u2026"
+          "history.loading": "Naglo-load\u2026",
+          "tab.home": "Tahanan",
+          "tab.history": "Kasaysayan",
+          "history.search": "Maghanap\u2026",
+          "history.rename": "Palitan ng pangalan"
         },
         // ============================================================
         "id-ID": {
@@ -1456,7 +1492,11 @@
           "settings.about": "Tentang",
           "settings.privacy_note": "API Key Anda hanya disimpan secara lokal. Tidak ada data yang melewati server kami.",
           "history.open": "Buka",
-          "history.loading": "Memuat\u2026"
+          "history.loading": "Memuat\u2026",
+          "tab.home": "Beranda",
+          "tab.history": "Riwayat",
+          "history.search": "Cari\u2026",
+          "history.rename": "Ganti nama"
         }
       };
     }
@@ -4215,6 +4255,16 @@ Question: ${question}`;
           await _write(`${BASE_DIR}/${id}/${type}.txt`, content);
           DebugLogger.log(MODULE4, "saveExtra OK");
         },
+        /** Update the display name for an existing transcript. */
+        async updateFileName(id, newName) {
+          DebugLogger.log(MODULE4, "updateFileName", `${id} \u2192 ${newName}`);
+          const dir = `${BASE_DIR}/${id}`;
+          const metaRaw = await _read(`${dir}/meta.json`);
+          const meta = JSON.parse(metaRaw);
+          meta.audioFileName = newName;
+          await _write(`${dir}/meta.json`, JSON.stringify(meta));
+          DebugLogger.log(MODULE4, "updateFileName OK");
+        },
         /** Delete a transcript and all its files. */
         async delete(id) {
           DebugLogger.log(MODULE4, "delete", id);
@@ -4565,131 +4615,6 @@ Question: ${question}`;
     }
   });
 
-  // js/components/modals/HistoryModal.js
-  function _fmtDate(iso) {
-    if (!iso) return "";
-    const d = new Date(iso);
-    return d.toLocaleDateString() + " " + d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  }
-  function _esc(str) {
-    return String(str).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  }
-  var MODULE6, HistoryModal;
-  var init_HistoryModal = __esm({
-    "js/components/modals/HistoryModal.js"() {
-      init_ModalComponent();
-      init_history_service();
-      init_debug_logger();
-      MODULE6 = "HistoryModal";
-      HistoryModal = class extends ModalComponent {
-        /**
-         * @param {object} opts
-         * @param {function} opts.onOpen - callback(data) called when user taps an item
-         */
-        constructor({ onOpen } = {}) {
-          super("history-modal");
-          this._onOpen = onOpen;
-        }
-        render() {
-          return this.createElementFromHTML(`
-      <div class="modal hidden">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h3 data-i18n="history.title">History</h3>
-            <button class="close-btn">\u2715</button>
-          </div>
-
-          <div class="modal-body history-modal-body">
-            <div id="history-list" class="history-list"></div>
-            <p class="history-empty hidden" id="history-empty" data-i18n="history.empty">No saved transcripts yet.</p>
-          </div>
-
-        </div>
-      </div>
-    `);
-        }
-        postMount() {
-          super.postMount();
-          DebugLogger.log(MODULE6, "mounted");
-        }
-        async show() {
-          super.show();
-          await this._loadList();
-        }
-        // ---- Private ----
-        async _loadList() {
-          DebugLogger.log(MODULE6, "_loadList");
-          const list = this.$("#history-list");
-          const emptyEl = this.$("#history-empty");
-          list.innerHTML = '<p class="history-loading">Loading\u2026</p>';
-          try {
-            const items = await HistoryService.list();
-            DebugLogger.log(MODULE6, "_loadList OK", `${items.length} items`);
-            list.innerHTML = "";
-            if (items.length === 0) {
-              emptyEl.classList.remove("hidden");
-              return;
-            }
-            emptyEl.classList.add("hidden");
-            items.forEach((meta) => list.appendChild(this._renderItem(meta)));
-          } catch (err) {
-            DebugLogger.error(MODULE6, "_loadList FAILED", err.message);
-            list.innerHTML = `<p class="history-error">Error: ${err.message}</p>`;
-          }
-        }
-        _renderItem(meta) {
-          const div = document.createElement("div");
-          div.className = "history-item";
-          div.innerHTML = `
-      <div class="history-item-info">
-        <span class="history-item-name">${_esc(meta.audioFileName || "Recording")}</span>
-        <span class="history-item-date">${_fmtDate(meta.createdAt)}</span>
-        <span class="history-item-tags">${meta.language || ""}${meta.hasTranslation ? " \xB7 Translated" : ""}</span>
-      </div>
-      <div class="history-item-actions">
-        <button class="history-open-btn">Open</button>
-        <button class="history-del-btn" aria-label="Delete">\u{1F5D1}</button>
-      </div>
-    `;
-          div.querySelector(".history-open-btn").addEventListener("click", () => this._openItem(meta.id));
-          div.querySelector(".history-del-btn").addEventListener("click", (e) => {
-            e.stopPropagation();
-            this._deleteItem(meta.id, div);
-          });
-          return div;
-        }
-        async _openItem(id) {
-          DebugLogger.log(MODULE6, "_openItem", id);
-          try {
-            const data = await HistoryService.load(id);
-            DebugLogger.log(MODULE6, "_openItem loaded OK");
-            this.hide();
-            this._onOpen?.(data);
-          } catch (err) {
-            DebugLogger.error(MODULE6, "_openItem FAILED", err.message);
-            alert("Failed to open: " + err.message);
-          }
-        }
-        async _deleteItem(id, el) {
-          DebugLogger.log(MODULE6, "_deleteItem", id);
-          if (!confirm("Delete this transcript? This cannot be undone.")) return;
-          try {
-            await HistoryService.delete(id);
-            el.remove();
-            DebugLogger.log(MODULE6, "_deleteItem OK", id);
-            if (!this.$("#history-list").children.length) {
-              this.$("#history-empty").classList.remove("hidden");
-            }
-          } catch (err) {
-            DebugLogger.error(MODULE6, "_deleteItem FAILED", err.message);
-            alert("Delete failed: " + err.message);
-          }
-        }
-      };
-    }
-  });
-
   // js/components/modals/PrivacyInfoModal.js
   var PrivacyInfoModal;
   var init_PrivacyInfoModal = __esm({
@@ -4792,14 +4717,14 @@ Question: ${question}`;
   });
 
   // js/views/ResultView.js
-  var MODULE7, ResultView;
+  var MODULE6, ResultView;
   var init_ResultView = __esm({
     "js/views/ResultView.js"() {
       init_BaseComponent();
       init_debug_logger();
       init_transcribe_service();
       init_history_service();
-      MODULE7 = "ResultView";
+      MODULE6 = "ResultView";
       ResultView = class extends BaseComponent {
         constructor() {
           super("result-view");
@@ -4869,7 +4794,7 @@ Question: ${question}`;
         }
         postMount() {
           this._bindEvents();
-          DebugLogger.log(MODULE7, "mounted");
+          DebugLogger.log(MODULE6, "mounted");
         }
         // ---- Public API ----
         /**
@@ -4877,7 +4802,7 @@ Question: ${question}`;
          * @param {object} data - { original, translated, meta: { audioFileName, durationSec, language, targetLanguage } }
          */
         show(data) {
-          DebugLogger.log(MODULE7, "show", `${data.original?.length} chars, translated=${!!data.translated}`);
+          DebugLogger.log(MODULE6, "show", `${data.original?.length} chars, translated=${!!data.translated}`);
           this._data = {
             original: data.original || "",
             translated: data.translated || null,
@@ -4902,17 +4827,17 @@ Question: ${question}`;
           this._switchTab("original");
           this.element.classList.remove("hidden");
           requestAnimationFrame(() => this.element.classList.add("visible"));
-          DebugLogger.log(MODULE7, "visible");
+          DebugLogger.log(MODULE6, "visible");
         }
         hide() {
-          DebugLogger.log(MODULE7, "hide");
+          DebugLogger.log(MODULE6, "hide");
           this.element.classList.remove("visible");
           setTimeout(() => this.element.classList.add("hidden"), 300);
         }
         // ---- Events ----
         _bindEvents() {
           this.$("#result-back-btn")?.addEventListener("click", () => {
-            DebugLogger.log(MODULE7, "back");
+            DebugLogger.log(MODULE6, "back");
             this.hide();
             window.dispatchEvent(new CustomEvent("resultClosed"));
           });
@@ -4931,13 +4856,13 @@ Question: ${question}`;
           });
         }
         _switchTab(name) {
-          DebugLogger.log(MODULE7, "tab", name);
+          DebugLogger.log(MODULE6, "tab", name);
           this.element.querySelectorAll(".result-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === name));
           this.element.querySelectorAll(".result-pane").forEach((p) => p.classList.toggle("active", p.id === `pane-${name}`));
         }
         // ---- AI Generation ----
         async _generate(type) {
-          DebugLogger.log(MODULE7, `_generate ${type}`);
+          DebugLogger.log(MODULE6, `_generate ${type}`);
           const labels = { summary: "Generating summary\u2026", polished: "Polishing transcript\u2026", translated: "Translating\u2026" };
           this._showAiLoading(labels[type] || "Generating\u2026");
           try {
@@ -4948,17 +4873,17 @@ Question: ${question}`;
               const lang = this._data.meta?.targetLanguage || "en";
               result = await TranscribeService.translate(this._data.original, lang);
             }
-            DebugLogger.log(MODULE7, `_generate ${type} OK`, `${result.length} chars`);
+            DebugLogger.log(MODULE6, `_generate ${type} OK`, `${result.length} chars`);
             this._data[type] = result;
             this.$(`#text-${type}`).textContent = result;
             this.$(`#btn-gen-${type}`)?.classList.add("hidden");
             if (this._saved && this._data.id && (type === "summary" || type === "polished")) {
               await HistoryService.saveExtra(this._data.id, type, result).catch((err) => {
-                DebugLogger.warn(MODULE7, "saveExtra failed", err.message);
+                DebugLogger.warn(MODULE6, "saveExtra failed", err.message);
               });
             }
           } catch (err) {
-            DebugLogger.error(MODULE7, `_generate ${type} FAILED`, err.message);
+            DebugLogger.error(MODULE6, `_generate ${type} FAILED`, err.message);
             this.$(`#text-${type}`).textContent = `Error: ${err.message}`;
           }
           this._hideAiLoading();
@@ -4968,16 +4893,16 @@ Question: ${question}`;
           const input = this.$("#qa-input");
           const q = input?.value?.trim();
           if (!q) return;
-          DebugLogger.log(MODULE7, "_sendQuestion", q.substring(0, 60));
+          DebugLogger.log(MODULE6, "_sendQuestion", q.substring(0, 60));
           input.value = "";
           this._appendQa("user", q);
           const pendingEl = this._appendQa("ai", "\u2026");
           try {
             const answer = await TranscribeService.askQuestion(this._data.original, q);
-            DebugLogger.log(MODULE7, "_sendQuestion answered", `${answer.length} chars`);
+            DebugLogger.log(MODULE6, "_sendQuestion answered", `${answer.length} chars`);
             pendingEl.textContent = answer;
           } catch (err) {
-            DebugLogger.error(MODULE7, "_sendQuestion FAILED", err.message);
+            DebugLogger.error(MODULE6, "_sendQuestion FAILED", err.message);
             pendingEl.textContent = `Error: ${err.message}`;
           }
         }
@@ -4993,7 +4918,7 @@ Question: ${question}`;
         // ---- Save & Share ----
         async _save() {
           if (this._saved) return;
-          DebugLogger.log(MODULE7, "_save");
+          DebugLogger.log(MODULE6, "_save");
           this._showAiLoading("Saving\u2026");
           try {
             const id = await HistoryService.save({
@@ -5004,28 +4929,28 @@ Question: ${question}`;
             this._data.id = id;
             this._saved = true;
             this._updateSaveBtn();
-            DebugLogger.log(MODULE7, "_save OK", id);
+            DebugLogger.log(MODULE6, "_save OK", id);
           } catch (err) {
-            DebugLogger.error(MODULE7, "_save FAILED", err.message);
+            DebugLogger.error(MODULE6, "_save FAILED", err.message);
             alert("Save failed: " + err.message);
           }
           this._hideAiLoading();
         }
         async _share() {
-          DebugLogger.log(MODULE7, "_share");
+          DebugLogger.log(MODULE6, "_share");
           const activeTab = this.element.querySelector(".result-tab.active")?.dataset?.tab || "original";
           const shareText = this._data[activeTab] || this._data.original;
           try {
             if (navigator.share) {
               await navigator.share({ text: shareText });
-              DebugLogger.log(MODULE7, "_share native OK");
+              DebugLogger.log(MODULE6, "_share native OK");
             } else {
               await navigator.clipboard.writeText(shareText);
-              DebugLogger.log(MODULE7, "_share clipboard fallback OK");
+              DebugLogger.log(MODULE6, "_share clipboard fallback OK");
               alert("Copied to clipboard");
             }
           } catch (err) {
-            DebugLogger.warn(MODULE7, "_share failed", err.message);
+            DebugLogger.warn(MODULE6, "_share failed", err.message);
           }
         }
         _updateSaveBtn() {
@@ -5045,6 +4970,202 @@ Question: ${question}`;
     }
   });
 
+  // js/views/HistoryView.js
+  function _fmtDate(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    return d.toLocaleDateString() + " " + d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  }
+  function _esc(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  var MODULE7, HistoryView;
+  var init_HistoryView = __esm({
+    "js/views/HistoryView.js"() {
+      init_history_service();
+      init_debug_logger();
+      MODULE7 = "HistoryView";
+      HistoryView = class {
+        /**
+         * @param {object} opts
+         * @param {function} opts.onOpen - callback(data) when user opens a transcript
+         */
+        constructor({ onOpen } = {}) {
+          this._onOpen = onOpen;
+          this._allItems = [];
+        }
+        /** Call once after DOM is ready. Binds static event listeners. */
+        init() {
+          document.getElementById("history-search")?.addEventListener("input", (e) => this._filterList(e.target.value.trim()));
+          DebugLogger.log(MODULE7, "init");
+        }
+        /** Called when the History tab becomes active. Refreshes the list. */
+        async activate() {
+          DebugLogger.log(MODULE7, "activate");
+          const searchInput = document.getElementById("history-search");
+          if (searchInput) searchInput.value = "";
+          await this._loadList();
+        }
+        // ---- Private ----
+        async _loadList() {
+          const list = document.getElementById("history-list");
+          const emptyEl = document.getElementById("history-empty");
+          if (!list) return;
+          list.innerHTML = '<p class="history-loading">Loading\u2026</p>';
+          if (emptyEl) emptyEl.classList.add("hidden");
+          try {
+            this._allItems = await HistoryService.list();
+            DebugLogger.log(MODULE7, "_loadList OK", `${this._allItems.length} items`);
+            this._renderList(this._allItems);
+          } catch (err) {
+            DebugLogger.error(MODULE7, "_loadList FAILED", err.message);
+            list.innerHTML = `<p class="history-error">Error: ${err.message}</p>`;
+          }
+        }
+        _filterList(query) {
+          if (!query) {
+            this._renderList(this._allItems);
+            return;
+          }
+          const q = query.toLowerCase();
+          this._renderList(this._allItems.filter(
+            (m) => (m.audioFileName || "").toLowerCase().includes(q)
+          ));
+        }
+        _renderList(items) {
+          const list = document.getElementById("history-list");
+          const emptyEl = document.getElementById("history-empty");
+          if (!list) return;
+          list.innerHTML = "";
+          if (items.length === 0) {
+            emptyEl?.classList.remove("hidden");
+            return;
+          }
+          emptyEl?.classList.add("hidden");
+          items.forEach((meta) => list.appendChild(this._renderItem(meta)));
+        }
+        _renderItem(meta) {
+          const div = document.createElement("div");
+          div.className = "history-item";
+          div.dataset.id = meta.id;
+          const nameRow = document.createElement("div");
+          nameRow.className = "history-item-name-row";
+          nameRow.appendChild(this._buildNameDisplay(meta));
+          const infoEl = document.createElement("div");
+          infoEl.className = "history-item-info";
+          infoEl.appendChild(nameRow);
+          infoEl.innerHTML += `
+      <span class="history-item-date">${_fmtDate(meta.createdAt)}</span>
+      <span class="history-item-tags">${_esc(meta.language || "")}${meta.hasTranslation ? " \xB7 Translated" : ""}</span>
+    `;
+          const actionsEl = document.createElement("div");
+          actionsEl.className = "history-item-actions";
+          actionsEl.innerHTML = `
+      <button class="history-open-btn">Open</button>
+      <button class="history-del-btn" aria-label="Delete">\u{1F5D1}</button>
+    `;
+          div.appendChild(infoEl);
+          div.appendChild(actionsEl);
+          actionsEl.querySelector(".history-open-btn").addEventListener("click", () => this._openItem(meta.id));
+          actionsEl.querySelector(".history-del-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            this._deleteItem(meta.id, div);
+          });
+          return div;
+        }
+        /** Build the name span + rename button (or returns a DocumentFragment). */
+        _buildNameDisplay(meta) {
+          const frag = document.createDocumentFragment();
+          const nameSpan = document.createElement("span");
+          nameSpan.className = "history-item-name";
+          nameSpan.textContent = meta.audioFileName || "Recording";
+          const renameBtn = document.createElement("button");
+          renameBtn.className = "history-rename-btn";
+          renameBtn.setAttribute("aria-label", "Rename");
+          renameBtn.textContent = "\u270F\uFE0F";
+          renameBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            this._startRename(meta, nameSpan.closest(".history-item-name-row"));
+          });
+          frag.appendChild(nameSpan);
+          frag.appendChild(renameBtn);
+          return frag;
+        }
+        _startRename(meta, nameRow) {
+          const currentName = meta.audioFileName || "Recording";
+          nameRow.innerHTML = "";
+          const input = document.createElement("input");
+          input.className = "history-rename-input";
+          input.value = currentName;
+          const saveBtn = document.createElement("button");
+          saveBtn.className = "history-rename-save-btn";
+          saveBtn.textContent = "\u2713";
+          const cancelBtn = document.createElement("button");
+          cancelBtn.className = "history-rename-cancel-btn";
+          cancelBtn.textContent = "\u2715";
+          nameRow.appendChild(input);
+          nameRow.appendChild(saveBtn);
+          nameRow.appendChild(cancelBtn);
+          input.focus();
+          input.select();
+          const restore = () => {
+            nameRow.innerHTML = "";
+            nameRow.appendChild(this._buildNameDisplay(meta));
+          };
+          const save = async () => {
+            const newName = input.value.trim();
+            if (!newName) {
+              restore();
+              return;
+            }
+            try {
+              await HistoryService.updateFileName(meta.id, newName);
+              meta.audioFileName = newName;
+              const cached = this._allItems.find((m) => m.id === meta.id);
+              if (cached) cached.audioFileName = newName;
+              DebugLogger.log(MODULE7, "rename OK", newName);
+            } catch (err) {
+              DebugLogger.error(MODULE7, "rename FAILED", err.message);
+            }
+            restore();
+          };
+          saveBtn.addEventListener("click", save);
+          cancelBtn.addEventListener("click", restore);
+          input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") save();
+            if (e.key === "Escape") restore();
+          });
+        }
+        async _openItem(id) {
+          DebugLogger.log(MODULE7, "_openItem", id);
+          try {
+            const data = await HistoryService.load(id);
+            DebugLogger.log(MODULE7, "_openItem loaded OK");
+            this._onOpen?.(data);
+          } catch (err) {
+            DebugLogger.error(MODULE7, "_openItem FAILED", err.message);
+            alert("Failed to open: " + err.message);
+          }
+        }
+        async _deleteItem(id, el) {
+          if (!confirm("Delete this transcript? This cannot be undone.")) return;
+          try {
+            await HistoryService.delete(id);
+            el.remove();
+            this._allItems = this._allItems.filter((m) => m.id !== id);
+            if (!document.getElementById("history-list").children.length) {
+              document.getElementById("history-empty")?.classList.remove("hidden");
+            }
+            DebugLogger.log(MODULE7, "_deleteItem OK", id);
+          } catch (err) {
+            DebugLogger.error(MODULE7, "_deleteItem FAILED", err.message);
+            alert("Delete failed: " + err.message);
+          }
+        }
+      };
+    }
+  });
+
   // js/app.js
   var require_app = __commonJS({
     "js/app.js"() {
@@ -5059,9 +5180,9 @@ Question: ${question}`;
       init_history_service();
       init_ApiKeyModal();
       init_SettingsModal();
-      init_HistoryModal();
       init_PrivacyInfoModal();
       init_ResultView();
+      init_HistoryView();
       var App = class {
         constructor() {
           this.debugPanel = new DebugPanel();
@@ -5074,7 +5195,7 @@ Question: ${question}`;
               this.lang.setLanguage(code);
             }
           });
-          this.historyModal = new HistoryModal({ onOpen: (data) => this.resultView.show(data) });
+          this.historyView = new HistoryView({ onOpen: (data) => this.resultView.show(data) });
           this.privacyInfoModal = new PrivacyInfoModal();
           this.resultView = new ResultView();
           this._selectedFile = null;
@@ -5089,9 +5210,9 @@ Question: ${question}`;
           DebugLogger.log("App", "lang init", this.lang.currentLang);
           this.apiKeyModal.mount(document.body);
           this.settingsModal.mount(document.body);
-          this.historyModal.mount(document.body);
           this.privacyInfoModal.mount(document.body);
           this.resultView.mount(document.body);
+          this.historyView.init();
           DebugLogger.log("App", "components mounted");
           this.lang.translatePage();
           AdMobService.initialize();
@@ -5117,10 +5238,8 @@ Question: ${question}`;
             DebugLogger.log("App", "privacy-btn click");
             this.privacyInfoModal.show();
           });
-          document.getElementById("history-btn")?.addEventListener("click", () => {
-            DebugLogger.log("App", "history-btn click");
-            this.historyModal.show();
-          });
+          document.getElementById("tab-home")?.addEventListener("click", () => this._switchTab("home"));
+          document.getElementById("tab-history")?.addEventListener("click", () => this._switchTab("history"));
           window.addEventListener("apiKeySet", () => {
             DebugLogger.log("App", "apiKeySet");
             this._setPickerEnabled(true);
@@ -5146,6 +5265,16 @@ Question: ${question}`;
           window.addEventListener("resultClosed", () => {
             DebugLogger.log("App", "resultClosed");
           });
+        }
+        _switchTab(tab) {
+          DebugLogger.log("App", "_switchTab", tab);
+          document.getElementById("page-home")?.classList.toggle("active", tab === "home");
+          document.getElementById("page-home")?.classList.toggle("hidden", tab !== "home");
+          document.getElementById("page-history")?.classList.toggle("active", tab === "history");
+          document.getElementById("page-history")?.classList.toggle("hidden", tab !== "history");
+          document.getElementById("tab-home")?.classList.toggle("active", tab === "home");
+          document.getElementById("tab-history")?.classList.toggle("active", tab === "history");
+          if (tab === "history") this.historyView.activate();
         }
         _buildTranslateLangSelect() {
           const sel = document.getElementById("translate-lang-select");

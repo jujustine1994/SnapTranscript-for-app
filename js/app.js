@@ -12,9 +12,9 @@ import { HistoryService }  from './history_service.js';
 
 import { ApiKeyModal }      from './components/modals/ApiKeyModal.js';
 import { SettingsModal }    from './components/modals/SettingsModal.js';
-import { HistoryModal }     from './components/modals/HistoryModal.js';
 import { PrivacyInfoModal } from './components/modals/PrivacyInfoModal.js';
 import { ResultView }       from './views/ResultView.js';
+import { HistoryView }      from './views/HistoryView.js';
 
 // ---- App ----
 
@@ -31,7 +31,7 @@ class App {
         this.lang.setLanguage(code);
       },
     });
-    this.historyModal     = new HistoryModal({ onOpen: (data) => this.resultView.show(data) });
+    this.historyView      = new HistoryView({ onOpen: (data) => this.resultView.show(data) });
     this.privacyInfoModal = new PrivacyInfoModal();
     this.resultView       = new ResultView();
 
@@ -54,9 +54,9 @@ class App {
     // Mount UI components
     this.apiKeyModal.mount(document.body);
     this.settingsModal.mount(document.body);
-    this.historyModal.mount(document.body);
     this.privacyInfoModal.mount(document.body);
     this.resultView.mount(document.body);
+    this.historyView.init();
     DebugLogger.log('App', 'components mounted');
 
     // Translate all mounted DOM elements to the current UI language
@@ -101,11 +101,9 @@ class App {
         this.privacyInfoModal.show();
       });
 
-    document.getElementById('history-btn')
-      ?.addEventListener('click', () => {
-        DebugLogger.log('App', 'history-btn click');
-        this.historyModal.show();
-      });
+    // Tab bar
+    document.getElementById('tab-home')?.addEventListener('click', () => this._switchTab('home'));
+    document.getElementById('tab-history')?.addEventListener('click', () => this._switchTab('history'));
 
     // API key lifecycle
     window.addEventListener('apiKeySet',     () => { DebugLogger.log('App', 'apiKeySet'); this._setPickerEnabled(true); });
@@ -144,6 +142,17 @@ class App {
     window.addEventListener('resultClosed', () => {
       DebugLogger.log('App', 'resultClosed');
     });
+  }
+
+  _switchTab(tab) {
+    DebugLogger.log('App', '_switchTab', tab);
+    document.getElementById('page-home')?.classList.toggle('active', tab === 'home');
+    document.getElementById('page-home')?.classList.toggle('hidden', tab !== 'home');
+    document.getElementById('page-history')?.classList.toggle('active', tab === 'history');
+    document.getElementById('page-history')?.classList.toggle('hidden', tab !== 'history');
+    document.getElementById('tab-home')?.classList.toggle('active', tab === 'home');
+    document.getElementById('tab-history')?.classList.toggle('active', tab === 'history');
+    if (tab === 'history') this.historyView.activate();
   }
 
   _buildTranslateLangSelect() {

@@ -1,5 +1,39 @@
-/* Footer Layout — reserved for future tab bar */
+/* Tab Bar */
 
-.app-footer {
+.app-tab-bar {
+  display: flex;
+  flex-shrink: 0;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  gap: 2px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-btn.active {
+  color: var(--accent-color);
+}
+
+.tab-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.tab-label {
+  font-size: 0.68rem;
+  font-weight: 500;
 }

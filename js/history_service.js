@@ -122,6 +122,17 @@ export const HistoryService = {
     DebugLogger.log(MODULE, 'saveExtra OK');
   },
 
+  /** Update the display name for an existing transcript. */
+  async updateFileName(id, newName) {
+    DebugLogger.log(MODULE, 'updateFileName', `${id} → ${newName}`);
+    const dir = `${BASE_DIR}/${id}`;
+    const metaRaw = await _read(`${dir}/meta.json`);
+    const meta = JSON.parse(metaRaw);
+    meta.audioFileName = newName;
+    await _write(`${dir}/meta.json`, JSON.stringify(meta));
+    DebugLogger.log(MODULE, 'updateFileName OK');
+  },
+
   /** Delete a transcript and all its files. */
   async delete(id) {
     DebugLogger.log(MODULE, 'delete', id);

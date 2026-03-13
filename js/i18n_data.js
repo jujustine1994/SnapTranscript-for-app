@@ -149,6 +149,11 @@ export const TRANSLATIONS = {
     'privacy_info.warning_body': '請勿將你的 API Key 提供給任何人，包括任何聲稱是 SnapTranscript 客服的人。我們永遠不會索取你的 Key。付費 API Key 外洩可能導致他人盜用你的 Google 額度。',
     'privacy_info.view_source': '查看原始碼',
     'privacy_info.got_it': '了解了',
+
+    'tab.home': '首頁',
+    'tab.history': '歷史',
+    'history.search': '搜尋…',
+    'history.rename': '重新命名',
   },
 
   // ============================================================
@@ -294,6 +299,11 @@ export const TRANSLATIONS = {
     'privacy_info.warning_body': '请勿将你的 API Key 提供给任何人，包括任何声称是 SnapTranscript 客服的人。我们永远不会索取你的 Key。付费 API Key 外泄可能导致他人盗用你的 Google 额度。',
     'privacy_info.view_source': '查看源代码',
     'privacy_info.got_it': '了解了',
+
+    'tab.home': '首页',
+    'tab.history': '历史',
+    'history.search': '搜索…',
+    'history.rename': '重命名',
   },
 
   // ============================================================
@@ -439,6 +449,11 @@ export const TRANSLATIONS = {
     'privacy_info.warning_body': 'Never share your API Key with anyone, including anyone claiming to be SnapTranscript support. We will never ask for your Key. A leaked paid API Key could result in others consuming your Google quota.',
     'privacy_info.view_source': 'View Source Code',
     'privacy_info.got_it': 'Got it',
+
+    'tab.home': 'Home',
+    'tab.history': 'History',
+    'history.search': 'Search…',
+    'history.rename': 'Rename',
   },
 
   // ============================================================
@@ -565,6 +580,11 @@ export const TRANSLATIONS = {
 
     'history.open': '開く',
     'history.loading': '読み込み中…',
+
+    'tab.home': 'ホーム',
+    'tab.history': '履歴',
+    'history.search': '検索…',
+    'history.rename': '名前変更',
   },
 
   // ============================================================
@@ -691,6 +711,11 @@ export const TRANSLATIONS = {
 
     'history.open': '열기',
     'history.loading': '로딩 중…',
+
+    'tab.home': '홈',
+    'tab.history': '기록',
+    'history.search': '검색…',
+    'history.rename': '이름 변경',
   },
 
   // ============================================================
@@ -817,6 +842,11 @@ export const TRANSLATIONS = {
 
     'history.open': 'Mở',
     'history.loading': 'Đang tải…',
+
+    'tab.home': 'Trang chủ',
+    'tab.history': 'Lịch sử',
+    'history.search': 'Tìm kiếm…',
+    'history.rename': 'Đổi tên',
   },
 
   // ============================================================
@@ -943,6 +973,11 @@ export const TRANSLATIONS = {
 
     'history.open': 'Abrir',
     'history.loading': 'Cargando…',
+
+    'tab.home': 'Inicio',
+    'tab.history': 'Historial',
+    'history.search': 'Buscar…',
+    'history.rename': 'Renombrar',
   },
 
   // ============================================================
@@ -1069,6 +1104,11 @@ export const TRANSLATIONS = {
 
     'history.open': 'Ouvrir',
     'history.loading': 'Chargement…',
+
+    'tab.home': 'Accueil',
+    'tab.history': 'Historique',
+    'history.search': 'Rechercher…',
+    'history.rename': 'Renommer',
   },
 
   // ============================================================
@@ -1195,6 +1235,11 @@ export const TRANSLATIONS = {
 
     'history.open': 'Buksan',
     'history.loading': 'Naglo-load…',
+
+    'tab.home': 'Tahanan',
+    'tab.history': 'Kasaysayan',
+    'history.search': 'Maghanap…',
+    'history.rename': 'Palitan ng pangalan',
   },
 
   // ============================================================
@@ -1321,5 +1366,10 @@ export const TRANSLATIONS = {
 
     'history.open': 'Buka',
     'history.loading': 'Memuat…',
+
+    'tab.home': 'Beranda',
+    'tab.history': 'Riwayat',
+    'history.search': 'Cari…',
+    'history.rename': 'Ganti nama',
   },
 };

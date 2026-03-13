@@ -17,76 +17,96 @@
       <h1 class="app-title" id="app-title">SnapTranscript</h1>
       <div class="app-header-actions">
         <button class="icon-btn" id="privacy-btn"  aria-label="Privacy Info">🔒</button>
-        <button class="icon-btn" id="history-btn"  aria-label="History">📋</button>
         <button class="icon-btn" id="settings-btn" aria-label="Settings">⚙️</button>
       </div>
     </header>
 
-    <!-- Main content -->
-    <main class="app-main" id="app-main">
+    <!-- Page: Home -->
+    <div id="page-home" class="app-page active">
+      <main class="app-main" id="app-main">
 
-      <!-- State A: audio picker -->
-      <div class="audio-picker-zone" id="audio-picker-section">
+        <!-- State A: audio picker -->
+        <div class="audio-picker-zone" id="audio-picker-section">
 
-        <label class="audio-upload-label" for="audio-file-input">
-          <span class="audio-upload-icon">📁</span>
-          <span class="audio-upload-text" data-i18n="home.select_audio">Select Audio File</span>
-          <span class="audio-upload-hint" data-i18n="home.audio_formats">mp3 · m4a · wav · mp4 · mov…</span>
-        </label>
-        <input type="file" id="audio-file-input" accept="audio/*,video/*" hidden />
+          <label class="audio-upload-label" for="audio-file-input">
+            <span class="audio-upload-icon">📁</span>
+            <span class="audio-upload-text" data-i18n="home.select_audio">Select Audio File</span>
+            <span class="audio-upload-hint" data-i18n="home.audio_formats">mp3 · m4a · wav · mp4 · mov…</span>
+          </label>
+          <input type="file" id="audio-file-input" accept="audio/*,video/*" hidden />
 
-        <div class="picker-divider" data-i18n="home.or">or</div>
+          <div class="picker-divider" data-i18n="home.or">or</div>
 
-        <button class="audio-record-btn" id="record-btn" disabled>
-          🎙️&nbsp;<span data-i18n="home.start_recording">Start Recording</span>
-          <span class="coming-soon-tag" data-i18n="home.coming_soon">coming soon</span>
-        </button>
+          <button class="audio-record-btn" id="record-btn" disabled>
+            🎙️&nbsp;<span data-i18n="home.start_recording">Start Recording</span>
+            <span class="coming-soon-tag" data-i18n="home.coming_soon">coming soon</span>
+          </button>
 
-      </div>
-
-      <!-- State B: file selected -->
-      <div class="file-info-section hidden" id="file-info-section">
-
-        <div class="file-info-card">
-          <span class="file-info-icon">🎵</span>
-          <div class="file-info-meta">
-            <span class="file-info-name" id="file-name">—</span>
-            <span class="file-info-duration" id="file-duration">—</span>
-          </div>
-          <button class="change-file-btn" id="change-file-btn" data-i18n="home.change">Change</button>
         </div>
 
-        <div class="transcribe-settings">
+        <!-- State B: file selected -->
+        <div class="file-info-section hidden" id="file-info-section">
 
-          <div class="setting-row">
-            <div>
-              <div class="setting-label" data-i18n="translate.enable">Also Translate</div>
+          <div class="file-info-card">
+            <span class="file-info-icon">🎵</span>
+            <div class="file-info-meta">
+              <span class="file-info-name" id="file-name">—</span>
+              <span class="file-info-duration" id="file-duration">—</span>
             </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="translate-toggle" />
-              <span class="toggle-track"></span>
-            </label>
+            <button class="change-file-btn" id="change-file-btn" data-i18n="home.change">Change</button>
           </div>
 
-          <div class="setting-row hidden" id="translate-lang-row">
-            <div class="setting-label" data-i18n="translate.target_lang">Target Language</div>
-            <select class="setting-select" id="translate-lang-select">
-              <!-- populated by app.js -->
-            </select>
+          <div class="transcribe-settings">
+
+            <div class="setting-row">
+              <div>
+                <div class="setting-label" data-i18n="translate.enable">Also Translate</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="translate-toggle" />
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+
+            <div class="setting-row hidden" id="translate-lang-row">
+              <div class="setting-label" data-i18n="translate.target_lang">Target Language</div>
+              <select class="setting-select" id="translate-lang-select">
+                <!-- populated by app.js -->
+              </select>
+            </div>
+
           </div>
+
+          <button class="primary-btn start-btn" id="main-cta" disabled data-i18n="home.start">
+            Start Transcription
+          </button>
 
         </div>
 
-        <button class="primary-btn start-btn" id="main-cta" disabled data-i18n="home.start">
-          Start Transcription
-        </button>
+      </main>
+    </div>
 
+    <!-- Page: History -->
+    <div id="page-history" class="app-page hidden">
+      <div class="history-search-wrap">
+        <input type="text" id="history-search" class="history-search-input"
+               placeholder="Search…" data-i18n="history.search" />
       </div>
+      <div id="history-list" class="history-list"></div>
+      <p id="history-empty" class="history-empty hidden" data-i18n="history.empty">No saved transcripts yet.</p>
+    </div>
 
-    </main>
-
-    <!-- Footer (tab bar — reserved) -->
-    <footer class="app-footer"></footer>
+    <!-- Tab Bar -->
+    <nav class="app-tab-bar">
+      <button class="tab-btn active" id="tab-home">
+        <span class="tab-icon">🏠</span>
+        <span class="tab-label" data-i18n="tab.home">Home</span>
+      </button>
+      <button class="tab-btn" id="tab-history">
+        <span class="tab-icon">📋</span>
+        <span class="tab-label" data-i18n="tab.history">History</span>
+      </button>
+    </nav>
 
   </div>
 
