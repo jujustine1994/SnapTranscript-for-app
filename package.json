@@ -4,7 +4,7 @@
   "description": "Professional-grade audio transcription app. BYOK Gemini API, local storage, zero backend.",
   "scripts": {
     "build": "node build.js",
-    "start": "npx http-server www -p 8080 -c-1"
+    "start": "node server.js"
   },
   "license": "ISC",
   "type": "commonjs",
