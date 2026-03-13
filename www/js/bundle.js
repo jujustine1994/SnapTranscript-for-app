@@ -393,6 +393,8 @@ var init_i18n_data = __esm({
         "home.or": "\u6216",
         "home.start_recording": "\u958B\u59CB\u9304\u97F3",
         "home.coming_soon": "\u5373\u5C07\u63A8\u51FA",
+        "home.recording": "\u9304\u97F3\u4E2D\u2026",
+        "home.stop_recording": "\u23F9 \u505C\u6B62\u9304\u97F3",
         "home.change": "\u66F4\u63DB",
         "result.gen_summary": "\u2728 \u751F\u6210\u91CD\u9EDE\u6574\u7406",
         "result.gen_polished": "\u2728 \u751F\u6210\u6F64\u98FE\u7248",
@@ -528,6 +530,8 @@ var init_i18n_data = __esm({
         "home.or": "\u6216",
         "home.start_recording": "\u5F00\u59CB\u5F55\u97F3",
         "home.coming_soon": "\u5373\u5C06\u63A8\u51FA",
+        "home.recording": "\u5F55\u97F3\u4E2D\u2026",
+        "home.stop_recording": "\u23F9 \u505C\u6B62\u5F55\u97F3",
         "home.change": "\u66F4\u6362",
         "result.gen_summary": "\u2728 \u751F\u6210\u8981\u70B9\u6574\u7406",
         "result.gen_polished": "\u2728 \u751F\u6210\u6DA6\u8272\u7248",
@@ -663,6 +667,8 @@ var init_i18n_data = __esm({
         "home.or": "or",
         "home.start_recording": "Start Recording",
         "home.coming_soon": "Coming Soon",
+        "home.recording": "Recording\u2026",
+        "home.stop_recording": "\u23F9 Stop Recording",
         "home.change": "Change",
         "result.gen_summary": "\u2728 Generate Summary",
         "result.gen_polished": "\u2728 Generate Polished Version",
@@ -798,6 +804,8 @@ var init_i18n_data = __esm({
         "home.or": "\u307E\u305F\u306F",
         "home.start_recording": "\u9332\u97F3\u3092\u958B\u59CB",
         "home.coming_soon": "\u8FD1\u65E5\u516C\u958B",
+        "home.recording": "\u9332\u97F3\u4E2D\u2026",
+        "home.stop_recording": "\u23F9 \u9332\u97F3\u3092\u505C\u6B62",
         "home.change": "\u5909\u66F4",
         "result.gen_summary": "\u2728 \u8981\u7D04\u3092\u751F\u6210",
         "result.gen_polished": "\u2728 \u6574\u6587\u7248\u3092\u751F\u6210",
@@ -915,6 +923,8 @@ var init_i18n_data = __esm({
         "home.or": "\uB610\uB294",
         "home.start_recording": "\uB179\uC74C \uC2DC\uC791",
         "home.coming_soon": "\uACE7 \uCD9C\uC2DC",
+        "home.recording": "\uB179\uC74C \uC911\u2026",
+        "home.stop_recording": "\u23F9 \uB179\uC74C \uC911\uC9C0",
         "home.change": "\uBCC0\uACBD",
         "result.gen_summary": "\u2728 \uC694\uC57D \uC0DD\uC131",
         "result.gen_polished": "\u2728 \uB2E4\uB4EC\uC740 \uBC84\uC804 \uC0DD\uC131",
@@ -1032,6 +1042,8 @@ var init_i18n_data = __esm({
         "home.or": "ho\u1EB7c",
         "home.start_recording": "B\u1EAFt \u0111\u1EA7u ghi \xE2m",
         "home.coming_soon": "S\u1EAFp ra m\u1EAFt",
+        "home.recording": "\u0110ang ghi \xE2m\u2026",
+        "home.stop_recording": "\u23F9 D\u1EEBng ghi \xE2m",
         "home.change": "Thay \u0111\u1ED5i",
         "result.gen_summary": "\u2728 T\u1EA1o t\xF3m t\u1EAFt",
         "result.gen_polished": "\u2728 T\u1EA1o b\u1EA3n ch\u1EC9nh s\u1EEDa",
@@ -1149,6 +1161,8 @@ var init_i18n_data = __esm({
         "home.or": "o",
         "home.start_recording": "Iniciar grabaci\xF3n",
         "home.coming_soon": "Pr\xF3ximamente",
+        "home.recording": "Grabando\u2026",
+        "home.stop_recording": "\u23F9 Detener grabaci\xF3n",
         "home.change": "Cambiar",
         "result.gen_summary": "\u2728 Generar resumen",
         "result.gen_polished": "\u2728 Generar versi\xF3n pulida",
@@ -1266,6 +1280,8 @@ var init_i18n_data = __esm({
         "home.or": "ou",
         "home.start_recording": "Commencer l'enregistrement",
         "home.coming_soon": "Bient\xF4t disponible",
+        "home.recording": "Enregistrement\u2026",
+        "home.stop_recording": "\u23F9 Arr\xEAter l'enregistrement",
         "home.change": "Changer",
         "result.gen_summary": "\u2728 G\xE9n\xE9rer un r\xE9sum\xE9",
         "result.gen_polished": "\u2728 G\xE9n\xE9rer une version retravaill\xE9e",
@@ -1383,6 +1399,8 @@ var init_i18n_data = __esm({
         "home.or": "o",
         "home.start_recording": "Magsimulang mag-record",
         "home.coming_soon": "Paparating na",
+        "home.recording": "Nagre-record\u2026",
+        "home.stop_recording": "\u23F9 Itigil ang pagre-record",
         "home.change": "Palitan",
         "result.gen_summary": "\u2728 Gumawa ng buod",
         "result.gen_polished": "\u2728 Gumawa ng pinagandang bersyon",
@@ -1500,6 +1518,8 @@ var init_i18n_data = __esm({
         "home.or": "atau",
         "home.start_recording": "Mulai merekam",
         "home.coming_soon": "Segera hadir",
+        "home.recording": "Merekam\u2026",
+        "home.stop_recording": "\u23F9 Hentikan perekaman",
         "home.change": "Ganti",
         "result.gen_summary": "\u2728 Buat ringkasan",
         "result.gen_polished": "\u2728 Buat versi disempurnakan",
@@ -4342,6 +4362,94 @@ var init_history_service = __esm({
   }
 });
 
+// js/recorder_service.js
+function _getSupportedMime() {
+  for (const mime of MIME_CANDIDATES) {
+    if (MediaRecorder.isTypeSupported(mime)) return mime;
+  }
+  return "";
+}
+var MODULE5, MIME_CANDIDATES, RecorderService;
+var init_recorder_service = __esm({
+  "js/recorder_service.js"() {
+    init_debug_logger();
+    MODULE5 = "Recorder";
+    MIME_CANDIDATES = [
+      "audio/webm;codecs=opus",
+      // Chrome, Edge, Android
+      "audio/webm",
+      // Chrome fallback
+      "audio/mp4",
+      // Safari, iOS WKWebView
+      "audio/ogg;codecs=opus"
+      // Firefox
+    ];
+    RecorderService = {
+      _mediaRecorder: null,
+      _chunks: [],
+      _stream: null,
+      _startTime: 0,
+      _tickInterval: null,
+      /**
+       * Request microphone and start recording.
+       * @param {function} onTick - called every second with elapsed seconds (number)
+       * @throws if microphone permission is denied
+       */
+      async start(onTick) {
+        DebugLogger.log(MODULE5, "start \u2014 requesting mic");
+        this._stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        this._chunks = [];
+        const mimeType = _getSupportedMime();
+        DebugLogger.log(MODULE5, "mimeType", mimeType || "(browser default)");
+        this._mediaRecorder = new MediaRecorder(
+          this._stream,
+          mimeType ? { mimeType } : {}
+        );
+        this._mediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) this._chunks.push(e.data);
+        };
+        this._mediaRecorder.start(100);
+        this._startTime = Date.now();
+        this._tickInterval = setInterval(() => {
+          onTick?.(Math.floor((Date.now() - this._startTime) / 1e3));
+        }, 1e3);
+        DebugLogger.log(MODULE5, "recording started");
+      },
+      /**
+       * Stop recording and return the audio Blob.
+       * @returns {Promise<Blob>}
+       */
+      stop() {
+        return new Promise((resolve2) => {
+          clearInterval(this._tickInterval);
+          this._mediaRecorder.onstop = () => {
+            const blob = new Blob(this._chunks, { type: this._mediaRecorder.mimeType });
+            DebugLogger.log(MODULE5, "stop OK", `${(blob.size / 1024).toFixed(1)}KB type=${blob.type}`);
+            this._stream?.getTracks().forEach((t) => t.stop());
+            resolve2(blob);
+          };
+          this._mediaRecorder.stop();
+        });
+      },
+      /** Cancel recording without returning audio. */
+      cancel() {
+        DebugLogger.log(MODULE5, "cancel");
+        clearInterval(this._tickInterval);
+        try {
+          this._mediaRecorder?.stop();
+        } catch {
+        }
+        this._stream?.getTracks().forEach((t) => t.stop());
+        this._chunks = [];
+      },
+      /** Whether the browser/device supports MediaRecorder at all. */
+      isSupported() {
+        return !!(navigator.mediaDevices?.getUserMedia && window.MediaRecorder);
+      }
+    };
+  }
+});
+
 // js/components/ModalComponent.js
 var ModalComponent;
 var init_ModalComponent = __esm({
@@ -4530,7 +4638,7 @@ var init_ApiKeyModal = __esm({
 });
 
 // js/components/modals/SettingsModal.js
-var MODULE5, SettingsModal;
+var MODULE6, SettingsModal;
 var init_SettingsModal = __esm({
   "js/components/modals/SettingsModal.js"() {
     init_ModalComponent();
@@ -4538,7 +4646,7 @@ var init_SettingsModal = __esm({
     init_api_key_service();
     init_config();
     init_esm();
-    MODULE5 = "SettingsModal";
+    MODULE6 = "SettingsModal";
     SettingsModal = class extends ModalComponent {
       /**
        * @param {object} opts
@@ -4622,13 +4730,13 @@ var init_SettingsModal = __esm({
           this.hide();
           this._onApiKey?.();
         });
-        DebugLogger.log(MODULE5, "mounted");
+        DebugLogger.log(MODULE6, "mounted");
       }
       async show() {
         super.show();
         await this._refreshKeyStatus();
         await this._loadSavedLangs();
-        DebugLogger.log(MODULE5, "show");
+        DebugLogger.log(MODULE6, "show");
       }
       // ---- Private ----
       async _refreshKeyStatus() {
@@ -4638,7 +4746,7 @@ var init_SettingsModal = __esm({
           statusEl.textContent = hasKey ? "\u2705 Key is set" : "\u274C No key \u2014 tap Manage";
           statusEl.style.color = hasKey ? "var(--success-color)" : "var(--danger-color)";
         }
-        DebugLogger.log(MODULE5, "keyStatus", hasKey);
+        DebugLogger.log(MODULE6, "keyStatus", hasKey);
       }
       _buildSelects() {
         const uiSel = this.$("#settings-ui-lang");
@@ -4664,19 +4772,19 @@ var init_SettingsModal = __esm({
         });
         uiSel?.addEventListener("change", (e) => {
           const code = e.target.value;
-          DebugLogger.log(MODULE5, "UI lang changed", code);
+          DebugLogger.log(MODULE6, "UI lang changed", code);
           Preferences.set({ key: AppConfig.STORAGE_KEYS.UI_LANGUAGE, value: code });
           this._onLangChange?.(code);
         });
         audioSel?.addEventListener("change", (e) => {
           Preferences.set({ key: AppConfig.STORAGE_KEYS.TRANSCRIPTION_LANGUAGE, value: e.target.value });
-          DebugLogger.log(MODULE5, "audioLang saved", e.target.value);
+          DebugLogger.log(MODULE6, "audioLang saved", e.target.value);
         });
         transSel?.addEventListener("change", (e) => {
           Preferences.set({ key: AppConfig.STORAGE_KEYS.TRANSLATION_LANGUAGE, value: e.target.value });
-          DebugLogger.log(MODULE5, "transLang saved", e.target.value);
+          DebugLogger.log(MODULE6, "transLang saved", e.target.value);
         });
-        DebugLogger.log(MODULE5, "_buildSelects done");
+        DebugLogger.log(MODULE6, "_buildSelects done");
       }
       async _loadSavedLangs() {
         const [ui, audio, trans] = await Promise.all([
@@ -4690,7 +4798,7 @@ var init_SettingsModal = __esm({
         if (uiSel) uiSel.value = ui.value || AppConfig.DEFAULT_UI_LANGUAGE;
         if (audioSel) audioSel.value = audio.value || AppConfig.DEFAULT_TRANSCRIPTION_LANGUAGE;
         if (transSel) transSel.value = trans.value || AppConfig.DEFAULT_TRANSLATION_LANGUAGE;
-        DebugLogger.log(MODULE5, "_loadSavedLangs", `ui=${ui.value} audio=${audio.value} trans=${trans.value}`);
+        DebugLogger.log(MODULE6, "_loadSavedLangs", `ui=${ui.value} audio=${audio.value} trans=${trans.value}`);
       }
     };
   }
@@ -4813,7 +4921,7 @@ function _uiLangToOutputLang(code) {
   };
   return map[code] || "English";
 }
-var MODULE6, ResultView;
+var MODULE7, ResultView;
 var init_ResultView = __esm({
   "js/views/ResultView.js"() {
     init_BaseComponent();
@@ -4821,7 +4929,7 @@ var init_ResultView = __esm({
     init_transcribe_service();
     init_history_service();
     init_config();
-    MODULE6 = "ResultView";
+    MODULE7 = "ResultView";
     ResultView = class extends BaseComponent {
       constructor() {
         super("result-view");
@@ -4911,7 +5019,7 @@ var init_ResultView = __esm({
       }
       postMount() {
         this._bindEvents();
-        DebugLogger.log(MODULE6, "mounted");
+        DebugLogger.log(MODULE7, "mounted");
       }
       // ---- Public API ----
       /**
@@ -4922,7 +5030,7 @@ var init_ResultView = __esm({
       //   1. Fresh transcription from app.js → data.id already set (auto-saved), _saved = true
       //   2. Reopening from history → HistoryService.load() fills all fields including qa array
       show(data) {
-        DebugLogger.log(MODULE6, "show", `${data.original?.length} chars, translated=${!!data.translated}`);
+        DebugLogger.log(MODULE7, "show", `${data.original?.length} chars, translated=${!!data.translated}`);
         this._data = {
           original: data.original || "",
           translated: data.translated || null,
@@ -4953,17 +5061,17 @@ var init_ResultView = __esm({
         this._switchTab("original");
         this.element.classList.remove("hidden");
         requestAnimationFrame(() => this.element.classList.add("visible"));
-        DebugLogger.log(MODULE6, "visible");
+        DebugLogger.log(MODULE7, "visible");
       }
       hide() {
-        DebugLogger.log(MODULE6, "hide");
+        DebugLogger.log(MODULE7, "hide");
         this.element.classList.remove("visible");
         setTimeout(() => this.element.classList.add("hidden"), 300);
       }
       // ---- Events ----
       _bindEvents() {
         this.$("#result-back-btn")?.addEventListener("click", () => {
-          DebugLogger.log(MODULE6, "back");
+          DebugLogger.log(MODULE7, "back");
           this.hide();
           window.dispatchEvent(new CustomEvent("resultClosed"));
         });
@@ -4995,7 +5103,7 @@ var init_ResultView = __esm({
         });
       }
       _switchTab(name) {
-        DebugLogger.log(MODULE6, "tab", name);
+        DebugLogger.log(MODULE7, "tab", name);
         this.element.querySelectorAll(".result-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === name));
         this.element.querySelectorAll(".result-pane").forEach((p) => p.classList.toggle("active", p.id === `pane-${name}`));
       }
@@ -5033,7 +5141,7 @@ var init_ResultView = __esm({
       // included in the initial HistoryService.save() call in app.js.
       // previousBytes is passed to saveExtra so storageSizeBytes stays accurate on regeneration.
       async _generate(type, customPrompt = null) {
-        DebugLogger.log(MODULE6, `_generate ${type}`, customPrompt ? "custom prompt" : "default prompt");
+        DebugLogger.log(MODULE7, `_generate ${type}`, customPrompt ? "custom prompt" : "default prompt");
         const labels = { summary: "Generating summary\u2026", polished: "Polishing transcript\u2026", translated: "Translating\u2026" };
         this._showAiLoading(labels[type] || "Generating\u2026");
         try {
@@ -5046,7 +5154,7 @@ var init_ResultView = __esm({
             const lang = this._data.meta?.targetLanguage || "en";
             result = await TranscribeService.translate(this._data.original, lang);
           }
-          DebugLogger.log(MODULE6, `_generate ${type} OK`, `${result.length} chars`);
+          DebugLogger.log(MODULE7, `_generate ${type} OK`, `${result.length} chars`);
           const previousBytes = this._data[type] ? new Blob([this._data[type]]).size : 0;
           this._data[type] = result;
           this.$(`#text-${type}`).textContent = result;
@@ -5054,11 +5162,11 @@ var init_ResultView = __esm({
           this.$(`#btn-regen-${type}`)?.classList.remove("hidden");
           if (this._saved && this._data.id && (type === "summary" || type === "polished")) {
             await HistoryService.saveExtra(this._data.id, type, result, previousBytes).catch((err) => {
-              DebugLogger.warn(MODULE6, "saveExtra failed", err.message);
+              DebugLogger.warn(MODULE7, "saveExtra failed", err.message);
             });
           }
         } catch (err) {
-          DebugLogger.error(MODULE6, `_generate ${type} FAILED`, err.message);
+          DebugLogger.error(MODULE7, `_generate ${type} FAILED`, err.message);
           this.$(`#text-${type}`).textContent = `Error: ${err.message}`;
         }
         this._hideAiLoading();
@@ -5068,24 +5176,24 @@ var init_ResultView = __esm({
         const input = this.$("#qa-input");
         const q = input?.value?.trim();
         if (!q) return;
-        DebugLogger.log(MODULE6, "_sendQuestion", q.substring(0, 60));
+        DebugLogger.log(MODULE7, "_sendQuestion", q.substring(0, 60));
         input.value = "";
         this._appendQa("user", q);
         const pendingEl = this._appendQa("ai", "\u2026");
         try {
           const answer = await TranscribeService.askQuestion(this._data.original, q);
-          DebugLogger.log(MODULE6, "_sendQuestion answered", `${answer.length} chars`);
+          DebugLogger.log(MODULE7, "_sendQuestion answered", `${answer.length} chars`);
           pendingEl.textContent = answer;
           this._qaMessages.push({ role: "user", text: q }, { role: "ai", text: answer });
           if (this._saved && this._data.id) {
             const json = JSON.stringify(this._qaMessages);
             await HistoryService.saveExtra(this._data.id, "qa", json, this._qaSavedBytes).catch((err) => {
-              DebugLogger.warn(MODULE6, "qa saveExtra failed", err.message);
+              DebugLogger.warn(MODULE7, "qa saveExtra failed", err.message);
             });
             this._qaSavedBytes = new Blob([json]).size;
           }
         } catch (err) {
-          DebugLogger.error(MODULE6, "_sendQuestion FAILED", err.message);
+          DebugLogger.error(MODULE7, "_sendQuestion FAILED", err.message);
           pendingEl.textContent = `Error: ${err.message}`;
         }
       }
@@ -5101,7 +5209,7 @@ var init_ResultView = __esm({
       // ---- Save & Share ----
       async _save() {
         if (this._saved) return;
-        DebugLogger.log(MODULE6, "_save");
+        DebugLogger.log(MODULE7, "_save");
         this._showAiLoading("Saving\u2026");
         try {
           const id = await HistoryService.save({
@@ -5112,28 +5220,28 @@ var init_ResultView = __esm({
           this._data.id = id;
           this._saved = true;
           this._updateSaveBtn();
-          DebugLogger.log(MODULE6, "_save OK", id);
+          DebugLogger.log(MODULE7, "_save OK", id);
         } catch (err) {
-          DebugLogger.error(MODULE6, "_save FAILED", err.message);
+          DebugLogger.error(MODULE7, "_save FAILED", err.message);
           alert("Save failed: " + err.message);
         }
         this._hideAiLoading();
       }
       async _share() {
-        DebugLogger.log(MODULE6, "_share");
+        DebugLogger.log(MODULE7, "_share");
         const activeTab = this.element.querySelector(".result-tab.active")?.dataset?.tab || "original";
         const shareText = this._data[activeTab] || this._data.original;
         try {
           if (navigator.share) {
             await navigator.share({ text: shareText });
-            DebugLogger.log(MODULE6, "_share native OK");
+            DebugLogger.log(MODULE7, "_share native OK");
           } else {
             await navigator.clipboard.writeText(shareText);
-            DebugLogger.log(MODULE6, "_share clipboard fallback OK");
+            DebugLogger.log(MODULE7, "_share clipboard fallback OK");
             alert("Copied to clipboard");
           }
         } catch (err) {
-          DebugLogger.warn(MODULE6, "_share failed", err.message);
+          DebugLogger.warn(MODULE7, "_share failed", err.message);
         }
       }
       _updateSaveBtn() {
@@ -5165,12 +5273,12 @@ function _fmtSize(bytes) {
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
   return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 }
-var MODULE7, HistoryView;
+var MODULE8, HistoryView;
 var init_HistoryView = __esm({
   "js/views/HistoryView.js"() {
     init_history_service();
     init_debug_logger();
-    MODULE7 = "HistoryView";
+    MODULE8 = "HistoryView";
     HistoryView = class {
       /**
        * @param {object} opts
@@ -5183,11 +5291,11 @@ var init_HistoryView = __esm({
       /** Call once after DOM is ready. Binds static event listeners. */
       init() {
         document.getElementById("history-search")?.addEventListener("input", (e) => this._filterList(e.target.value.trim()));
-        DebugLogger.log(MODULE7, "init");
+        DebugLogger.log(MODULE8, "init");
       }
       /** Called when the History tab becomes active. Refreshes the list. */
       async activate() {
-        DebugLogger.log(MODULE7, "activate");
+        DebugLogger.log(MODULE8, "activate");
         const searchInput = document.getElementById("history-search");
         if (searchInput) searchInput.value = "";
         await this._loadList();
@@ -5201,10 +5309,10 @@ var init_HistoryView = __esm({
         if (emptyEl) emptyEl.classList.add("hidden");
         try {
           this._allItems = await HistoryService.list();
-          DebugLogger.log(MODULE7, "_loadList OK", `${this._allItems.length} items`);
+          DebugLogger.log(MODULE8, "_loadList OK", `${this._allItems.length} items`);
           this._renderList(this._allItems);
         } catch (err) {
-          DebugLogger.error(MODULE7, "_loadList FAILED", err.message);
+          DebugLogger.error(MODULE8, "_loadList FAILED", err.message);
           list.innerHTML = `<p class="history-error">Error: ${err.message}</p>`;
         }
       }
@@ -5317,9 +5425,9 @@ var init_HistoryView = __esm({
             meta.audioFileName = newName;
             const cached = this._allItems.find((m) => m.id === meta.id);
             if (cached) cached.audioFileName = newName;
-            DebugLogger.log(MODULE7, "rename OK", newName);
+            DebugLogger.log(MODULE8, "rename OK", newName);
           } catch (err) {
-            DebugLogger.error(MODULE7, "rename FAILED", err.message);
+            DebugLogger.error(MODULE8, "rename FAILED", err.message);
           }
           restore();
         };
@@ -5331,13 +5439,13 @@ var init_HistoryView = __esm({
         });
       }
       async _openItem(id) {
-        DebugLogger.log(MODULE7, "_openItem", id);
+        DebugLogger.log(MODULE8, "_openItem", id);
         try {
           const data = await HistoryService.load(id);
-          DebugLogger.log(MODULE7, "_openItem loaded OK");
+          DebugLogger.log(MODULE8, "_openItem loaded OK");
           this._onOpen?.(data);
         } catch (err) {
-          DebugLogger.error(MODULE7, "_openItem FAILED", err.message);
+          DebugLogger.error(MODULE8, "_openItem FAILED", err.message);
           alert("Failed to open: " + err.message);
         }
       }
@@ -5350,9 +5458,9 @@ var init_HistoryView = __esm({
           if (!document.getElementById("history-list").children.length) {
             document.getElementById("history-empty")?.classList.remove("hidden");
           }
-          DebugLogger.log(MODULE7, "_deleteItem OK", id);
+          DebugLogger.log(MODULE8, "_deleteItem OK", id);
         } catch (err) {
-          DebugLogger.error(MODULE7, "_deleteItem FAILED", err.message);
+          DebugLogger.error(MODULE8, "_deleteItem FAILED", err.message);
           alert("Delete failed: " + err.message);
         }
       }
@@ -5372,6 +5480,7 @@ var require_app = __commonJS({
     init_transcribe_service();
     init_admob_service();
     init_history_service();
+    init_recorder_service();
     init_ApiKeyModal();
     init_SettingsModal();
     init_PrivacyInfoModal();
@@ -5396,6 +5505,8 @@ var require_app = __commonJS({
         this._fileDuration = 0;
         this._processing = false;
         this._cancelFlag = false;
+        this._recording = false;
+        this._recTimerEl = null;
       }
       async init() {
         this.debugPanel.init();
@@ -5443,6 +5554,8 @@ var require_app = __commonJS({
           this._setPickerEnabled(false);
           this._resetFileSelection();
         });
+        document.getElementById("record-btn")?.addEventListener("click", () => this._startRecording());
+        document.getElementById("stop-record-btn")?.addEventListener("click", () => this._stopRecording());
         document.getElementById("audio-file-input")?.addEventListener("change", (e) => this._onFileSelected(e));
         document.getElementById("change-file-btn")?.addEventListener("click", () => this._resetFileSelection());
         document.getElementById("translate-toggle")?.addEventListener("change", (e) => {
@@ -5485,8 +5598,12 @@ var require_app = __commonJS({
       async _onFileSelected(e) {
         const file = e.target.files?.[0];
         if (!file) return;
+        await this._handleFile(file);
+      }
+      // Shared entry point for both file-picker and recording paths.
+      async _handleFile(file) {
         this._selectedFile = file;
-        DebugLogger.log("App", "_onFileSelected", `${file.name} ${(file.size / 1024 / 1024).toFixed(2)}MB type=${file.type}`);
+        DebugLogger.log("App", "_handleFile", `${file.name} ${(file.size / 1024 / 1024).toFixed(2)}MB type=${file.type}`);
         this._fileDuration = await this._getAudioDuration(file);
         DebugLogger.log("App", "duration", `${this._fileDuration.toFixed(1)}s`);
         const nameEl = document.getElementById("file-name");
@@ -5494,10 +5611,60 @@ var require_app = __commonJS({
         if (nameEl) nameEl.textContent = file.name;
         if (durEl) durEl.textContent = _fmtDuration(this._fileDuration);
         document.getElementById("audio-picker-section")?.classList.add("hidden");
+        document.getElementById("recording-section")?.classList.add("hidden");
         document.getElementById("file-info-section")?.classList.remove("hidden");
         const hasKey = await ApiKeyService.hasKey();
         DebugLogger.log("App", "hasKey at file select", hasKey);
         if (hasKey) document.getElementById("main-cta")?.removeAttribute("disabled");
+      }
+      // ---- Recording ----
+      async _startRecording() {
+        if (this._recording) return;
+        if (!RecorderService.isSupported()) {
+          alert("Recording is not supported in this browser.");
+          return;
+        }
+        DebugLogger.log("App", "_startRecording");
+        try {
+          this._recording = true;
+          this._recTimerEl = document.getElementById("recording-timer");
+          document.getElementById("audio-picker-section")?.classList.add("hidden");
+          document.getElementById("recording-section")?.classList.remove("hidden");
+          await RecorderService.start((elapsed) => {
+            if (this._recTimerEl) {
+              const m = String(Math.floor(elapsed / 60)).padStart(2, "0");
+              const s2 = String(elapsed % 60).padStart(2, "0");
+              this._recTimerEl.textContent = `${m}:${s2}`;
+            }
+          });
+        } catch (err) {
+          DebugLogger.error("App", "_startRecording FAILED", err.message);
+          this._recording = false;
+          document.getElementById("recording-section")?.classList.add("hidden");
+          document.getElementById("audio-picker-section")?.classList.remove("hidden");
+          alert(`Could not access microphone:
+${err.message}`);
+        }
+      }
+      async _stopRecording() {
+        if (!this._recording) return;
+        DebugLogger.log("App", "_stopRecording");
+        this._recording = false;
+        try {
+          const blob = await RecorderService.stop();
+          const ext = blob.type.includes("mp4") ? "m4a" : blob.type.includes("ogg") ? "ogg" : "webm";
+          const ts = (/* @__PURE__ */ new Date()).toISOString().replace(/[:.]/g, "-").slice(0, 19);
+          const file = new File([blob], `recording-${ts}.${ext}`, { type: blob.type });
+          DebugLogger.log("App", "_stopRecording blob\u2192file", `${file.name} ${(file.size / 1024).toFixed(1)}KB`);
+          if (this._recTimerEl) this._recTimerEl.textContent = "00:00";
+          await this._handleFile(file);
+        } catch (err) {
+          DebugLogger.error("App", "_stopRecording FAILED", err.message);
+          document.getElementById("recording-section")?.classList.add("hidden");
+          document.getElementById("audio-picker-section")?.classList.remove("hidden");
+          alert(`Recording failed:
+${err.message}`);
+        }
       }
       _resetFileSelection() {
         DebugLogger.log("App", "_resetFileSelection");
@@ -5505,7 +5672,12 @@ var require_app = __commonJS({
         this._fileDuration = 0;
         const input = document.getElementById("audio-file-input");
         if (input) input.value = "";
+        if (this._recording) {
+          this._recording = false;
+          RecorderService.cancel();
+        }
         document.getElementById("file-info-section")?.classList.add("hidden");
+        document.getElementById("recording-section")?.classList.add("hidden");
         document.getElementById("audio-picker-section")?.classList.remove("hidden");
         document.getElementById("main-cta")?.setAttribute("disabled", "true");
       }
@@ -5513,8 +5685,10 @@ var require_app = __commonJS({
         DebugLogger.log("App", "_setPickerEnabled", enabled);
         const label = document.querySelector(".audio-upload-label");
         const input = document.getElementById("audio-file-input");
+        const recordBtn = document.getElementById("record-btn");
         if (label) label.style.opacity = enabled ? "1" : "0.4";
         if (input) input.disabled = !enabled;
+        if (recordBtn) recordBtn.disabled = !enabled;
       }
       // ---- Transcription Pipeline (Slices 3–5) ----
       async _startTranscription() {

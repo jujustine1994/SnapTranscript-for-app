@@ -9,6 +9,7 @@ import { FFmpegService }   from './ffmpeg_service.js';
 import { TranscribeService } from './transcribe_service.js';
 import { AdMobService }    from './admob_service.js';
 import { HistoryService }  from './history_service.js';
+import { RecorderService } from './recorder_service.js';
 
 import { ApiKeyModal }      from './components/modals/ApiKeyModal.js';
 import { SettingsModal }    from './components/modals/SettingsModal.js';
@@ -40,6 +41,8 @@ class App {
     this._fileDuration = 0;
     this._processing   = false;
     this._cancelFlag   = false;
+    this._recording    = false;
+    this._recTimerEl   = null;
   }
 
   async init() {
@@ -109,6 +112,13 @@ class App {
     window.addEventListener('apiKeySet',     () => { DebugLogger.log('App', 'apiKeySet'); this._setPickerEnabled(true); });
     window.addEventListener('apiKeyCleared', () => { DebugLogger.log('App', 'apiKeyCleared'); this._setPickerEnabled(false); this._resetFileSelection(); });
 
+    // Recording
+    document.getElementById('record-btn')
+      ?.addEventListener('click', () => this._startRecording());
+
+    document.getElementById('stop-record-btn')
+      ?.addEventListener('click', () => this._stopRecording());
+
     // File picker
     document.getElementById('audio-file-input')
       ?.addEventListener('change', (e) => this._onFileSelected(e));
@@ -171,9 +181,13 @@ class App {
   async _onFileSelected(e) {
     const file = e.target.files?.[0];
     if (!file) return;
+    await this._handleFile(file);
+  }
 
+  // Shared entry point for both file-picker and recording paths.
+  async _handleFile(file) {
     this._selectedFile = file;
-    DebugLogger.log('App', '_onFileSelected', `${file.name} ${(file.size / 1024 / 1024).toFixed(2)}MB type=${file.type}`);
+    DebugLogger.log('App', '_handleFile', `${file.name} ${(file.size / 1024 / 1024).toFixed(2)}MB type=${file.type}`);
 
     this._fileDuration = await this._getAudioDuration(file);
     DebugLogger.log('App', 'duration', `${this._fileDuration.toFixed(1)}s`);
@@ -185,11 +199,76 @@ class App {
     if (durEl)  durEl.textContent  = _fmtDuration(this._fileDuration);
 
     document.getElementById('audio-picker-section')?.classList.add('hidden');
+    document.getElementById('recording-section')?.classList.add('hidden');
     document.getElementById('file-info-section')?.classList.remove('hidden');
 
     const hasKey = await ApiKeyService.hasKey();
     DebugLogger.log('App', 'hasKey at file select', hasKey);
     if (hasKey) document.getElementById('main-cta')?.removeAttribute('disabled');
+  }
+
+  // ---- Recording ----
+
+  async _startRecording() {
+    if (this._recording) return;
+
+    if (!RecorderService.isSupported()) {
+      alert('Recording is not supported in this browser.');
+      return;
+    }
+
+    DebugLogger.log('App', '_startRecording');
+
+    try {
+      this._recording = true;
+      this._recTimerEl = document.getElementById('recording-timer');
+
+      // Show recording section, hide picker
+      document.getElementById('audio-picker-section')?.classList.add('hidden');
+      document.getElementById('recording-section')?.classList.remove('hidden');
+
+      await RecorderService.start((elapsed) => {
+        if (this._recTimerEl) {
+          const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+          const s = String(elapsed % 60).padStart(2, '0');
+          this._recTimerEl.textContent = `${m}:${s}`;
+        }
+      });
+    } catch (err) {
+      DebugLogger.error('App', '_startRecording FAILED', err.message);
+      this._recording = false;
+      document.getElementById('recording-section')?.classList.add('hidden');
+      document.getElementById('audio-picker-section')?.classList.remove('hidden');
+      alert(`Could not access microphone:\n${err.message}`);
+    }
+  }
+
+  async _stopRecording() {
+    if (!this._recording) return;
+    DebugLogger.log('App', '_stopRecording');
+
+    this._recording = false;
+
+    try {
+      const blob = await RecorderService.stop();
+
+      // Convert blob to File so the existing pipeline can handle it
+      const ext  = blob.type.includes('mp4') ? 'm4a' : blob.type.includes('ogg') ? 'ogg' : 'webm';
+      const ts   = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      const file = new File([blob], `recording-${ts}.${ext}`, { type: blob.type });
+
+      DebugLogger.log('App', '_stopRecording blob→file', `${file.name} ${(file.size/1024).toFixed(1)}KB`);
+
+      // Reset timer display for next time
+      if (this._recTimerEl) this._recTimerEl.textContent = '00:00';
+
+      await this._handleFile(file);
+    } catch (err) {
+      DebugLogger.error('App', '_stopRecording FAILED', err.message);
+      document.getElementById('recording-section')?.classList.add('hidden');
+      document.getElementById('audio-picker-section')?.classList.remove('hidden');
+      alert(`Recording failed:\n${err.message}`);
+    }
   }
 
   _resetFileSelection() {
@@ -198,17 +277,25 @@ class App {
     this._fileDuration = 0;
     const input = document.getElementById('audio-file-input');
     if (input) input.value = '';
+    // If user pressed Change while recording was in progress, cancel it
+    if (this._recording) {
+      this._recording = false;
+      RecorderService.cancel();
+    }
     document.getElementById('file-info-section')?.classList.add('hidden');
+    document.getElementById('recording-section')?.classList.add('hidden');
     document.getElementById('audio-picker-section')?.classList.remove('hidden');
     document.getElementById('main-cta')?.setAttribute('disabled', 'true');
   }
 
   _setPickerEnabled(enabled) {
     DebugLogger.log('App', '_setPickerEnabled', enabled);
-    const label = document.querySelector('.audio-upload-label');
-    const input = document.getElementById('audio-file-input');
-    if (label) label.style.opacity = enabled ? '1' : '0.4';
-    if (input) input.disabled = !enabled;
+    const label     = document.querySelector('.audio-upload-label');
+    const input     = document.getElementById('audio-file-input');
+    const recordBtn = document.getElementById('record-btn');
+    if (label)     label.style.opacity = enabled ? '1' : '0.4';
+    if (input)     input.disabled = !enabled;
+    if (recordBtn) recordBtn.disabled = !enabled;
   }
 
   // ---- Transcription Pipeline (Slices 3–5) ----

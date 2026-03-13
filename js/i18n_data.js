@@ -108,6 +108,8 @@ export const TRANSLATIONS = {
     'home.or': '或',
     'home.start_recording': '開始錄音',
     'home.coming_soon': '即將推出',
+    'home.recording': '錄音中…',
+    'home.stop_recording': '⏹ 停止錄音',
     'home.change': '更換',
 
     'result.gen_summary': '✨ 生成重點整理',
@@ -261,6 +263,8 @@ export const TRANSLATIONS = {
     'home.or': '或',
     'home.start_recording': '开始录音',
     'home.coming_soon': '即将推出',
+    'home.recording': '录音中…',
+    'home.stop_recording': '⏹ 停止录音',
     'home.change': '更换',
 
     'result.gen_summary': '✨ 生成要点整理',
@@ -414,6 +418,8 @@ export const TRANSLATIONS = {
     'home.or': 'or',
     'home.start_recording': 'Start Recording',
     'home.coming_soon': 'Coming Soon',
+    'home.recording': 'Recording…',
+    'home.stop_recording': '⏹ Stop Recording',
     'home.change': 'Change',
 
     'result.gen_summary': '✨ Generate Summary',
@@ -567,6 +573,8 @@ export const TRANSLATIONS = {
     'home.or': 'または',
     'home.start_recording': '録音を開始',
     'home.coming_soon': '近日公開',
+    'home.recording': '録音中…',
+    'home.stop_recording': '⏹ 録音を停止',
     'home.change': '変更',
 
     'result.gen_summary': '✨ 要約を生成',
@@ -701,6 +709,8 @@ export const TRANSLATIONS = {
     'home.or': '또는',
     'home.start_recording': '녹음 시작',
     'home.coming_soon': '곧 출시',
+    'home.recording': '녹음 중…',
+    'home.stop_recording': '⏹ 녹음 중지',
     'home.change': '변경',
 
     'result.gen_summary': '✨ 요약 생성',
@@ -835,6 +845,8 @@ export const TRANSLATIONS = {
     'home.or': 'hoặc',
     'home.start_recording': 'Bắt đầu ghi âm',
     'home.coming_soon': 'Sắp ra mắt',
+    'home.recording': 'Đang ghi âm…',
+    'home.stop_recording': '⏹ Dừng ghi âm',
     'home.change': 'Thay đổi',
 
     'result.gen_summary': '✨ Tạo tóm tắt',
@@ -969,6 +981,8 @@ export const TRANSLATIONS = {
     'home.or': 'o',
     'home.start_recording': 'Iniciar grabación',
     'home.coming_soon': 'Próximamente',
+    'home.recording': 'Grabando…',
+    'home.stop_recording': '⏹ Detener grabación',
     'home.change': 'Cambiar',
 
     'result.gen_summary': '✨ Generar resumen',
@@ -1103,6 +1117,8 @@ export const TRANSLATIONS = {
     'home.or': 'ou',
     'home.start_recording': "Commencer l'enregistrement",
     'home.coming_soon': 'Bientôt disponible',
+    'home.recording': 'Enregistrement…',
+    'home.stop_recording': '⏹ Arrêter l\'enregistrement',
     'home.change': 'Changer',
 
     'result.gen_summary': '✨ Générer un résumé',
@@ -1237,6 +1253,8 @@ export const TRANSLATIONS = {
     'home.or': 'o',
     'home.start_recording': 'Magsimulang mag-record',
     'home.coming_soon': 'Paparating na',
+    'home.recording': 'Nagre-record…',
+    'home.stop_recording': '⏹ Itigil ang pagre-record',
     'home.change': 'Palitan',
 
     'result.gen_summary': '✨ Gumawa ng buod',
@@ -1371,6 +1389,8 @@ export const TRANSLATIONS = {
     'home.or': 'atau',
     'home.start_recording': 'Mulai merekam',
     'home.coming_soon': 'Segera hadir',
+    'home.recording': 'Merekam…',
+    'home.stop_recording': '⏹ Hentikan perekaman',
     'home.change': 'Ganti',
 
     'result.gen_summary': '✨ Buat ringkasan',

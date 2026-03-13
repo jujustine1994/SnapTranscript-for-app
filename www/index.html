@@ -37,11 +37,20 @@
 
           <div class="picker-divider" data-i18n="home.or">or</div>
 
-          <button class="audio-record-btn" id="record-btn" disabled>
+          <button class="audio-record-btn" id="record-btn">
             🎙️&nbsp;<span data-i18n="home.start_recording">Start Recording</span>
-            <span class="coming-soon-tag" data-i18n="home.coming_soon">coming soon</span>
           </button>
 
+        </div>
+
+        <!-- State R: recording in progress -->
+        <div class="recording-section hidden" id="recording-section">
+          <div class="recording-indicator">
+            <span class="recording-dot"></span>
+            <span class="recording-label" data-i18n="home.recording">Recording…</span>
+            <span class="recording-timer" id="recording-timer">00:00</span>
+          </div>
+          <button class="stop-record-btn primary-btn" id="stop-record-btn" data-i18n="home.stop_recording">⏹ Stop</button>
         </div>
 
         <!-- State B: file selected -->
