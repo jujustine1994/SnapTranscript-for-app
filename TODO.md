@@ -9,41 +9,41 @@
 
 # TODO.md — SnapTranscript 行動版
 
-> 最後更新：2026-03-12
+> 最後更新：2026-03-13
 
 ---
 
 ## 目前進度
 
-**Slice 1–7 程式碼全部寫完，build 成功。**
-尚未測試（瀏覽器 / TestFlight）。
+**Slice 1–7 完成並部署至 Vercel。UI 功能驗證中。**
+Vercel URL: https://snap-transcript.vercel.app/
 
 ---
 
 ## 下一步：測試 → 上線
 
-### Step 1：設定 Git + GitHub（還沒做）
+### Step 1：Git + GitHub + Vercel ✅ 完成
 
-- [ ] 在此目錄初始化 git repo：`git init`
-- [ ] 建立 GitHub repo（`SnapTranscript-app` 或類似名稱）
-- [ ] Push 到 GitHub
-- [ ] 確認 `docs/CREDENTIALS.md` 在 `.gitignore`（已設定，確認一次）
+- [x] git repo 初始化 + GitHub push
+- [x] Vercel 部署（snap-transcript.vercel.app）
+- [x] COOP/COEP headers 設定（FFmpeg.wasm 需要）
+- [x] bundle.js tracked in git（確保 Vercel 服務正確版本）
+- [ ] **GitHub Default Branch 改 master → main**（還沒做，需要進 GitHub Settings → General）
+- [ ] 改完後刪除 origin/master：`git push origin --delete master`
 
-### Step 2：Vercel 瀏覽器測試（等 Git 設好後做）
+### Step 2：Vercel 瀏覽器測試（進行中）
 
-`vercel.json` 和所有設定已就位，只差 push。
-
-- [ ] 到 `vercel.com` → New Project → Import GitHub repo
-- [ ] Vercel 會自動讀取 `vercel.json`（build: `node build.js`，output: `www`）
-- [ ] 確認以下功能在瀏覽器可用：
-  - [ ] UI 正常顯示（header、選檔區、CSS 沒有壞掉）
-  - [ ] ApiKeyModal 可開啟、填入 Key、儲存
-  - [ ] 選音訊檔 → 顯示檔名 + 時長 → 翻譯開關
-  - [ ] DebugPanel：點 "SnapTranscript" 標題 5 次 → 浮出 debug 面板
-  - [ ] Start Transcription → FFmpeg 壓縮（瀏覽器有 WASM 支援，這是最高風險點）
-  - [ ] Gemini 轉錄（需要真實 API Key）
-  - [ ] ResultView 顯示、Tab 切換、Save、Q&A
-  - [ ] History 清單
+- [x] UI 正常顯示（header、底部 tab bar、選檔區）
+- [x] i18n 多語言切換正常
+- [x] 🔒 Privacy modal 顯示正常
+- [x] ⚙️ Settings modal 顯示正常（含 Display Language）
+- [x] History Tab Page（搜尋 + 重命名）
+- [ ] 選音訊檔 → 顯示檔名 + 時長 → 翻譯開關（待測）
+- [ ] DebugPanel 5-tap 觸發（待測）
+- [ ] Start Transcription → FFmpeg 壓縮（最高風險點，待測）
+- [ ] Gemini 轉錄（需要真實 API Key，待測）
+- [ ] ResultView 顯示、Tab 切換、Save、Q&A（待測）
+- [ ] History 儲存 + 開啟（待測）
 
 ### Step 3：GitHub Actions CI/CD → TestFlight
 
@@ -84,7 +84,7 @@
 
 ---
 
-## 已完成（本 session）
+## 已完成
 
 - [x] Slice 1：config / ApiKeyService / ApiKeyModal
 - [x] Debug 工具：DebugLogger + DebugPanel（5-tap 觸發）
@@ -92,12 +92,17 @@
 - [x] Slice 3：FFmpeg.wasm 壓縮 + 切割（`js/ffmpeg_service.js`）
 - [x] Slice 4：Gemini 轉錄 / 翻譯 / 摘要 / 潤飾 / Q&A（`js/transcribe_service.js`）
 - [x] Slice 5：ResultView（4 tabs + Q&A + Save + Share）
-- [x] Slice 6：歷史記錄（`js/history_service.js` + `HistoryModal.js`）
+- [x] Slice 6：歷史記錄（`js/history_service.js`）
 - [x] Slice 7：AdMob（`js/admob_service.js`）+ SettingsModal
 - [x] 所有 CSS（processing / result / history / settings）
 - [x] `vercel.json`（build 設定 + COOP/COEP headers for FFmpeg.wasm）
-- [x] `pnpm start` 修正（改 serve `www/` 而非根目錄）
-- [x] PITFALLS.md 加入 FFmpeg.wasm WKWebView 風險說明
+- [x] FFmpeg.wasm 本地化（www/ffmpeg/，download script）
+- [x] i18n 完整（10 語言，全部元件 data-i18n 屬性）
+- [x] PrivacyInfoModal（🔒 按鈕）
+- [x] 底部 Tab Bar（🏠 首頁 / 📋 歷史）
+- [x] History 改為 Tab Page（搜尋 + inline 重命名）
+- [x] Vercel Production Branch 問題診斷 + 修復（master → main）
+- [x] bundle.js commit 進 git（bypass Vercel build cache）
 
 ---
 

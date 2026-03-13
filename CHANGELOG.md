@@ -64,6 +64,35 @@
 
 ---
 
+### 2026-03-13 — UI 大改版 + Vercel Production 修復
+
+**Vercel Production Branch 問題修復：**
+- 症狀：新 commit push 後全部進 Preview，Production 停在 Initial commit
+- 根因：Vercel 預設 production branch = `main`，repo 用 `master` → 不匹配
+- 修法：`git branch -m master main` + push，之後 push to main 自動 Production deploy
+- 待完成：GitHub Settings → General → Default branch 改成 main，才可刪 master
+
+**底部 Tab Bar 導覽（新功能）：**
+- 新增 iOS-style 底部 Tab Bar：🏠 首頁 / 📋 歷史
+- History 從 Modal 改為獨立 Tab Page（`js/views/HistoryView.js`）
+- 移除 header 的 📋 按鈕（改由 Tab Bar 取代）
+- 版面使用 `height: 100dvh` + flex，pages 用 `min-height: 0` 確保正確滾動
+
+**歷史記錄增強：**
+- 頂部搜尋框，即時 filter 檔名（不需按 Enter）
+- 每筆記錄加 ✏️ 重新命名按鈕，inline 編輯（Enter 確認 / Esc 取消）
+- `HistoryService.updateFileName()` 新增，寫回 meta.json
+
+**i18n 新增（全 10 語言）：**
+- `tab.home` / `tab.history` / `history.search` / `history.rename`
+
+**已修復的舊 Bug：**
+- Vercel 服務舊 bundle.js：改為 `www/js/bundle.js` tracked in git（不再依賴 Vercel build cache）
+- Settings modal Display Language 不顯示：同上（bundle.js 版本錯誤）
+- 🔒 Privacy button 消失：同上（index.html 版本錯誤）
+
+---
+
 ### 2026-03-12 — 專案建立
 
 - 完成需求訪談
