@@ -93,6 +93,37 @@
 
 ---
 
+### 2026-03-13 — UI 重構、錄音功能、翻譯改版
+
+**功能移除：**
+- 移除「潤飾版」（Polish）Tab 及所有相關程式碼：ResultView、TranscribeService.polish()、HistoryService polished.txt、全 10 語言 i18n
+
+**Q&A 移進 Tab：**
+- Q&A 從底部永遠顯示的輸入列，改為獨立的「Q&A」頁籤（取代潤飾版位置）
+- 原文 / 翻譯 / 重點整理頁籤不再顯示問答區，視線更乾淨
+- Q&A pane 使用 flex column 排版：對話訊息可捲動，輸入框固定在底部
+
+**翻譯功能改版：**
+- 翻譯 Tab 現在永遠顯示（不再依賴首頁「Also Translate」開關）
+- 點「✨ Generate Translation」→ 先出現語言下拉選單，選完再翻譯
+- 翻譯完成後顯示「🔄 Regenerate」按鈕，可換不同語言重翻
+- `TranscribeService.translate()` 新增自動切段邏輯：
+  - 閾值 5000 字元/段（Gemini Flash 輸出上限 8192 tokens，CJK 2 chars/token，安全邊際 3 倍）
+  - 按 `\n\n` 段落邊界切割，保留語境完整性
+  - 多段翻譯時 Loading 顯示「Translating 2/8…」進度
+
+**錄音功能（新）：**
+- 新增 `js/recorder_service.js`（MediaRecorder API，MIME 自動偵測 webm/opus → mp4 → ogg）
+- 「Start Recording」按鈕移除 disabled，啟用麥克風
+- 錄音中顯示紅點動畫 + 計時器，按停止後 blob 直接進 FFmpeg → Gemini pipeline
+- 支援桌面瀏覽器與 iOS WKWebView（iOS 14.5+）
+- 全 10 語言補齊 `home.recording` / `home.stop_recording`
+
+**Bug 修復：**
+- 翻譯 Tab 消失：移除 `tab-hidden` 條件邏輯，改為永遠顯示
+
+---
+
 ### 2026-03-13 — UX 改善、Prompt 優化、程式碼品質
 
 **Bug 修復：**
