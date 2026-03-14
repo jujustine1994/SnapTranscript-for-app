@@ -2777,7 +2777,9 @@ var init_ffmpeg_service = __esm({
           const coreURL = await toBlobURL(AppConfig.FFMPEG_CORE_URL, "text/javascript");
           const wasmURL = await toBlobURL(AppConfig.FFMPEG_WASM_URL, "application/wasm");
           DebugLogger.log(MODULE, "CDN fetch OK, loading ffmpeg...");
-          await _ffmpeg.load({ coreURL, wasmURL });
+          const classWorkerURL = `${location.origin}/js/worker.js`;
+          DebugLogger.log(MODULE, "classWorkerURL", classWorkerURL);
+          await _ffmpeg.load({ classWorkerURL, coreURL, wasmURL });
           _loaded = true;
           DebugLogger.log(MODULE, "loaded OK");
           onProgress?.({ stage: "loading", percent: 100, detail: "FFmpeg ready" });

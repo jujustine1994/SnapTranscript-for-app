@@ -45,7 +45,14 @@ export const FFmpegService = {
       const wasmURL = await toBlobURL(AppConfig.FFMPEG_WASM_URL, 'application/wasm');
       DebugLogger.log(MODULE, 'CDN fetch OK, loading ffmpeg...');
 
-      await _ffmpeg.load({ coreURL, wasmURL });
+      // classWorkerURL must be an absolute URL to avoid the 'import.meta.url' issue
+      // when bundle.js is built on Vercel (esbuild may leave import.meta.url invalid
+      // inside bundled node_modules). Passing an absolute URL means new URL(abs, base)
+      // ignores the base entirely, so import.meta.url never gets evaluated as a resolver.
+      const classWorkerURL = `${location.origin}/js/worker.js`;
+      DebugLogger.log(MODULE, 'classWorkerURL', classWorkerURL);
+
+      await _ffmpeg.load({ classWorkerURL, coreURL, wasmURL });
 
       _loaded = true;
       DebugLogger.log(MODULE, 'loaded OK');
