@@ -28,9 +28,9 @@
 ### FFmpeg.wasm 在 Capacitor WKWebView 的相容性（高風險）
 - **問題**：FFmpeg.wasm 預設需要 SharedArrayBuffer（COOP/COEP headers），WKWebView 預設不提供這些 headers
 - **原因**：Apple 對 WKWebView 的 cross-origin isolation 限制
-- **解法（已採用）**：改用 `@ffmpeg/core-st`（single-thread 版），不需要 SharedArrayBuffer
-- **CDN 路徑**：`unpkg.com/@ffmpeg/core-st@0.12.9/...`，確保 `capacitor.config.json` 的 `allowNavigation` 包含 `https://unpkg.com`
-- **若 CDN 仍失敗**：改把 core-st 的 `.js` 和 `.wasm` 打包進 `www/ffmpeg/`（增加 ~6MB App 體積），從 local path 載入
+- **解法（已採用）**：改用 `@ffmpeg/core`（single-thread 版，不是 `core-mt`），不需要 SharedArrayBuffer
+- **CDN 路徑**：`unpkg.com/@ffmpeg/core@0.12.9/...`，確保 `capacitor.config.json` 的 `allowNavigation` 包含 `https://unpkg.com`
+- **若 CDN 仍失敗**：改把 core 的 `.js` 和 `.wasm` 打包進 `www/ffmpeg/`（增加 ~6MB App 體積），從 local path 載入（已實作，見 `scripts/download-ffmpeg.js`）
 
 ### Gemini Files API 大檔上傳穩定性
 - **問題**：手機網路不穩時大檔（100MB+）上傳容易中斷
