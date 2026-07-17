@@ -43,7 +43,8 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': mime });
     res.end(data);
   });
-}).listen(PORT, () => {
+// 綁 127.0.0.1：不給 host 的話會綁 0.0.0.0，本機開發伺服器沒必要對整個網段開放。
+}).listen(PORT, '127.0.0.1', () => {
   console.log(`Dev server → http://localhost:${PORT}`);
   console.log('COOP/COEP headers: ON (matches Vercel)');
 });
