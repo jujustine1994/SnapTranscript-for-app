@@ -13,6 +13,9 @@
 
 ---
 
+## 文件維護
+- [ ] 校正專案 MD（依新模板：ARCHITECTURE 補現狀，CHANGELOG 拿掉現狀段）
+
 ## 目前進度
 
 **Slice 1–7 完成並部署至 Vercel。UI 功能驗證中。**
